@@ -10,6 +10,16 @@
 		9521784722732B93007A3E02 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9521784622732B93007A3E02 /* 1.jpg */; };
 		9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */; };
 		9521784E22763A2F007A3E02 /* TACustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784D22763A2F007A3E02 /* TACustomAnnotation.m */; };
+		952178532277077F007A3E02 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178522277077F007A3E02 /* AddTripViewController.m */; };
+		95217884227878F6007A3E02 /* Day+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217876227878F6007A3E02 /* Day+CoreDataClass.m */; };
+		95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217877227878F6007A3E02 /* Day+CoreDataProperties.m */; };
+		95217886227878F6007A3E02 /* Person+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521787A227878F6007A3E02 /* Person+CoreDataClass.m */; };
+		95217887227878F6007A3E02 /* Person+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521787B227878F6007A3E02 /* Person+CoreDataProperties.m */; };
+		95217888227878F6007A3E02 /* Museum+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521787E227878F6007A3E02 /* Museum+CoreDataClass.m */; };
+		95217889227878F6007A3E02 /* Museum+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521787F227878F6007A3E02 /* Museum+CoreDataProperties.m */; };
+		9521788A227878F6007A3E02 /* Trip+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217882227878F6007A3E02 /* Trip+CoreDataClass.m */; };
+		9521788B227878F6007A3E02 /* Trip+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217883227878F6007A3E02 /* Trip+CoreDataProperties.m */; };
+		9521788E22788278007A3E02 /* TAPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521788D22788278007A3E02 /* TAPerson.m */; };
 		9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC85226F16F900602FB4 /* AppDelegate.m */; };
 		9571FC89226F16F900602FB4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC88226F16F900602FB4 /* MainTabBarController.m */; };
 		9571FC8C226F16F900602FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC8A226F16F900602FB4 /* Main.storyboard */; };
@@ -35,6 +45,26 @@
 		9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseumCollectionViewCell.m; sourceTree = "<group>"; };
 		9521784C22763A2F007A3E02 /* TACustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACustomAnnotation.h; sourceTree = "<group>"; };
 		9521784D22763A2F007A3E02 /* TACustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACustomAnnotation.m; sourceTree = "<group>"; };
+		952178512277077F007A3E02 /* AddTripViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
+		952178522277077F007A3E02 /* AddTripViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
+		95217874227878F6007A3E02 /* Day+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Day+CoreDataProperties.h"; sourceTree = "<group>"; };
+		95217875227878F6007A3E02 /* Day+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Day+CoreDataClass.h"; sourceTree = "<group>"; };
+		95217876227878F6007A3E02 /* Day+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Day+CoreDataClass.m"; sourceTree = "<group>"; };
+		95217877227878F6007A3E02 /* Day+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Day+CoreDataProperties.m"; sourceTree = "<group>"; };
+		95217878227878F6007A3E02 /* Person+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Person+CoreDataProperties.h"; sourceTree = "<group>"; };
+		95217879227878F6007A3E02 /* Person+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Person+CoreDataClass.h"; sourceTree = "<group>"; };
+		9521787A227878F6007A3E02 /* Person+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Person+CoreDataClass.m"; sourceTree = "<group>"; };
+		9521787B227878F6007A3E02 /* Person+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Person+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9521787C227878F6007A3E02 /* Museum+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Museum+CoreDataProperties.h"; sourceTree = "<group>"; };
+		9521787D227878F6007A3E02 /* Museum+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Museum+CoreDataClass.h"; sourceTree = "<group>"; };
+		9521787E227878F6007A3E02 /* Museum+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Museum+CoreDataClass.m"; sourceTree = "<group>"; };
+		9521787F227878F6007A3E02 /* Museum+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Museum+CoreDataProperties.m"; sourceTree = "<group>"; };
+		95217880227878F6007A3E02 /* Trip+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trip+CoreDataProperties.h"; sourceTree = "<group>"; };
+		95217881227878F6007A3E02 /* Trip+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trip+CoreDataClass.h"; sourceTree = "<group>"; };
+		95217882227878F6007A3E02 /* Trip+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Trip+CoreDataClass.m"; sourceTree = "<group>"; };
+		95217883227878F6007A3E02 /* Trip+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Trip+CoreDataProperties.m"; sourceTree = "<group>"; };
+		9521788C22788278007A3E02 /* TAPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPerson.h; sourceTree = "<group>"; };
+		9521788D22788278007A3E02 /* TAPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPerson.m; sourceTree = "<group>"; };
 		9571FC81226F16F900602FB4 /* travelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9571FC84226F16F900602FB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9571FC85226F16F900602FB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +119,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		952178732278547F007A3E02 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				95217874227878F6007A3E02 /* Day+CoreDataProperties.h */,
+				95217875227878F6007A3E02 /* Day+CoreDataClass.h */,
+				95217876227878F6007A3E02 /* Day+CoreDataClass.m */,
+				95217877227878F6007A3E02 /* Day+CoreDataProperties.m */,
+				95217878227878F6007A3E02 /* Person+CoreDataProperties.h */,
+				95217879227878F6007A3E02 /* Person+CoreDataClass.h */,
+				9521787A227878F6007A3E02 /* Person+CoreDataClass.m */,
+				9521787B227878F6007A3E02 /* Person+CoreDataProperties.m */,
+				9521787C227878F6007A3E02 /* Museum+CoreDataProperties.h */,
+				9521787D227878F6007A3E02 /* Museum+CoreDataClass.h */,
+				9521787E227878F6007A3E02 /* Museum+CoreDataClass.m */,
+				9521787F227878F6007A3E02 /* Museum+CoreDataProperties.m */,
+				95217880227878F6007A3E02 /* Trip+CoreDataProperties.h */,
+				95217881227878F6007A3E02 /* Trip+CoreDataClass.h */,
+				95217882227878F6007A3E02 /* Trip+CoreDataClass.m */,
+				95217883227878F6007A3E02 /* Trip+CoreDataProperties.m */,
+			);
+			name = CoreDataModel;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		9571FC78226F16F900602FB4 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +165,7 @@
 				9571FCC22271DDD900602FB4 /* Model */,
 				9521784B22735ECA007A3E02 /* View */,
 				9571FCA6226F1BF600602FB4 /* Controllers */,
+				952178732278547F007A3E02 /* CoreDataModel */,
 				9571FCBA22709F2800602FB4 /* Network */,
 				9571FC84226F16F900602FB4 /* AppDelegate.h */,
 				9571FC85226F16F900602FB4 /* AppDelegate.m */,
@@ -157,6 +212,8 @@
 			children = (
 				9571FCA0226F1BC200602FB4 /* CreateTripViewController.h */,
 				9571FCA1226F1BC200602FB4 /* CreateTripViewController.m */,
+				952178512277077F007A3E02 /* AddTripViewController.h */,
+				952178522277077F007A3E02 /* AddTripViewController.m */,
 			);
 			path = Trip;
 			sourceTree = "<group>";
@@ -187,6 +244,8 @@
 			children = (
 				9571FCBF2271DDD100602FB4 /* MapPoint.h */,
 				9571FCC02271DDD100602FB4 /* MapPoint.m */,
+				9521788C22788278007A3E02 /* TAPerson.h */,
+				9521788D22788278007A3E02 /* TAPerson.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,20 +323,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95217884227878F6007A3E02 /* Day+CoreDataClass.m in Sources */,
 				9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */,
 				9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */,
 				9571FC89226F16F900602FB4 /* MainTabBarController.m in Sources */,
+				95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */,
+				95217888227878F6007A3E02 /* Museum+CoreDataClass.m in Sources */,
 				9571FCC12271DDD100602FB4 /* MapPoint.m in Sources */,
+				95217886227878F6007A3E02 /* Person+CoreDataClass.m in Sources */,
 				9571FC9F226F1BA100602FB4 /* MapViewController.m in Sources */,
 				9571FCAF22706BEE00602FB4 /* TANetworkHelper.m in Sources */,
+				9521788A227878F6007A3E02 /* Trip+CoreDataClass.m in Sources */,
+				952178532277077F007A3E02 /* AddTripViewController.m in Sources */,
+				9521788B227878F6007A3E02 /* Trip+CoreDataProperties.m in Sources */,
 				9571FCB622707FA000602FB4 /* SearchViewController.m in Sources */,
 				9571FCC52271E05900602FB4 /* DetailPointViewController.m in Sources */,
 				9571FCA2226F1BC200602FB4 /* CreateTripViewController.m in Sources */,
 				9571FCA5226F1BEF00602FB4 /* ProfileViewController.m in Sources */,
+				9521788E22788278007A3E02 /* TAPerson.m in Sources */,
 				9571FCBD2270A41700602FB4 /* TANetworkService.m in Sources */,
 				9571FC97226F16FB00602FB4 /* main.m in Sources */,
 				9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */,
+				95217889227878F6007A3E02 /* Museum+CoreDataProperties.m in Sources */,
 				9521784E22763A2F007A3E02 /* TACustomAnnotation.m in Sources */,
+				95217887227878F6007A3E02 /* Person+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

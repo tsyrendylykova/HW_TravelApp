@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)initWithFrame:(CGRect)frame;
 
 @property (nonatomic, strong) UIImageView *coverImageView;
+@property (nonatomic, strong) UILabel *name;
+@property (nonatomic, strong) UILabel *descriptionTrip;
 
 @end
 

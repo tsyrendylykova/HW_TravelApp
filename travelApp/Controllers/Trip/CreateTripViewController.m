@@ -8,10 +8,19 @@
 
 #import "CreateTripViewController.h"
 #import "MuseumCollectionViewCell.h"
+#import "AddTripViewController.h"
+#import "AppDelegate.h"
+#import "Trip+CoreDataClass.h"
 
-@interface CreateTripViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@import CoreData;
+
+@interface CreateTripViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
+@property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
+@property (nonatomic, strong) NSFetchRequest *fetchRequest;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -34,24 +43,127 @@
     [self.view addSubview:self.collectionView];
 
     [self prepareUI];
+    [self prepareBarButtonItems];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSError *error;
+    [self.fetchedResultsController performFetch: &error];
+    if (error) {
+        NSLog(@"Error");
+    }
+    
+    [self.collectionView reloadData];
 }
 
 -(void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"Museums";
+    self.navigationItem.title = @"Your museum`s trips";
+}
+
+-(void)prepareBarButtonItems {
+    self.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(presentNewTrip)];
+    self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.fetchedResultsController.fetchedObjects.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
     
-    cell.coverImageView.image = [UIImage imageNamed:@"1.jpg"];
+    Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (trip) {
+        cell.coverImageView.image = [UIImage imageNamed:@"1.jpg"];
+        cell.name.text = trip.name;
+        cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", trip.startDate, trip.endDate];
+    } else {
+        cell.coverImageView.image = [UIImage imageNamed:@"1.jpg"];
+        cell.name.text = @"Название поездки";
+        cell.descriptionTrip.text = @"29 апреля 2019";
+    }
     
     return cell;
+}
+
+#pragma mark - Actions
+
+-(void)presentNewTrip {
+    AddTripViewController *addTripVC = [AddTripViewController new];
+    [self presentViewController:addTripVC animated:YES completion:nil];
+//    [self.navigationController pushViewController:addTripVC animated:YES];
+}
+
+#pragma mark - CoreData Stack
+
+- (NSFetchRequest *)fetchRequest
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Trip"];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    return fetchRequest;
+}
+
+- (NSManagedObjectContext *)coreDataContext
+{
+    if (_coreDataContext)
+    {
+        return _coreDataContext;
+    }
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).
+    persistentContainer;
+    NSManagedObjectContext *context = container.viewContext;
+    
+    return context;
+}
+
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    
+    if (_fetchedResultsController)
+    {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:NSStringFromClass([Trip class]) inManagedObjectContext:self.coreDataContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]];
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.coreDataContext sectionNameKeyPath:nil
+                                                   cacheName:@"Root"];
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath {
+    NSLog(@"%@", anObject);
+    NSLog(@"%lu", type);
+}
+
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    NSLog(@"controllerDidChangeContent");
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    NSLog(@"controllerWillChangeContent");
 }
 
 @end
