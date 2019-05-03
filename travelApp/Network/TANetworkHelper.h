@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TANetworkHelper : NSObject
 
 +(NSString *)URLForSearchString: (NSString *)searchString latitude:(NSString *)latitude longitude:(NSString *)longitude;
++(NSString *)URLForMuseumSearch;
 
 @end
 

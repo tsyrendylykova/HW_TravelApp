@@ -36,6 +36,9 @@
 -(void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"New trip";
+    
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
 }
 
 -(void)prepareDetailsForTrip {
@@ -105,7 +108,6 @@
     [self.textFieldEndDate setFont:[UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]];
     [self.textFieldEndDate setTextColor:[UIColor blueColor]];
     [self.view addSubview:self.textFieldEndDate];
-    
 
 }
 
@@ -166,6 +168,10 @@
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+-(void)goBackToVC {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

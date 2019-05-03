@@ -19,3 +19,10 @@
 -(void)findFoursquarePlacesWithSearchString: (NSString *)searchString latitude:(NSString *)latitude longitude:(NSString *)longitude;
 
 @end
+
+@protocol NetworkServiceInputProtocolMuseums <NSObject>
+@optional
+
+-(void)findMosDataMuseums;
+
+@end

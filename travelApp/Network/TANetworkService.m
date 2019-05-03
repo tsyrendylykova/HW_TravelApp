@@ -9,6 +9,12 @@
 #import "TANetworkService.h"
 #import "TANetworkHelper.h"
 
+
+@interface TANetworkService () <NSURLSessionDelegate>
+
+@end
+
+
 @implementation TANetworkService
 
 -(void)findFoursquarePlacesWithSearchString: (NSString *)searchString latitude:(NSString *)latitude longitude:(NSString *)longitude {
@@ -31,6 +37,30 @@
 
     [sessionDataTask resume];
 }
+
+-(void)findMosDataMuseums {
+    NSString *urlString = [TANetworkHelper URLForMuseumSearch];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setTimeoutInterval:15];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            [self downloadTaskWithURL:urlString];
+        } else {
+            NSLog(@"%@", error);
+        }
+    }];
+    
+    [sessionDataTask resume];
+}
+
+
+#pragma mark - URLSessionDelegate
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(NSURL *)location {

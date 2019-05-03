@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TANetworkService : NSObject <NetworkServiceInputProtocol>
+@interface TANetworkService : NSObject <NetworkServiceInputProtocol, NetworkServiceInputProtocolMuseums>
 
 @property (nonatomic, weak) id<NetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
 

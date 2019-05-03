@@ -41,7 +41,7 @@
     self.navigationItem.title = self.mapPoint.name;
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height * 0.35)];
-    self.imageView.image = [UIImage imageNamed:@"1.jpg"];
+    self.imageView.image = [UIImage imageNamed:@"sun.jpg"];
     [self.view addSubview:self.imageView];
     
     self.buttonTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame), self.view.frame.size.width, 88)];

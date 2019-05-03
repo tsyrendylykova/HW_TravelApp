@@ -11,6 +11,7 @@
 #import "AddTripViewController.h"
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
+#import "ChooseMuseumViewController.h"
 
 @import CoreData;
 
@@ -79,11 +80,21 @@
     
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if (trip) {
-        cell.coverImageView.image = [UIImage imageNamed:@"1.jpg"];
+        cell.coverImageView.image = [UIImage imageNamed:@"sun.jpg"];
         cell.name.text = trip.name;
-        cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", trip.startDate, trip.endDate];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        NSDate *startDate = trip.startDate;
+        NSDate *endDate = trip.endDate;
+        [dateFormat setDateFormat:@"EEEE, MMM d, yyyy"];
+        //MMM d, yyyy
+        
+        NSString *startDateString = [dateFormat stringFromDate:startDate];
+        NSString *startEndString = [dateFormat stringFromDate:endDate];
+        
+        cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
     } else {
-        cell.coverImageView.image = [UIImage imageNamed:@"1.jpg"];
+        cell.coverImageView.image = [UIImage imageNamed:@"sun.jpg"];
         cell.name.text = @"Название поездки";
         cell.descriptionTrip.text = @"29 апреля 2019";
     }
@@ -91,12 +102,20 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    ChooseMuseumViewController *chooseMuseumVC = [[ChooseMuseumViewController alloc] initWithTrip:trip];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:chooseMuseumVC];
+    [self presentViewController:navVC animated:YES completion:nil];
+}
+
 #pragma mark - Actions
 
 -(void)presentNewTrip {
     AddTripViewController *addTripVC = [AddTripViewController new];
-    [self presentViewController:addTripVC animated:YES completion:nil];
-//    [self.navigationController pushViewController:addTripVC animated:YES];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addTripVC];
+    [self presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark - CoreData Stack
@@ -150,20 +169,6 @@
     
     return _fetchedResultsController;
     
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath {
-    NSLog(@"%@", anObject);
-    NSLog(@"%lu", type);
-}
-
-
--(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    NSLog(@"controllerDidChangeContent");
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    NSLog(@"controllerWillChangeContent");
 }
 
 @end
