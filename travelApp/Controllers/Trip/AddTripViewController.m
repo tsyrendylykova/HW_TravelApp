@@ -121,6 +121,7 @@
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.textFieldStartDate.text = [NSString stringWithFormat:@"%@",dateString];
+    [self.view endEditing:YES]; // ???
 }
 
 - (void)onDateEndPickerValueChanged:(UIDatePicker *)datePicker
@@ -131,6 +132,7 @@
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.textFieldEndDate.text = [NSString stringWithFormat:@"%@",dateString];
+    [self.view endEditing:YES];
 }
 
 #pragma mark - CoreData Stack

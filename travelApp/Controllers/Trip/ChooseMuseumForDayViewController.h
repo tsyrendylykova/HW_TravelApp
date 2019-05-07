@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChooseMuseumForDayViewController : UIViewController <NetworkServiceOutputProtocol>
 
--(instancetype)initWithDates: (NSMutableArray *)dates;
+-(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates;
 
 @property (nonatomic, strong) TANetworkService *networkService;
 

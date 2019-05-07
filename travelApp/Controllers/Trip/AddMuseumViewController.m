@@ -7,23 +7,31 @@
 //
 
 #import "AddMuseumViewController.h"
+#import "AppDelegate.h"
+#import "Museum+CoreDataClass.h"
+#import "Day+CoreDataClass.h"
 
-@interface AddMuseumViewController ()
+@import CoreData;
 
-@property (nonatomic, strong) NSMutableArray *dates;
+@interface AddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) NSMutableArray<NSDate *> *dates;
 @property (nonatomic, assign) NSInteger rowNumber;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) NSMutableDictionary *info;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UILabel *labelAddress;
-@property (nonatomic, strong) UILabel *labelWorkingHours;
 @property (nonatomic, strong) NSArray *weekDays;
+@property (nonatomic, strong) UIButton *buttonAdd;
+@property (nonatomic, strong) UIPickerView *picker;
+@property (nonatomic, assign) NSInteger activePickerView;
+@property (nonatomic, strong) UIToolbar *toolBar;
 
 @end
 
 @implementation AddMuseumViewController
 
--(instancetype)initWithDates: (NSMutableArray *)dates rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info {
+-(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info {
     self = [super init];
     if (self) {
         _dates = dates;
@@ -39,8 +47,25 @@
     self.weekDays = [NSArray arrayWithObjects:@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье", nil];
     
     [self prepareUI];
+    self.activePickerView = 0;
+    self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * 0.7 + 44, self.view.frame.size.width, self.view.frame.size.height * 0.3)];
+    self.picker.backgroundColor = [UIColor whiteColor];
+    self.picker.showsSelectionIndicator = YES;
+    self.picker.delegate = self;
+    self.picker.dataSource = self;
     
-
+    self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * 0.7, self.view.frame.size.width, 44)];
+    self.toolBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
+    // add cancel button
+    
+    [self.toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+    
+    [self.view addSubview:self.toolBar];
+    [self.view addSubview:self.picker];
+    
+    [self.picker setHidden:YES];
+    [self.toolBar setHidden:YES];
 }
 
 -(void)prepareUI {
@@ -64,14 +89,7 @@
     [self.labelAddress setTextColor:[UIColor grayColor]];
     [self.view addSubview:self.labelAddress];
     
-    self.labelWorkingHours = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.labelName.frame) + 5, self.view.frame.size.width - 40, 60)];
-    self.labelWorkingHours.numberOfLines = 0;
-    self.labelWorkingHours.text = self.info[@"Address"];
-    self.labelWorkingHours.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
-    [self.labelWorkingHours setTextColor:[UIColor grayColor]];
-    [self.view addSubview:self.labelWorkingHours];
-    
-    CGFloat y = CGRectGetMaxY(self.labelWorkingHours.frame) + 15;
+    CGFloat y = CGRectGetMaxY(self.labelAddress.frame) + 15;
     for (int i = 0; i < 7; i++) {
         UILabel *day = [[UILabel alloc] initWithFrame:CGRectMake(20, y, self.view.frame.size.width / 3, 20)];
         day.text = self.weekDays[i];
@@ -86,6 +104,89 @@
         [self.view addSubview:hour];
         y += 30;
     }
+    
+    self.buttonAdd = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 100, self.view.frame.size.height - 80, 200, 40)];
+    [self.buttonAdd setTitle:@"Add" forState:UIControlStateNormal];
+    self.buttonAdd.backgroundColor = [UIColor orangeColor];
+    [self.buttonAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.buttonAdd addTarget:self action:@selector(chooseDates) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.buttonAdd];
+}
+
+#pragma mark - Actions
+
+-(void)chooseDates {
+    [self.toolBar setHidden:NO];
+    [self.picker setHidden:NO];
+}
+
+- (void)doneTouched:(UIBarButtonItem *)sender {
+    [self.toolBar setHidden:YES];
+    [self.picker setHidden:YES];
+    
+    // save museum to core data at chosen day
+    Museum *museum = [NSEntityDescription insertNewObjectForEntityForName:@"Museum" inManagedObjectContext:self.coreDataContext];
+    
+    // filling
+    museum.name = self.info[@"CommonName"];
+    museum.address = self.info[@"Address"];
+    museum.museumId = [NSString stringWithFormat:@"%ld", (long)self.rowNumber];
+    // lat
+    // lon
+    //museum.openHours = self.info[@"WorkHours"];
+    
+    Day *day = [NSEntityDescription insertNewObjectForEntityForName:@"Day" inManagedObjectContext:self.coreDataContext];
+    
+    // заглушка , пока не исправлю сохранение date в self.dates (который сейчас string)
+    NSString *dateString = @"02-Jun-19";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd-MMM-yy";
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    day.date = date;
+    // weather is empty now
+    
+    NSSet *set = [[NSSet alloc] initWithObjects: museum, nil];
+    day.museums = set;
+//    [day.museums setByAddingObject:museum];
+    
+    NSError *error;
+    if (![museum.managedObjectContext save:&error] && ![day.managedObjectContext save:&error]) {
+        NSLog(@"Не удалось сохранить объект");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+#pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.dates.count;
+}
+
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
+    return [dateFormatter stringFromDate:self.dates[row]];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSLog(@"%ld", (long)row);
+}
+
+#pragma mark - CoreData Stack
+
+- (NSManagedObjectContext *)coreDataContext
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).persistentContainer;
+    NSManagedObjectContext *context = container.viewContext;
+    
+    return context;
 }
 
 @end

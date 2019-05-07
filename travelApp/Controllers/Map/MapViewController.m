@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) SearchViewController *searchVC;
 @property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) NSMutableArray<MapPoint *> *array;
 
 @end
 

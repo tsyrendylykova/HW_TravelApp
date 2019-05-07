@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) TANetworkService *networkService;
 
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray<MapPoint *> *dataArray;
 @property (nonatomic, weak) id<SearchViewDelegate> delegate;
 
 @end

@@ -12,7 +12,7 @@
 
 @interface ChooseMuseumForDayViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray *dates;
+@property (nonatomic, strong) NSMutableArray<NSDate *> *dates;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableDictionary *dictInfo;
@@ -21,7 +21,7 @@
 
 @implementation ChooseMuseumForDayViewController
 
--(instancetype)initWithDates: (NSMutableArray *)dates {
+-(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates {
     self = [super init];
     if (self) {
         _dates = dates;
@@ -77,10 +77,12 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 54;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
     
     cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg", (long)indexPath.row + 1]];
+//    cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"name.jpg"]];
     
     
     return cell;

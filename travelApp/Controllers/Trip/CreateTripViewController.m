@@ -19,7 +19,6 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
-@property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
@@ -52,7 +51,7 @@
     [super viewWillAppear:animated];
     
     NSError *error;
-    [self.fetchedResultsController performFetch: &error];
+    [self.fetchedResultsController performFetch:&error];
     if (error) {
         NSLog(@"Error");
     }
@@ -72,15 +71,32 @@
 
 #pragma mark - UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.fetchedResultsController.sections.count;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.fetchedResultsController.fetchedObjects.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
     
+    //NSError *error;
+    //NSFetchRequest *tripRequest = [Trip fetchRequest];
+    //NSArray *result = [self.coreDataContext executeFetchRequest:tripRequest error:&error];
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+//    Trip *trip = nil;
+//    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
+//        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
+//        if ([sectionInfo numberOfObjects] > [indexPath row]){
+//            trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//        }
+//    }
+    
     if (trip) {
-        cell.coverImageView.image = [UIImage imageNamed:@"sun.jpg"];
+        cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
         cell.name.text = trip.name;
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -94,7 +110,7 @@
         
         cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
     } else {
-        cell.coverImageView.image = [UIImage imageNamed:@"sun.jpg"];
+        cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
         cell.name.text = @"Название поездки";
         cell.descriptionTrip.text = @"29 апреля 2019";
     }
@@ -104,6 +120,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    Trip *trip = nil;
+//    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
+//        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
+//        if ([sectionInfo numberOfObjects] > [indexPath row]){
+//            trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//        }
+//    }
     
     ChooseMuseumViewController *chooseMuseumVC = [[ChooseMuseumViewController alloc] initWithTrip:trip];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:chooseMuseumVC];
@@ -131,11 +154,6 @@
 
 - (NSManagedObjectContext *)coreDataContext
 {
-    if (_coreDataContext)
-    {
-        return _coreDataContext;
-    }
-    
     UIApplication *application = [UIApplication sharedApplication];
     NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).
     persistentContainer;
@@ -147,7 +165,6 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    
     if (_fetchedResultsController)
     {
         return _fetchedResultsController;
@@ -163,8 +180,9 @@
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:self.coreDataContext sectionNameKeyPath:nil
-                                                   cacheName:@"Root"];
-    self.fetchedResultsController = theFetchedResultsController;
+                                                   cacheName:nil];
+    
+    _fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
     
     return _fetchedResultsController;

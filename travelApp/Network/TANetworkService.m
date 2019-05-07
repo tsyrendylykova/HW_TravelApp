@@ -38,6 +38,17 @@
     [sessionDataTask resume];
 }
 
+-(void)getImageNSDataFromURL: (NSString *)urlString withCompletionHandler:(void (^)(NSData *data))completionHandler {
+//    https://api.foursquare.com/v2/venues/5642aef9498e51025cf4a7a5/photos?client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506
+    NSURL *imageURL = [NSURL URLWithString:urlString];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        if (completionHandler && imageData) {
+            completionHandler(imageData);
+        }
+    });
+}
+
 -(void)findMosDataMuseums {
     NSString *urlString = [TANetworkHelper URLForMuseumSearch];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AddMuseumViewController : UIViewController
 
--(instancetype)initWithDates: (NSMutableArray *)dates rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info;
+-(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info;
 
 @end
 

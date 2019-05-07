@@ -6,15 +6,17 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MapPoint : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *urlImage;
+@property (nonatomic, strong) UIImageView *imageView;
 
--(instancetype)initWithName: (NSString *)name;
+-(instancetype)initWithName: (NSString *)name urlImage:(NSString *)urlImage;
 
 @end
 

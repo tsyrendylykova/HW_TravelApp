@@ -8,18 +8,32 @@
 
 #import "ChooseMuseumViewController.h"
 #import "ChooseMuseumForDayViewController.h"
+#import "AppDelegate.h"
+#import "Day+CoreDataClass.h"
+#import "Museum+CoreDataClass.h"
 
-@interface ChooseMuseumViewController () 
+@interface ChooseMuseumViewController () <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UILabel *labelDate;
 @property (nonatomic, strong) UILabel *labelChoose;
-@property (nonatomic, strong) NSMutableArray *dates;
+@property (nonatomic, strong) NSMutableArray<NSDate *> *dates;
+
+@property (nonatomic, strong) UIButton *testButton;
+
+@property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
+@property (nonatomic, strong) NSFetchRequest *fetchRequest;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
 @implementation ChooseMuseumViewController
+
+- (void)dealloc
+{
+    _fetchedResultsController.delegate = nil;
+}
 
 -(instancetype)initWithTrip: (Trip *)trip {
     self = [super init];
@@ -36,6 +50,8 @@
     
     [self prepareUI];
     [self prepareDays];
+    
+    [self prepareTestButton];
     
 }
 
@@ -79,12 +95,24 @@
     [self.view addSubview:self.labelChoose];
 }
 
+-(void)prepareTestButton {
+    self.testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, CGRectGetMaxY(self.labelChoose.frame) + 250, 200, 40)];
+    self.testButton.backgroundColor = [UIColor orangeColor];
+    [self.testButton setTitle:@"Show museums" forState:UIControlStateNormal];
+    [self.testButton addTarget:self action:@selector(testFunction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.testButton];
+}
+
 -(void)getArrayOfDays {
 
     NSDate *startDate = self.trip.startDate;
     NSDate *endDate = self.trip.endDate;
     
-    self.dates = [NSMutableArray new];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
+//    NSString *dateString = [dateFormatter stringFromDate:date];
+    
+    self.dates = [NSMutableArray<NSDate *> new];
     [self.dates addObject:startDate];
 
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -139,9 +167,62 @@
 }
 
 -(void)addNewMuseums {
-    ChooseMuseumForDayViewController *newVC = [ChooseMuseumForDayViewController new];
+    ChooseMuseumForDayViewController *newVC = [[ChooseMuseumForDayViewController alloc] initWithDates:self.dates];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:newVC];
     [self presentViewController:navVC animated:YES completion:nil];
+}
+
+#pragma mark - CoreData Stack
+
+- (NSFetchRequest *)fetchRequest
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Day"];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    return fetchRequest;
+}
+
+- (NSManagedObjectContext *)coreDataContext
+{
+    if (_coreDataContext)
+    {
+        return _coreDataContext;
+    }
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).
+    persistentContainer;
+    NSManagedObjectContext *context = container.viewContext;
+    
+    return context;
+}
+
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    
+    if (_fetchedResultsController)
+    {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:NSStringFromClass([Day class]) inManagedObjectContext:self.coreDataContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]]];
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.coreDataContext sectionNameKeyPath:nil
+                                                   cacheName:@"Root"];
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
 }
 
 

@@ -10,10 +10,11 @@
 
 @implementation MapPoint
 
--(instancetype)initWithName: (NSString *)name {
+-(instancetype)initWithName: (NSString *)name urlImage:(NSString *)urlImage {
     self = [super init];
     if (self) {
         _name = name;
+        _urlImage = urlImage;
     }
     return self;
 }
