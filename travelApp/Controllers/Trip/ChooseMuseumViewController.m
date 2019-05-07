@@ -105,7 +105,9 @@
 -(void)prepareDays {
     CGFloat x = 20;
 
-    for (Day *day in self.trip.days) {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    
+    for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]) {
         UIView *dateView = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.labelChoose.frame) + 10, 50, 50)];
         dateView.layer.cornerRadius = 25;
         dateView.layer.masksToBounds = YES;
@@ -140,12 +142,14 @@
 }
 
 -(void)testFunction {
+    NSLog(@"Show museums");
     NSError *error;
     NSFetchRequest *fetch = [[NSFetchRequest alloc] initWithEntityName:@"Day"];
     NSArray *result = [self.coreDataContext executeFetchRequest: fetch error:&error];
     if (result.count > 0) {
         for (int i = 0; i < result.count; i++) {
             Day *day = [result objectAtIndex:i];
+            NSLog(@"%@", day.date);
             NSSet *set = [[NSSet alloc] initWithSet:day.museums];
             NSArray<Museum *> *array = [set allObjects];
             for (int j = 0; j < array.count; j++) {

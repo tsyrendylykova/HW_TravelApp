@@ -164,7 +164,10 @@
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
-    return [dateFormatter stringFromDate:[self.trip.days allObjects][row].date];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    
+    return [dateFormatter stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][row].date];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
