@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Trip+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddMuseumViewController : UIViewController
 
--(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info;
+-(instancetype)initWithTrip: (Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info;
 
 @end
 

@@ -8,6 +8,7 @@
 //
 
 #import "Trip+CoreDataProperties.h"
+#import "Day+CoreDataProperties.h"
 
 @implementation Trip (CoreDataProperties)
 
@@ -22,5 +23,19 @@
 @dynamic tripId;
 @dynamic person;
 @dynamic days;
+
+- (nullable Day *)dayForDate:(nonnull NSDate *)date
+{
+    
+    for (Day *day in self.days)
+    {
+        if (day.date == date)
+        {
+            return day;
+        }
+    }
+    
+    return nil;
+}
 
 @end

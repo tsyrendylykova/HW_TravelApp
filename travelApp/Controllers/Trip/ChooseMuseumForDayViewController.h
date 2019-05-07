@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "TANetworkService.h"
+#import "Trip+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ChooseMuseumForDayViewController : UIViewController <NetworkServiceOutputProtocol>
 
--(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates;
+-(instancetype)initWithTrip: (Trip *)trip;
 
 @property (nonatomic, strong) TANetworkService *networkService;
 

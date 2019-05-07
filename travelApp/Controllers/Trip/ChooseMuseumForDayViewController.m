@@ -12,7 +12,8 @@
 
 @interface ChooseMuseumForDayViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray<NSDate *> *dates;
+@property (nonatomic, strong) NSMutableArray<NSDate *> *dates; // надо удалить
+@property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableDictionary *dictInfo;
@@ -21,10 +22,10 @@
 
 @implementation ChooseMuseumForDayViewController
 
--(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates {
+-(instancetype)initWithTrip: (Trip *)trip {
     self = [super init];
     if (self) {
-        _dates = dates;
+        _trip = trip;
     }
     return self;
 }
@@ -89,7 +90,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    AddMuseumViewController *addMuseumVC = [[AddMuseumViewController alloc] initWithDates:self.dates rowNumber:indexPath.row info:self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]]];
+    AddMuseumViewController *addMuseumVC = [[AddMuseumViewController alloc] initWithTrip:self.trip rowNumber:indexPath.row info:self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]]];
     [self.navigationController pushViewController:addMuseumVC animated:YES];
 }
 

@@ -46,7 +46,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getArrayOfDays];
     
     [self prepareUI];
     [self prepareDays];
@@ -103,42 +102,10 @@
     [self.view addSubview:self.testButton];
 }
 
--(void)getArrayOfDays {
-
-    NSDate *startDate = self.trip.startDate;
-    NSDate *endDate = self.trip.endDate;
-    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
-//    NSString *dateString = [dateFormatter stringFromDate:date];
-    
-    self.dates = [NSMutableArray<NSDate *> new];
-    [self.dates addObject:startDate];
-
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:startDate
-                                                          toDate:endDate
-                                                         options:0];
-
-    for (int i = 1; i < components.day; ++i) {
-        NSDateComponents *newComponents = [NSDateComponents new];
-        newComponents.day = i;
-        
-        NSDate *date = [gregorianCalendar dateByAddingComponents:newComponents
-                                                          toDate:startDate
-                                                         options:0];
-        [self.dates addObject:date];
-    }
-    
-    [self.dates addObject:endDate];
-
-}
-
 -(void)prepareDays {
     CGFloat x = 20;
 
-    for (int i = 0; i < self.dates.count; i++) {
+    for (Day *day in self.trip.days) {
         UIView *dateView = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.labelChoose.frame) + 10, 50, 50)];
         dateView.layer.cornerRadius = 25;
         dateView.layer.masksToBounds = YES;
@@ -148,7 +115,7 @@
         UILabel *newDate = [[UILabel alloc] initWithFrame:CGRectMake(x + 10, CGRectGetMaxY(self.labelChoose.frame) + 10, 50, 50)];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MMM d"];
-        NSString *date = [dateFormat stringFromDate:self.dates[i]];
+        NSString *date = [dateFormat stringFromDate:day.date];
         newDate.text = date;
         newDate.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
         [newDate setTextColor:[UIColor blackColor]];
@@ -167,9 +134,26 @@
 }
 
 -(void)addNewMuseums {
-    ChooseMuseumForDayViewController *newVC = [[ChooseMuseumForDayViewController alloc] initWithDates:self.dates];
+    ChooseMuseumForDayViewController *newVC = [[ChooseMuseumForDayViewController alloc] initWithTrip:self.trip];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:newVC];
     [self presentViewController:navVC animated:YES completion:nil];
+}
+
+-(void)testFunction {
+    NSError *error;
+    NSFetchRequest *fetch = [[NSFetchRequest alloc] initWithEntityName:@"Day"];
+    NSArray *result = [self.coreDataContext executeFetchRequest: fetch error:&error];
+    if (result.count > 0) {
+        for (int i = 0; i < result.count; i++) {
+            Day *day = [result objectAtIndex:i];
+            NSSet *set = [[NSSet alloc] initWithSet:day.museums];
+            NSArray<Museum *> *array = [set allObjects];
+            for (int j = 0; j < array.count; j++) {
+                NSLog(@"%@", array[j].name);
+                NSLog(@"%@", array[j].address);
+            }
+        }
+    }
 }
 
 #pragma mark - CoreData Stack

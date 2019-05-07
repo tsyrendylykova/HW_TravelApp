@@ -9,6 +9,7 @@
 #import "AddTripViewController.h"
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
+#import "Day+CoreDataClass.h"
 
 @interface AddTripViewController ()
 
@@ -160,16 +161,57 @@
     
     NSDate *endDate = [dateFormatter dateFromString:self.textFieldEndDate.text];
     trip.endDate = endDate;
+    
+    NSSet<Day *> *dates = [NSSet setWithSet:[self getArrayOfDays:trip]];
+    [trip addDays:dates];
+    
 //    trip.image =
     
     //  TO-DO - сделать проверку : endDate > startDate
     NSError *error;
-    if (![trip.managedObjectContext save: &error]) {
+    if (![trip.managedObjectContext save:&error]) {
         NSLog(@"Не удалось сохранить объект");
         NSLog(@"%@, %@", error, error.localizedDescription);
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+-(NSMutableSet<Day *> *)getArrayOfDays:(Trip *)trip {
+    
+    NSDate *startDate = trip.startDate;
+    NSDate *endDate = trip.endDate;
+    
+    NSMutableSet<Day *> *setDays = [NSMutableSet<Day *> new];
+    
+    Day *startDay = [NSEntityDescription insertNewObjectForEntityForName:@"Day" inManagedObjectContext:self.coreDataContext];
+    startDay.date = startDate;
+    [setDays addObject:startDay];
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:startDate
+                                                          toDate:endDate
+                                                         options:0];
+    
+    for (int i = 1; i < components.day; ++i) {
+        NSDateComponents *newComponents = [NSDateComponents new];
+        newComponents.day = i;
+        
+        NSDate *date = [gregorianCalendar dateByAddingComponents:newComponents
+                                                          toDate:startDate
+                                                         options:0];
+        Day *day = [NSEntityDescription insertNewObjectForEntityForName:@"Day" inManagedObjectContext:self.coreDataContext];
+        day.date = date;
+        [setDays addObject:day];
+    }
+    
+    Day *endDay = [NSEntityDescription insertNewObjectForEntityForName:@"Day" inManagedObjectContext:self.coreDataContext];
+    endDay.date = endDate;
+    [setDays addObject: endDay];
+    
+    return setDays;
+    
 }
 
 -(void)goBackToVC {

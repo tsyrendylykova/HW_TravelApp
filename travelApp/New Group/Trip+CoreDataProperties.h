@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addDays:(NSSet<Day *> *)values;
 - (void)removeDays:(NSSet<Day *> *)values;
 
+- (nullable Day *)dayForDate:(nonnull NSDate *)date;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -16,6 +16,7 @@
 @interface AddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray<NSDate *> *dates;
+@property (nonatomic, strong) Trip *trip;
 @property (nonatomic, assign) NSInteger rowNumber;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) NSMutableDictionary *info;
@@ -26,15 +27,16 @@
 @property (nonatomic, strong) UIPickerView *picker;
 @property (nonatomic, assign) NSInteger activePickerView;
 @property (nonatomic, strong) UIToolbar *toolBar;
+@property (nonatomic, strong) NSDate *selectedDate;
 
 @end
 
 @implementation AddMuseumViewController
 
--(instancetype)initWithDates: (NSMutableArray<NSDate *> *)dates rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info {
+-(instancetype)initWithTrip: (Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info {
     self = [super init];
     if (self) {
-        _dates = dates;
+        _trip = trip;
         _rowNumber = rowNumber;
         _info = info;
     }
@@ -135,22 +137,13 @@
     // lon
     //museum.openHours = self.info[@"WorkHours"];
     
-    Day *day = [NSEntityDescription insertNewObjectForEntityForName:@"Day" inManagedObjectContext:self.coreDataContext];
-    
-    // заглушка , пока не исправлю сохранение date в self.dates (который сейчас string)
-    NSString *dateString = @"02-Jun-19";
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"dd-MMM-yy";
-    NSDate *date = [dateFormatter dateFromString:dateString];
-    day.date = date;
+    NSDate *selectedDayForMuseum = self.selectedDate;
+    Day *dayInTrip = [self.trip dayForDate:selectedDayForMuseum];
+    [dayInTrip addMuseumsObject:museum];
     // weather is empty now
     
-    NSSet *set = [[NSSet alloc] initWithObjects: museum, nil];
-    day.museums = set;
-//    [day.museums setByAddingObject:museum];
-    
     NSError *error;
-    if (![museum.managedObjectContext save:&error] && ![day.managedObjectContext save:&error]) {
+    if (![museum.managedObjectContext save:&error]) {
         NSLog(@"Не удалось сохранить объект");
         NSLog(@"%@, %@", error, error.localizedDescription);
     } else {
@@ -165,17 +158,17 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.dates.count;
+    return self.trip.days.count;
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
-    return [dateFormatter stringFromDate:self.dates[row]];
+    return [dateFormatter stringFromDate:[self.trip.days allObjects][row].date];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"%ld", (long)row);
+    self.selectedDate = [self.trip.days allObjects][row].date;
 }
 
 #pragma mark - CoreData Stack
