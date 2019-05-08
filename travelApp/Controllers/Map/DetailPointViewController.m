@@ -42,6 +42,7 @@
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height * 0.35)];
 //    self.imageView.image = self.imageView.image;
+//    self.imageView.image = [UIImage imageNamed:@"sun2.jpg"];
     [self.view addSubview:self.imageView];
     
     self.buttonTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame), self.view.frame.size.width, 88)];

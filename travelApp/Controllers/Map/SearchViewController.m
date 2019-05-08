@@ -69,9 +69,10 @@
     NSArray *array = [[dataRecieved objectForKey:@"response"] objectForKey:@"venues"];
     NSMutableArray<MapPoint *> *tempArray = [NSMutableArray<MapPoint *> new];
     for (int i = 0; i < array.count; i++) {
-//        https://api.foursquare.com/v2/venues/explore/?&venuePhotos=1&client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506
-//        NSString *imageURL = [NSString stringWithFormat:@"%@110x110%@", array[i][@"categories"][0][@"icon"][@"prefix"], array[i][@"categories"][0][@"icon"][@"suffix"]];
-        NSString *imageURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/explore/?&venuePhotos=1&client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506"];
+//        https://api.foursquare.com/v2/venues/VENUE_ID/photos?client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506
+        NSString *imageURLTemp = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@/photos?client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506", array[i][@"id"]];
+        NSString *imageURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@/photos?client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506", array[i][@"id"]];
+//        NSString *imageURL = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/explore/?&venuePhotos=1&client_id=OJYGNXT5D3QZ5QBGZYRQDKSBEGUM5KZ0FRGOROFOSB0Y1RWE&client_secret=CSCKMAASBRQIA2K5QHTIUTWKUQKZILSBOELDEBBPJ3MCP3XW&v=20190506"];
         MapPoint *obj = [[MapPoint alloc] initWithName:array[i][@"name"] urlImage:imageURL];
         [tempArray addObject:obj];
     }

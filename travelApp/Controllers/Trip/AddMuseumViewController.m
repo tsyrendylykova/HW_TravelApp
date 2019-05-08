@@ -27,7 +27,7 @@
 @property (nonatomic, strong) UIPickerView *picker;
 @property (nonatomic, assign) NSInteger activePickerView;
 @property (nonatomic, strong) UIToolbar *toolBar;
-@property (nonatomic, strong) NSDate *selectedDate;
+@property (nonatomic, strong) NSDate *selectedDateInPicker;
 
 @end
 
@@ -136,9 +136,11 @@
     // lat
     // lon
     //museum.openHours = self.info[@"WorkHours"];
+    for (Day *day in self.trip.days) {
+        NSLog(@"%@", day.date);
+    }
     
-    NSDate *selectedDayForMuseum = self.selectedDate;
-    Day *dayInTrip = [self.trip dayForDate:selectedDayForMuseum];
+    Day *dayInTrip = [self.trip dayForDate:self.selectedDateInPicker];
     [dayInTrip addMuseumsObject:museum];
     // weather is empty now
     
@@ -171,7 +173,8 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.selectedDate = [self.trip.days allObjects][row].date;
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    self.selectedDateInPicker = [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][row].date;
 }
 
 #pragma mark - CoreData Stack

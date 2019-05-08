@@ -10,10 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "TANetworkHelper.h"
 #import "SearchViewController.h"
+#import "TACustomAnnotation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, SearchViewDelegate, UISearchResultsUpdating>
+
+-(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation;
 
 @end
 

@@ -7,11 +7,11 @@
 //
 
 #import "CreateTripViewController.h"
-#import "MuseumCollectionViewCell.h"
 #import "AddTripViewController.h"
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
 #import "ChooseMuseumViewController.h"
+#import "MuseumCollectionViewCell.h"
 
 @import CoreData;
 
@@ -81,19 +81,7 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
-    
-    //NSError *error;
-    //NSFetchRequest *tripRequest = [Trip fetchRequest];
-    //NSArray *result = [self.coreDataContext executeFetchRequest:tripRequest error:&error];
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-//    Trip *trip = nil;
-//    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
-//        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
-//        if ([sectionInfo numberOfObjects] > [indexPath row]){
-//            trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//        }
-//    }
     
     if (trip) {
         cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
@@ -120,13 +108,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//    Trip *trip = nil;
-//    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
-//        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
-//        if ([sectionInfo numberOfObjects] > [indexPath row]){
-//            trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//        }
-//    }
     
     ChooseMuseumViewController *chooseMuseumVC = [[ChooseMuseumViewController alloc] initWithTrip:trip];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:chooseMuseumVC];

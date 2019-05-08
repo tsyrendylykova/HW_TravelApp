@@ -11,16 +11,23 @@
 #import "AppDelegate.h"
 #import "Day+CoreDataClass.h"
 #import "Museum+CoreDataClass.h"
+#import "DayCollectionViewCell.h"
 
-@interface ChooseMuseumViewController () <NSFetchedResultsControllerDelegate>
+#import "MapViewController.h"
+
+@interface ChooseMuseumViewController () <NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UILabel *labelDate;
 @property (nonatomic, strong) UILabel *labelChoose;
-@property (nonatomic, strong) NSMutableArray<NSDate *> *dates;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSDate *selectedDate;
+@property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
 
 @property (nonatomic, strong) UIButton *testButton;
+@property (nonatomic, strong) UIButton *showMuseumOnMapButton;
 
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
@@ -46,12 +53,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.selectedDate = nil;
     
     [self prepareUI];
-    [self prepareDays];
+    [self prepareCollectionView];
+    [self prepareTableView];
     
     [self prepareTestButton];
-    
+    [self prepareButtonShowMuseumOnMap];
 }
 
 -(void)prepareUI {
@@ -95,39 +104,49 @@
 }
 
 -(void)prepareTestButton {
-    self.testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, CGRectGetMaxY(self.labelChoose.frame) + 250, 200, 40)];
+    self.testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height - 100, 200, 40)];
     self.testButton.backgroundColor = [UIColor orangeColor];
     [self.testButton setTitle:@"Show museums" forState:UIControlStateNormal];
     [self.testButton addTarget:self action:@selector(testFunction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.testButton];
 }
 
--(void)prepareDays {
-    CGFloat x = 20;
-
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    
-    for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]) {
-        UIView *dateView = [[UILabel alloc] initWithFrame:CGRectMake(x, CGRectGetMaxY(self.labelChoose.frame) + 10, 50, 50)];
-        dateView.layer.cornerRadius = 25;
-        dateView.layer.masksToBounds = YES;
-        dateView.layer.borderWidth = 2;
-        dateView.layer.borderColor = [UIColor blackColor].CGColor;
-        
-        UILabel *newDate = [[UILabel alloc] initWithFrame:CGRectMake(x + 10, CGRectGetMaxY(self.labelChoose.frame) + 10, 50, 50)];
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MMM d"];
-        NSString *date = [dateFormat stringFromDate:day.date];
-        newDate.text = date;
-        newDate.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
-        [newDate setTextColor:[UIColor blackColor]];
-        x += 70;
-        [self.view addSubview:dateView];
-        [self.view addSubview:newDate];
-    }
+-(void)prepareButtonShowMuseumOnMap {
+    self.showMuseumOnMapButton = [[UIButton alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height - 50, 200, 40)];
+    self.showMuseumOnMapButton.backgroundColor = [UIColor orangeColor];
+    [self.showMuseumOnMapButton setTitle:@"Show museums on map" forState:UIControlStateNormal];
+    [self.showMuseumOnMapButton addTarget:self action:@selector(showMuseumsOnMap) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.showMuseumOnMapButton];
 }
 
+-(void)prepareCollectionView {
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(50, 50);
+    layout.minimumInteritemSpacing = 5;
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.sectionInset = UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0);
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.labelChoose.frame) + 20, self.view.frame.size.width - 50, 50) collectionViewLayout:layout];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    [self.collectionView registerClass:[DayCollectionViewCell class] forCellWithReuseIdentifier:@"CellDay"];
+    
+    [self.view addSubview:self.collectionView];
+}
 
+-(void)prepareTableView {
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.collectionView.frame) + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 110 - CGRectGetMaxY(self.collectionView.frame) - 20)];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellMuseum"];
+    
+    [self.view addSubview:self.tableView];
+}
 
 #pragma mark - Actions
 
@@ -142,7 +161,6 @@
 }
 
 -(void)testFunction {
-    NSLog(@"Show museums");
     NSError *error;
     NSFetchRequest *fetch = [[NSFetchRequest alloc] initWithEntityName:@"Day"];
     NSArray *result = [self.coreDataContext executeFetchRequest: fetch error:&error];
@@ -158,6 +176,21 @@
             }
         }
     }
+}
+
+-(void)showMuseumsOnMap {
+    UITabBarController *tabBarController = (UITabBarController *)self.presentingViewController;
+    
+    //???
+    TACustomAnnotation *annotation = [TACustomAnnotation new];
+    MapViewController *mapVC = [[MapViewController alloc] initWithAnnotation:annotation];
+    UINavigationController *searchVC = [[UINavigationController alloc] initWithRootViewController:[MapViewController new]];
+//    [tabBarController.viewControllers insert]
+//    searchVC.tabBarItem.title = @"Map";
+//    searchVC.tabBarItem.image = [UIImage imageNamed:@"map"];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [tabBarController setSelectedIndex:0];
 }
 
 #pragma mark - CoreData Stack
@@ -213,6 +246,51 @@
     
 }
 
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.trip.days.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    DayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellDay" forIndexPath:indexPath];
+    if (cell) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMM d"];
+        NSString *date = [dateFormat stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date];
+        cell.dateLabel.text = date;
+        cell.dateLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
+        [cell.dateLabel setTextColor:[UIColor blackColor]];
+    }
+    
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    self.selectedDate = [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date;
+    Day *dayInTrip = [self.trip dayForDate:self.selectedDate];
+    self.arrayMuseums = [[NSArray<Museum *> alloc] initWithArray:[dayInTrip.museums allObjects]];
+    
+    [self.tableView reloadData];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayMuseums.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellMuseum"];
+    if (cell) {
+        if (self.selectedDate) {
+            cell.textLabel.text = self.arrayMuseums[indexPath.row].name;
+        }
+    }
+    return cell;
+}
 
 
 @end

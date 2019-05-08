@@ -24,25 +24,33 @@
 }
 
 - (void)configureInitialViewControllers {
-    UINavigationController *searchVC = [[UINavigationController alloc] initWithRootViewController:[MapViewController new]];
-    searchVC.tabBarItem.title = @"Map";
-    searchVC.tabBarItem.image = [UIImage imageNamed:@"map"];
+    MapViewController *mapVC = [MapViewController new];
+    //mapVC.annotation = [TACustomAnnotation new];
+    UINavigationController *mapSearchNC = [[UINavigationController alloc] initWithRootViewController:mapVC];
+    mapSearchNC.tabBarItem.title = @"Map";
+    mapSearchNC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
-    UINavigationController *createTripVC = [[UINavigationController alloc] initWithRootViewController:[CreateTripViewController new]];
-    createTripVC.tabBarItem.title = @"New trip";
-    createTripVC.tabBarItem.image = [UIImage imageNamed:@"trip"];
+    CreateTripViewController *createTripVC = [CreateTripViewController new];
+    //createTripVC.router = [Router new];
+    //createTripVC.annotation = [TACustomAnnotation new];
+    //еще в Router надо передавать MainTabBarController
+    UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:createTripVC]; // VC не UINAV
+    createTripNC.tabBarItem.title = @"New trip";
+    createTripNC.tabBarItem.image = [UIImage imageNamed:@"trip"];
     
-    UINavigationController *profileVC = [[UINavigationController alloc] initWithRootViewController:[ProfileViewController new]];
-    profileVC.tabBarItem.title = @"Profile";
-    profileVC.tabBarItem.image = [UIImage imageNamed:@"profile"];
+    ProfileViewController *profileViewVC = [ProfileViewController new];
+    UINavigationController *profileNC = [[UINavigationController alloc] initWithRootViewController:profileViewVC];
+    profileNC.tabBarItem.title = @"Profile";
+    profileNC.tabBarItem.image = [UIImage imageNamed:@"profile"];
     
-    NSArray *arrayVC = @[searchVC, createTripVC, profileVC];
+    
+    NSArray *array = @[mapSearchNC, createTripNC, profileNC];
     
     self.tabBar.translucent = YES;
     self.tabBar.tintColor = [UIColor blackColor];
     self.tabBar.barTintColor = [UIColor whiteColor];
     
-    self.viewControllers = arrayVC;
+    self.viewControllers = array;
     self.selectedIndex = 1;
 }
 

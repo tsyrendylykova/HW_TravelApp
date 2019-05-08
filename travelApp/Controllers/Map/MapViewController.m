@@ -11,7 +11,6 @@
 #import "TANetworkService.h"
 #import "DetailPointViewController.h"
 #import "MapPoint.h"
-#import "TACustomAnnotation.h"
 
 @interface MapViewController ()
 
@@ -22,10 +21,19 @@
 @property (nonatomic, strong) SearchViewController *searchVC;
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray<MapPoint *> *array;
+@property (nonatomic, strong) TACustomAnnotation *annotation;
 
 @end
 
 @implementation MapViewController
+
+-(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation {
+    self = [super init];
+    if (self) {
+        _annotation = annotation;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,9 +103,9 @@
 
 -(void)updateNearbyCFsAtCoordinate: (CLLocationCoordinate2D)locationCoordinate {
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.7514, 37.6285);
-    TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
+    self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
     
-    [self.mapView addAnnotation:annotation];
+    [self.mapView addAnnotation:self.annotation];
 }
 
 #pragma mark - Actions
