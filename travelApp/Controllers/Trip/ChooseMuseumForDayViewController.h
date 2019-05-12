@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChooseMuseumForDayViewController : UIViewController <NetworkServiceOutputProtocol>
+@interface ChooseMuseumViewController : UIViewController <NetworkServiceOutputProtocol>
 
 -(instancetype)initWithTrip: (Trip *)trip;
 

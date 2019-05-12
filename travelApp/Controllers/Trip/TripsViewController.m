@@ -1,21 +1,21 @@
 //
-//  CreateTripViewController.m
+//  TripsViewController.h
 //  travelApp
 //
 //  Created by Цырендылыкова Эржена on 23/04/2019.
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
-#import "CreateTripViewController.h"
+#import "TripsViewController.h"
 #import "AddTripViewController.h"
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
-#import "ChooseMuseumViewController.h"
+#import "MuseumsForDayViewController.h"
 #import "MuseumCollectionViewCell.h"
 
 @import CoreData;
 
-@interface CreateTripViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
+@interface TripsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation CreateTripViewController
+@implementation TripsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -109,7 +109,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    ChooseMuseumViewController *chooseMuseumVC = [[ChooseMuseumViewController alloc] initWithTrip:trip];
+    MuseumsForDayViewController *chooseMuseumVC = [[MuseumsForDayViewController alloc] initWithTrip:trip];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:chooseMuseumVC];
     [self presentViewController:navVC animated:YES completion:nil];
 }

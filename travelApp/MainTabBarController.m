@@ -8,7 +8,7 @@
 
 #import "MainTabBarController.h"
 #import "MapViewController.h"
-#import "CreateTripViewController.h"
+#import "TripsViewController.h"
 #import "ProfileViewController.h"
 
 @interface MainTabBarController ()
@@ -30,7 +30,7 @@
     mapSearchNC.tabBarItem.title = @"Map";
     mapSearchNC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
-    CreateTripViewController *createTripVC = [CreateTripViewController new];
+    TripsViewController *createTripVC = [TripsViewController new];
     //createTripVC.router = [Router new];
     //createTripVC.annotation = [TACustomAnnotation new];
     //еще в Router надо передавать MainTabBarController

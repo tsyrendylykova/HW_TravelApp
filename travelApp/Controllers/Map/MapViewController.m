@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 #import "SearchViewController.h"
-#import "TANetworkService.h"
+#import "TAFoursquareNetworkService.h"
 #import "DetailPointViewController.h"
 #import "MapPoint.h"
 
@@ -68,10 +68,6 @@
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-//    if (self.firstTime) {
-//        [self centerMapUserCurrentLocation:userLocation];
-//
-//    }
 //    CLLocationCoordinate2D location = self.mapView.userLocation.location.coordinate;
     CLLocationCoordinate2D location;
     location.latitude = 55.7558;

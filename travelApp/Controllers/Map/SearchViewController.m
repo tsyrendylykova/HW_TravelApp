@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-    self.networkService = [TANetworkService new];
+    self.networkService = [TAFoursquareNetworkService new];
     self.networkService.output = self;
 }
 
@@ -61,7 +61,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark - NetworkServiceOutputProtocol
+#pragma mark - FoursquareNetworkServiceOutputProtocol
 
 -(void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
     [self.dataArray removeAllObjects];

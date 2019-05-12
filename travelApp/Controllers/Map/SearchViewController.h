@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TANetworkServiceProtocol.h"
-#import "TANetworkService.h"
+#import "TAFoursquareNetworkService.h"
+#import "TAFoursquareNetworkServiceProtocol.h"
 #import "MapPoint.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,9 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface SearchViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, NetworkServiceOutputProtocol>
+@interface SearchViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, FoursquareNetworkServiceOutputProtocol>
 
-@property (nonatomic, strong) TANetworkService *networkService;
+@property (nonatomic, strong) TAFoursquareNetworkService *networkService;
 
 @property (nonatomic, strong) NSMutableArray<MapPoint *> *dataArray;
 @property (nonatomic, weak) id<SearchViewDelegate> delegate;

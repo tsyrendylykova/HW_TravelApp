@@ -1,5 +1,5 @@
 //
-//  CreateTripViewController.h
+//  TripsViewController.h
 //  travelApp
 //
 //  Created by Цырендылыкова Эржена on 23/04/2019.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CreateTripViewController : UIViewController
+@interface TripsViewController : UIViewController
 
 @end
 
