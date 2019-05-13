@@ -28,6 +28,8 @@
 @property (nonatomic, assign) NSInteger activePickerView;
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) NSDate *selectedDateInPicker;
+@property (nonatomic, strong) NSMutableArray<NSDate *> *availableDates;
+@property (nonatomic, strong) NSDictionary *weakDaysEnRu;
 
 @end
 
@@ -47,6 +49,9 @@
     [super viewDidLoad];
     
     self.weekDays = [NSArray arrayWithObjects:@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье", nil];
+    self.availableDates = [NSMutableArray<NSDate *> new];
+    self.weakDaysEnRu = [NSDictionary dictionaryWithObjectsAndKeys:@"понедельник", @"Monday",  @"вторник", @"Tuesday", @"среда", @"Wednesday", @"четверг", @"Thursday", @"пятница", @"Friday", @"суббота", @"Saturday", @"воскресенье", @"Sunday", nil];
+    [self chooseAvailableDaysForMuseum];
     
     [self prepareUI];
     self.activePickerView = 0;
@@ -160,21 +165,17 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.trip.days.count;
+    return self.availableDates.count;
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
-    
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    
-    return [dateFormatter stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][row].date];
+    return [dateFormatter stringFromDate:self.availableDates[row]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    self.selectedDateInPicker = [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][row].date;
+    self.selectedDateInPicker = self.availableDates[row];
 }
 
 #pragma mark - CoreData Stack
@@ -186,6 +187,23 @@
     NSManagedObjectContext *context = container.viewContext;
     
     return context;
+}
+
+#pragma mark - Methods
+
+-(NSArray *)chooseAvailableDaysForMuseum {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSDateFormatter *weekDateFormatter = [[NSDateFormatter alloc] init];
+    [weekDateFormatter setDateFormat:@"EEEE"];
+    
+    for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]) {
+        NSString *dayName = [weekDateFormatter stringFromDate:day.date];
+        NSString *weekDayNameRu = self.weakDaysEnRu[dayName];
+        if (![self.info[@"WorkHours"][weekDayNameRu] isEqualToString:@"выходной"]) {
+            [self.availableDates addObject: day.date];
+        }
+    }
+    return self.availableDates;
 }
 
 @end
