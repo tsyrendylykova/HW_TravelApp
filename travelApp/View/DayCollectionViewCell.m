@@ -29,4 +29,14 @@
     [self.contentView addSubview:_dateLabel];
 }
 
+-(void)selectedCell: (BOOL)selected {
+    if (selected) {
+        self.dateLabel.backgroundColor = [UIColor blueColor];
+        self.dateLabel.textColor = [UIColor whiteColor];
+    } else {
+        self.dateLabel.backgroundColor = [UIColor whiteColor];
+        self.dateLabel.textColor = [UIColor blackColor];
+    }
+}
+
 @end

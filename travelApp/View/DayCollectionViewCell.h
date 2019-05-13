@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *dateLabel;
 
+-(void)selectedCell: (BOOL)selected;
+
 @end
 
 NS_ASSUME_NONNULL_END

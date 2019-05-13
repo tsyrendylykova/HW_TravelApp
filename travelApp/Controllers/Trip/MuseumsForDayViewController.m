@@ -180,6 +180,7 @@
 
 -(void)showMuseumsOnMap {
     UITabBarController *tabBarController = (UITabBarController *)self.presentingViewController;
+//    (UITabBarController *)self.window.rootViewController
     
     //???
     TACustomAnnotation *annotation = [TACustomAnnotation new];
@@ -261,7 +262,12 @@
         NSString *date = [dateFormat stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date];
         cell.dateLabel.text = date;
         cell.dateLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
-        [cell.dateLabel setTextColor:[UIColor blackColor]];
+        
+        if ([self.selectedDate isEqualToDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date]) {
+            [cell selectedCell:YES];
+        } else {
+            [cell selectedCell:NO];
+        }
     }
     
     return cell;
@@ -274,6 +280,7 @@
     self.arrayMuseums = [[NSArray<Museum *> alloc] initWithArray:[dayInTrip.museums allObjects]];
     
     [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UITableViewDataSource

@@ -10,6 +10,7 @@
 #import "MapViewController.h"
 #import "TripsViewController.h"
 #import "ProfileViewController.h"
+#import "TACustomAnnotation.h"
 
 @interface MainTabBarController ()
 
@@ -25,13 +26,13 @@
 
 - (void)configureInitialViewControllers {
     MapViewController *mapVC = [MapViewController new];
-    //mapVC.annotation = [TACustomAnnotation new];
+    mapVC.annotation = [TACustomAnnotation new];
     UINavigationController *mapSearchNC = [[UINavigationController alloc] initWithRootViewController:mapVC];
     mapSearchNC.tabBarItem.title = @"Map";
     mapSearchNC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
     TripsViewController *createTripVC = [TripsViewController new];
-    //createTripVC.router = [Router new];
+//    createTripVC.router = [TARouter new];
     //createTripVC.annotation = [TACustomAnnotation new];
     //еще в Router надо передавать MainTabBarController
     UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:createTripVC]; // VC не UINAV

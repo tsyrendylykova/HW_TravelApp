@@ -49,7 +49,6 @@
     [super viewDidLoad];
     
     self.weekDays = [NSArray arrayWithObjects:@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье", nil];
-    self.availableDates = [NSMutableArray<NSDate *> new];
     self.weakDaysEnRu = [NSDictionary dictionaryWithObjectsAndKeys:@"понедельник", @"Monday",  @"вторник", @"Tuesday", @"среда", @"Wednesday", @"четверг", @"Thursday", @"пятница", @"Friday", @"суббота", @"Saturday", @"воскресенье", @"Sunday", nil];
     [self chooseAvailableDaysForMuseum];
     
@@ -191,7 +190,8 @@
 
 #pragma mark - Methods
 
--(NSArray *)chooseAvailableDaysForMuseum {
+-(void)chooseAvailableDaysForMuseum {
+    self.availableDates = [NSMutableArray<NSDate *> new];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     NSDateFormatter *weekDateFormatter = [[NSDateFormatter alloc] init];
     [weekDateFormatter setDateFormat:@"EEEE"];
@@ -200,10 +200,9 @@
         NSString *dayName = [weekDateFormatter stringFromDate:day.date];
         NSString *weekDayNameRu = self.weakDaysEnRu[dayName];
         if (![self.info[@"WorkHours"][weekDayNameRu] isEqualToString:@"выходной"]) {
-            [self.availableDates addObject: day.date];
+            [self.availableDates addObject:day.date];
         }
     }
-    return self.availableDates;
 }
 
 @end

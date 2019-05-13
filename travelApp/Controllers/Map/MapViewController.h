@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, SearchViewDelegate, UISearchResultsUpdating>
 
+@property (nonatomic, strong) TACustomAnnotation *annotation;
+
 -(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation;
 
 @end

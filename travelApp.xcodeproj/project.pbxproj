@@ -27,6 +27,7 @@
 		95217AE1228082F2007A3E02 /* sun2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95217AE0228082F2007A3E02 /* sun2.jpg */; };
 		95217C502282C120007A3E02 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */; };
 		95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */; };
+		95217C5E2289FC7D007A3E02 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TARouter.m */; };
 		9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC85226F16F900602FB4 /* AppDelegate.m */; };
 		9571FC89226F16F900602FB4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC88226F16F900602FB4 /* MainTabBarController.m */; };
 		9571FC8C226F16F900602FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC8A226F16F900602FB4 /* Main.storyboard */; };
@@ -85,6 +86,8 @@
 		95217C52228885C6007A3E02 /* TAMosDataNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMosDataNetworkService.h; sourceTree = "<group>"; };
 		95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMosDataNetworkService.m; sourceTree = "<group>"; };
 		95217C552288929C007A3E02 /* TAMosDataNetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMosDataNetworkServiceProtocol.h; sourceTree = "<group>"; };
+		95217C5C2289FC7D007A3E02 /* TARouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARouter.h; sourceTree = "<group>"; };
+		95217C5D2289FC7D007A3E02 /* TARouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARouter.m; sourceTree = "<group>"; };
 		9571FC81226F16F900602FB4 /* travelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9571FC84226F16F900602FB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9571FC85226F16F900602FB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -185,6 +188,15 @@
 			path = MosDataNetworkService;
 			sourceTree = "<group>";
 		};
+		95217C5B2289D5F8007A3E02 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				95217C5C2289FC7D007A3E02 /* TARouter.h */,
+				95217C5D2289FC7D007A3E02 /* TARouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		9571FC78226F16F900602FB4 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +221,7 @@
 				9571FCA6226F1BF600602FB4 /* Controllers */,
 				952178732278547F007A3E02 /* CoreDataModel */,
 				9571FCBA22709F2800602FB4 /* Network */,
+				95217C5B2289D5F8007A3E02 /* Router */,
 				9571FC84226F16F900602FB4 /* AppDelegate.h */,
 				9571FC85226F16F900602FB4 /* AppDelegate.m */,
 				9571FC87226F16F900602FB4 /* MainTabBarController.h */,
@@ -393,6 +406,7 @@
 				9521788E22788278007A3E02 /* TAPerson.m in Sources */,
 				95217961227CBA4E007A3E02 /* AddMuseumViewController.m in Sources */,
 				9571FCBD2270A41700602FB4 /* TAFoursquareNetworkService.m in Sources */,
+				95217C5E2289FC7D007A3E02 /* TARouter.m in Sources */,
 				9571FC97226F16FB00602FB4 /* main.m in Sources */,
 				9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */,
 				95217889227878F6007A3E02 /* Museum+CoreDataProperties.m in Sources */,

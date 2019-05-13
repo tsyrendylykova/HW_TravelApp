@@ -21,12 +21,12 @@
 @property (nonatomic, strong) SearchViewController *searchVC;
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray<MapPoint *> *array;
-@property (nonatomic, strong) TACustomAnnotation *annotation;
 
 @end
 
 @implementation MapViewController
 
+//надо удалить
 -(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation {
     self = [super init];
     if (self) {
