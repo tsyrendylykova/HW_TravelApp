@@ -28,34 +28,19 @@
     [request setTimeoutInterval:15];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
-    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
-            [self downloadTaskWithURL:urlString];
+            NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.output loadingIsDoneWithDataRecieved:temp];
+            });
         } else {
             NSLog(@"%@", error);
         }
     }];
     
     [sessionDataTask resume];
-}
-
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-didFinishDownloadingToURL:(NSURL *)location {
-    NSData *data = [NSData dataWithContentsOfURL:location];
-    NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.output loadingIsDoneWithDataRecieved:temp];
-    });
-    [session finishTasksAndInvalidate];
-}
-
--(void)downloadTaskWithURL: (NSString *)stringURL {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:stringURL]];
-    
-    [downloadTask resume];
 }
 
 @end

@@ -12,7 +12,6 @@
 
 @interface ChooseMuseumViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray<NSDate *> *dates; // надо удалить
 @property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -34,6 +33,8 @@
     [super viewDidLoad];
     
     [self prepareUI];
+    
+    self.dictInfo = [NSMutableDictionary new];
     
     self.networkService = [TAMosDataNetworkService new];
     self.networkService.output = self;
@@ -76,15 +77,13 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 54;
+    return self.dictInfo.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
-    
-    cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg", (long)indexPath.row + 1]];
-//    cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"name.jpg"]];
-    
+    NSString *photoNameString = self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]][@"PhotoName"];
+    cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", photoNameString]];
     
     return cell;
 }
@@ -97,7 +96,7 @@
 #pragma mark - MosDataNetworkServiceOutputProtocol
 
 -(void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
-    self.dictInfo = [NSMutableDictionary new];
+    NSNumber *photoName = @1;
     for (id elem in dataRecieved) {
         NSMutableDictionary *dict = [NSMutableDictionary new];
         [dict setObject:elem[@"Cells"][@"CommonName"] forKey:@"CommonName"];
@@ -109,8 +108,12 @@
             [dictHours setObject:elem[@"Cells"][@"WorkingHours"][i][@"WorkHours"] forKey:elem[@"Cells"][@"WorkingHours"][i][@"DayWeek"]];
         }
         [dict setObject:dictHours forKey:@"WorkHours"];
+        [dict setObject:photoName forKey:@"PhotoName"];
+        photoName = [NSNumber numberWithInt:[photoName intValue] + 1.0];
         [self.dictInfo setObject:dict forKey:[NSString stringWithFormat:@"%@", elem[@"Number"]]];
     }
+    
+    [self.collectionView reloadData];
 }
 
 @end
