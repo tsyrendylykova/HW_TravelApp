@@ -12,27 +12,22 @@
 #import "DetailPointViewController.h"
 #import "MapPoint.h"
 
-@interface MapViewController ()
+@interface MapViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, assign) Boolean firstTime;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) SearchViewController *searchVC;
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray<MapPoint *> *array;
+@property (nonatomic, strong) UINavigationBar *navBar;
 
 @end
 
 @implementation MapViewController
 
 -(void)viewWillAppear:(BOOL)animated {
-    if (!self.annotation) {
-        CLLocationCoordinate2D location;
-        location.latitude = 55.7558;
-        location.longitude = 37.6173;
-        self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"" subtitle:@"" location:location];
-    }
+    [self.mapView removeAnnotations:self.mapView.annotations];
     [self updateNearbyCFsAtCoordinate:self.annotation.coordinate];
 }
 
@@ -41,22 +36,26 @@
     
     [self prepareUI];
     [self initLocationManager];
+    [self prepareNavBar];
 
     self.mapView.delegate = self;
     [self.mapView setShowsUserLocation:YES];
     
-    self.firstTime = YES;
 }
 
 -(void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"Sightseeing";
-    
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height - 89)];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 90, self.view.frame.size.width, self.view.frame.size.height - 89)];
     [self.view addSubview:self.mapView];
-    
-    self.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"magnifier.png"] style:UIBarButtonItemStyleDone target:self action:@selector(didTapSearchButton)];
-    self.navigationItem.leftBarButtonItem = self.leftBarButtonItem;
+}
+
+-(void)prepareNavBar {
+    self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 45)];
+    self.navBar.backgroundColor = [UIColor whiteColor];
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Sightseeing"];
+    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"magnifier.png"] style:UIBarButtonItemStyleDone target:self action:@selector(didTapSearchButton)];
+    self.navBar.items = [NSArray arrayWithObjects:item, nil];
+    [self.view addSubview:self.navBar];
 }
 
 -(void)initLocationManager {
@@ -111,10 +110,10 @@
 -(void)didTapSearchButton {
     self.searchVC = [[SearchViewController alloc] init];
     self.searchVC.delegate = self;
-    
+
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
     self.searchController.searchResultsUpdater = self;
-    [self.navigationController presentViewController:self.searchController animated:YES completion:nil];
+    [self presentViewController:self.searchController animated:YES completion:nil];
 }
 
 #pragma mark - UISearchResultsUpdating
