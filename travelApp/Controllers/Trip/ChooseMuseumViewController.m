@@ -110,6 +110,8 @@
         [dict setObject:dictHours forKey:@"WorkHours"];
         [dict setObject:photoName forKey:@"PhotoName"];
         photoName = [NSNumber numberWithInt:[photoName intValue] + 1.0];
+        [dict setObject:elem[@"Cells"][@"geoData"][@"coordinates"][0] forKey:@"Coordinates"];
+        
         [self.dictInfo setObject:dict forKey:[NSString stringWithFormat:@"%@", elem[@"Number"]]];
     }
     

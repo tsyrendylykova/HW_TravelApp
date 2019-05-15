@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) TACustomAnnotation *annotation;
 
--(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation;
-
 @end
 
 NS_ASSUME_NONNULL_END

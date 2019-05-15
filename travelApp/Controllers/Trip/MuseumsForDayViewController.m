@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSDate *selectedDate;
 @property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
+@property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
+@property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 
 @property (nonatomic, strong) UIButton *testButton;
 @property (nonatomic, strong) UIButton *showMuseumOnMapButton;
@@ -55,6 +57,7 @@
     
     self.selectedDate = nil;
     
+    [self prepareDateFormatter];
     [self prepareUI];
     [self prepareCollectionView];
     [self prepareTableView];
@@ -81,14 +84,8 @@
     
     self.labelDate = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.labelName.frame) + 10, self.view.frame.size.width - 40, 60)];
     
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSDate *startDate = self.trip.startDate;
-    NSDate *endDate = self.trip.endDate;
-    [dateFormat setDateFormat:@"EEEE, MMM d, yyyy"];
-    //MMM d, yyyy
-    
-    NSString *startDateString = [dateFormat stringFromDate:startDate];
-    NSString *startEndString = [dateFormat stringFromDate:endDate];
+    NSString *startDateString = [self.dateFormatterFull stringFromDate:self.trip.startDate];
+    NSString *startEndString = [self.dateFormatterFull stringFromDate:self.trip.endDate];
     
     self.labelDate.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
     self.labelDate.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
@@ -146,6 +143,14 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellMuseum"];
     
     [self.view addSubview:self.tableView];
+}
+
+-(void)prepareDateFormatter {
+    self.dateFormatterFull = [[NSDateFormatter alloc] init];
+    [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
+    
+    self.dateFormatterShort = [[NSDateFormatter alloc] init];
+    [self.dateFormatterShort setDateFormat:@"MMM d"];
 }
 
 #pragma mark - Actions
@@ -241,9 +246,7 @@
     DayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellDay" forIndexPath:indexPath];
     if (cell) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MMM d"];
-        NSString *date = [dateFormat stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date];
+        NSString *date = [self.dateFormatterShort stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date];
         cell.dateLabel.text = date;
         cell.dateLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
         
@@ -281,6 +284,17 @@
         }
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.arrayMuseums[indexPath.row].latitude, self.arrayMuseums[indexPath.row].longitude);
+    NSLog(@"%f", self.arrayMuseums[indexPath.row].latitude);
+    NSLog(@"%f", coord.latitude);
+    
+    TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:self.arrayMuseums[indexPath.row].name location:coord];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [[TARouter sharedRouter] showMuseumOnMapWithAnnotation:annotation];
 }
 
 

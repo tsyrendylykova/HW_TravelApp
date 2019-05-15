@@ -30,6 +30,8 @@
 @property (nonatomic, strong) NSDate *selectedDateInPicker;
 @property (nonatomic, strong) NSMutableArray<NSDate *> *availableDates;
 @property (nonatomic, strong) NSDictionary *weakDaysEnRu;
+@property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
+@property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 
 @end
 
@@ -72,6 +74,8 @@
     
     [self.picker setHidden:YES];
     [self.toolBar setHidden:YES];
+    
+    [self prepareDateRormatter];
 }
 
 -(void)prepareUI {
@@ -119,6 +123,14 @@
     [self.view addSubview:self.buttonAdd];
 }
 
+-(void)prepareDateRormatter {
+    self.dateFormatterFull = [[NSDateFormatter alloc] init];
+    [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
+    
+    self.dateFormatterShort = [[NSDateFormatter alloc] init];
+    [self.dateFormatterShort setDateFormat:@"EEEE"];
+}
+
 #pragma mark - Actions
 
 -(void)chooseDates {
@@ -137,8 +149,9 @@
     museum.name = self.info[@"CommonName"];
     museum.address = self.info[@"Address"];
     museum.museumId = [NSString stringWithFormat:@"%ld", (long)self.rowNumber];
-    // lat
-    // lon
+    NSLog(@"%@", self.info[@"Coordinates"][0]);
+    museum.latitude = [self.info[@"Coordinates"][1] doubleValue];
+    museum.longitude = [self.info[@"Coordinates"][0] doubleValue];
     //museum.openHours = self.info[@"WorkHours"];
     for (Day *day in self.trip.days) {
         NSLog(@"%@", day.date);
@@ -168,9 +181,7 @@
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
-    return [dateFormatter stringFromDate:self.availableDates[row]];
+    return [self.dateFormatterFull stringFromDate:self.availableDates[row]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -193,11 +204,9 @@
 -(void)chooseAvailableDaysForMuseum {
     self.availableDates = [NSMutableArray<NSDate *> new];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    NSDateFormatter *weekDateFormatter = [[NSDateFormatter alloc] init];
-    [weekDateFormatter setDateFormat:@"EEEE"];
     
     for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]) {
-        NSString *dayName = [weekDateFormatter stringFromDate:day.date];
+        NSString *dayName = [self.dateFormatterShort stringFromDate:day.date];
         NSString *weekDayNameRu = self.weakDaysEnRu[dayName];
         if (![self.info[@"WorkHours"][weekDayNameRu] isEqualToString:@"выходной"]) {
             [self.availableDates addObject:day.date];

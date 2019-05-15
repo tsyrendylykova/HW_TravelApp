@@ -26,17 +26,14 @@
 
 @implementation MapViewController
 
-//надо удалить?
--(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation {
-    self = [super init];
-    if (self) {
-        _annotation = annotation;
-    }
-    return self;
-}
-
 -(void)viewWillAppear:(BOOL)animated {
-    [self.mapView addAnnotation:self.annotation];
+    if (!self.annotation) {
+        CLLocationCoordinate2D location;
+        location.latitude = 55.7558;
+        location.longitude = 37.6173;
+        self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"" location:location];
+    }
+    [self updateNearbyCFsAtCoordinate:self.annotation.coordinate];
 }
 
 - (void)viewDidLoad {
@@ -74,12 +71,15 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
 //    CLLocationCoordinate2D location = self.mapView.userLocation.location.coordinate;
     CLLocationCoordinate2D location;
-    location.latitude = 55.7558;
-    location.longitude = 37.6173;
+//    location.latitude = 55.7558;
+//    location.longitude = 37.6173;
+    
+    location.latitude = 55.743848;
+    location.longitude = 37.598540;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 2500.0, 2500.0);
 
     [self.mapView setRegion:region animated:YES];
-    [self updateNearbyCFsAtCoordinate:userLocation.coordinate];
+    [self updateNearbyCFsAtCoordinate:self.annotation.coordinate];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -102,8 +102,6 @@
 #pragma mark - MapView update
 
 -(void)updateNearbyCFsAtCoordinate: (CLLocationCoordinate2D)locationCoordinate {
-//    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.7514, 37.6285);
-//    self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
     
     [self.mapView addAnnotation:self.annotation];
 }
@@ -141,6 +139,5 @@
     [detailPointVC.view layoutIfNeeded]; // avoid warning
     [self.navigationController pushViewController:detailPointVC animated:YES];
 }
-
 
 @end

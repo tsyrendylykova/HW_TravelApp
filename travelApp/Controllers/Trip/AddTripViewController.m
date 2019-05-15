@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UITextField *textFieldEndDate;
 @property (nonatomic, strong) UIDatePicker *startDatePicker;
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -33,6 +34,7 @@
     
     [self prepareUI];
     [self prepareDetailsForTrip];
+    [self prepareDateRormatter];
 }
 
 -(void)prepareUI {
@@ -113,26 +115,23 @@
 
 }
 
+-(void)prepareDateRormatter {
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
+}
+
 #pragma mark - UIDatePicker
 
 - (void)onDatePickerValueChanged:(UIDatePicker *)datePicker
 {
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSDate *eventDate = datePicker.date;
-    [dateFormat setDateFormat:@"dd/MM/yyyy"];
-    
-    NSString *dateString = [dateFormat stringFromDate:eventDate];
-    self.textFieldStartDate.text = [NSString stringWithFormat:@"%@",dateString];
+    NSString *dateString = [self.dateFormatter stringFromDate:datePicker.date];
+    self.textFieldStartDate.text = [NSString stringWithFormat:@"%@", dateString];
     [self.view endEditing:YES]; // ???
 }
 
 - (void)onDateEndPickerValueChanged:(UIDatePicker *)datePicker
 {
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSDate *eventDate = datePicker.date;
-    [dateFormat setDateFormat:@"dd/MM/yyyy"];
-    
-    NSString *dateString = [dateFormat stringFromDate:eventDate];
+    NSString *dateString = [self.dateFormatter stringFromDate:datePicker.date];
     self.textFieldEndDate.text = [NSString stringWithFormat:@"%@",dateString];
     [self.view endEditing:YES];
 }
@@ -155,18 +154,13 @@
     
     trip.name = self.textFieldName.text;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
-    NSDate *startDate = [dateFormatter dateFromString:self.textFieldStartDate.text];
+    NSDate *startDate = [self.dateFormatter dateFromString:self.textFieldStartDate.text];
     trip.startDate = startDate;
-    
-    NSDate *endDate = [dateFormatter dateFromString:self.textFieldEndDate.text];
+    NSDate *endDate = [self.dateFormatter dateFromString:self.textFieldEndDate.text];
     trip.endDate = endDate;
     
     NSSet<Day *> *dates = [NSSet setWithSet:[self getArrayOfDays:trip]];
     [trip addDays:dates];
-    
-//    trip.image =
     
     //  TO-DO - сделать проверку : endDate > startDate
     NSError *error;

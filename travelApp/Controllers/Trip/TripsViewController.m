@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -48,6 +49,7 @@
 
     [self prepareUI];
     [self prepareBarButtonItems];
+    [self prepareDateFormatter];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,6 +75,11 @@
     self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
 }
 
+-(void)prepareDateFormatter {
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -90,17 +97,7 @@
     if (trip) {
         cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
         cell.name.text = trip.name;
-        
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        NSDate *startDate = trip.startDate;
-        NSDate *endDate = trip.endDate;
-        [dateFormat setDateFormat:@"EEEE, MMM d, yyyy"];
-        //MMM d, yyyy
-        
-        NSString *startDateString = [dateFormat stringFromDate:startDate];
-        NSString *startEndString = [dateFormat stringFromDate:endDate];
-        
-        cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
+        cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", [self.dateFormatter stringFromDate:trip.startDate], [self.dateFormatter stringFromDate:trip.endDate]];
     } else {
         cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
         cell.name.text = @"Название поездки";
