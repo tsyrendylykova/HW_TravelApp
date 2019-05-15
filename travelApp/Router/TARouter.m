@@ -11,59 +11,49 @@
 #import "MapViewController.h"
 #import "TripsViewController.h"
 #import "ProfileViewController.h"
-#import "TACustomAnnotation.h"
-
-@interface TARouter()
-
-@property (nonatomic, strong) UITabBarController *tabBarController;
-@property (nonatomic, strong) MapViewController *mapVC;
-@property (nonatomic, strong) TripsViewController *createTripVC;
-@property (nonatomic, strong) ProfileViewController *profileViewVC;
-
-@end
 
 @implementation TARouter
 
--(UITabBarController *)configureTravelApp {
++(TARouter *)sharedRouter {
+    TARouter *router = [TARouter new];
     
-    self.tabBarController = [UITabBarController new];
+    router.tabBarController = [UITabBarController new];
     
-    self.mapVC = [MapViewController new];
-    self.mapVC.annotation = [TACustomAnnotation new];
-    UINavigationController *mapSearchNC = [[UINavigationController alloc] initWithRootViewController:self.mapVC];
-    mapSearchNC.tabBarItem.title = @"Map";
-    mapSearchNC.tabBarItem.image = [UIImage imageNamed:@"map"];
+    MapViewController *mapVC = [MapViewController new];
+    mapVC.annotation = [TACustomAnnotation new];
+    mapVC.tabBarItem.title = @"Map";
+    mapVC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
-    self.createTripVC = [TripsViewController new];
-//        createTripVC.router = [TARouter new];
-//    createTripVC.annotation = [TACustomAnnotation new];
-    //еще в Router надо передавать MainTabBarController???
-    UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:self.createTripVC]; // VC не UINAV
+    TripsViewController *createTripVC = [TripsViewController new];
+    UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:createTripVC]; // VC не UINAV
     createTripNC.tabBarItem.title = @"New trip";
     createTripNC.tabBarItem.image = [UIImage imageNamed:@"trip"];
     
-    self.profileViewVC = [ProfileViewController new];
-    UINavigationController *profileNC = [[UINavigationController alloc] initWithRootViewController:self.profileViewVC];
+    ProfileViewController *profileViewVC = [ProfileViewController new];
+    UINavigationController *profileNC = [[UINavigationController alloc] initWithRootViewController:profileViewVC];
     profileNC.tabBarItem.title = @"Profile";
     profileNC.tabBarItem.image = [UIImage imageNamed:@"profile"];
     
     
-    NSArray *array = @[mapSearchNC, createTripNC, profileNC];
+    NSArray *array = @[mapVC, createTripNC, profileNC];
     
-    self.tabBarController.tabBar.translucent = YES;
-    self.tabBarController.tabBar.tintColor = [UIColor blackColor];
-    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+    router.tabBarController.tabBar.translucent = YES;
+    router.tabBarController.tabBar.tintColor = [UIColor blackColor];
+    router.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
     
-    self.tabBarController.viewControllers = array;
-    self.tabBarController.selectedIndex = 1;
+    router.tabBarController.viewControllers = array;
+    router.tabBarController.selectedIndex = 1;
     
-    return self.tabBarController;
+    return router;
 }
 
--(void)showMuseumOnMap {
+-(void)showMuseumOnMapWithAnnotation:(TACustomAnnotation *)annotation {
     
+    UITabBarController *tabBarC = (UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
+    MapViewController *mapViewController = [tabBarC.viewControllers objectAtIndex:0];
+    mapViewController.annotation = annotation;
+    [tabBarC setSelectedIndex:0];
+    [tabBarC setSelectedViewController:[tabBarC.viewControllers objectAtIndex:0]];
 }
-
-
 
 @end

@@ -11,6 +11,7 @@
 #import "Trip+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 
+
 @interface AddTripViewController ()
 
 @property (nonatomic, strong) UILabel *labelName;

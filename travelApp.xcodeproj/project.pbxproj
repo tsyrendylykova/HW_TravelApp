@@ -29,7 +29,6 @@
 		95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */; };
 		95217C5E2289FC7D007A3E02 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TARouter.m */; };
 		9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC85226F16F900602FB4 /* AppDelegate.m */; };
-		9571FC89226F16F900602FB4 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC88226F16F900602FB4 /* MainTabBarController.m */; };
 		9571FC8C226F16F900602FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC8A226F16F900602FB4 /* Main.storyboard */; };
 		9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */; };
 		9571FC94226F16FB00602FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */; };
@@ -91,8 +90,6 @@
 		9571FC81226F16F900602FB4 /* travelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9571FC84226F16F900602FB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9571FC85226F16F900602FB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9571FC87226F16F900602FB4 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
-		9571FC88226F16F900602FB4 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		9571FC8B226F16F900602FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9571FC8E226F16F900602FB4 /* travelApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = travelApp.xcdatamodel; sourceTree = "<group>"; };
 		9571FC93226F16FB00602FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -224,8 +221,6 @@
 				95217C5B2289D5F8007A3E02 /* Router */,
 				9571FC84226F16F900602FB4 /* AppDelegate.h */,
 				9571FC85226F16F900602FB4 /* AppDelegate.m */,
-				9571FC87226F16F900602FB4 /* MainTabBarController.h */,
-				9571FC88226F16F900602FB4 /* MainTabBarController.m */,
 				9571FC8A226F16F900602FB4 /* Main.storyboard */,
 				9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */,
 				9571FCA9226F29DC00602FB4 /* Assets.xcassets */,
@@ -387,7 +382,6 @@
 				95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */,
 				9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */,
 				9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */,
-				9571FC89226F16F900602FB4 /* MainTabBarController.m in Sources */,
 				95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */,
 				95217C502282C120007A3E02 /* DayCollectionViewCell.m in Sources */,
 				95217888227878F6007A3E02 /* Museum+CoreDataClass.m in Sources */,

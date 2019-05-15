@@ -26,7 +26,7 @@
 
 @implementation MapViewController
 
-//надо удалить
+//надо удалить?
 -(instancetype)initWithAnnotation: (TACustomAnnotation *)annotation {
     self = [super init];
     if (self) {
@@ -35,13 +35,17 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self.mapView addAnnotation:self.annotation];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self prepareUI];
     [self initLocationManager];
 
-    [self.mapView setDelegate:self];
+    self.mapView.delegate = self;
     [self.mapView setShowsUserLocation:YES];
     
     self.firstTime = YES;
@@ -98,8 +102,8 @@
 #pragma mark - MapView update
 
 -(void)updateNearbyCFsAtCoordinate: (CLLocationCoordinate2D)locationCoordinate {
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.7514, 37.6285);
-    self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
+//    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.7514, 37.6285);
+//    self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
     
     [self.mapView addAnnotation:self.annotation];
 }

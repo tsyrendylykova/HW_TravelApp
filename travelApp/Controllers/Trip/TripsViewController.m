@@ -19,12 +19,16 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
-@property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
 @implementation TripsViewController
+
+- (void)dealloc
+{
+    _fetchedResultsController.delegate = nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -123,15 +127,6 @@
 }
 
 #pragma mark - CoreData Stack
-
-- (NSFetchRequest *)fetchRequest
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Trip"];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
-    fetchRequest.sortDescriptors = @[sortDescriptor];
-    
-    return fetchRequest;
-}
 
 - (NSManagedObjectContext *)coreDataContext
 {

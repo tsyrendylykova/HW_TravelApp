@@ -14,6 +14,7 @@
 #import "DayCollectionViewCell.h"
 
 #import "MapViewController.h"
+#import "TARouter.h"
 
 @interface MuseumsForDayViewController () <NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
@@ -30,7 +31,6 @@
 @property (nonatomic, strong) UIButton *showMuseumOnMapButton;
 
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
-@property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
@@ -179,31 +179,15 @@
 }
 
 -(void)showMuseumsOnMap {
-    UITabBarController *tabBarController = (UITabBarController *)self.presentingViewController;
-//    (UITabBarController *)self.window.rootViewController
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.7514, 37.6285);
     
-    //???
-    TACustomAnnotation *annotation = [TACustomAnnotation new];
-    MapViewController *mapVC = [[MapViewController alloc] initWithAnnotation:annotation];
-    UINavigationController *searchVC = [[UINavigationController alloc] initWithRootViewController:[MapViewController new]];
-//    [tabBarController.viewControllers insert]
-//    searchVC.tabBarItem.title = @"Map";
-//    searchVC.tabBarItem.image = [UIImage imageNamed:@"map"];
+    TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [tabBarController setSelectedIndex:0];
+    [[TARouter sharedRouter] showMuseumOnMapWithAnnotation:annotation];
 }
 
 #pragma mark - CoreData Stack
-
-- (NSFetchRequest *)fetchRequest
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Day"];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-    fetchRequest.sortDescriptors = @[sortDescriptor];
-    
-    return fetchRequest;
-}
 
 - (NSManagedObjectContext *)coreDataContext
 {

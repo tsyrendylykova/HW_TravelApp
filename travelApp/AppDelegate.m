@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "TARouter.h"
-#import "MainTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -19,10 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    UITabBarController *tabBarController = [[TARouter new] configureTravelApp];
-    MainTabBarController *main = [MainTabBarController new];
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = [TARouter sharedRouter].tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }
