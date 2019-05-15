@@ -31,7 +31,7 @@
         CLLocationCoordinate2D location;
         location.latitude = 55.7558;
         location.longitude = 37.6173;
-        self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"" location:location];
+        self.annotation = [[TACustomAnnotation alloc] initWithTitle:@"" subtitle:@"" location:location];
     }
     [self updateNearbyCFsAtCoordinate:self.annotation.coordinate];
 }

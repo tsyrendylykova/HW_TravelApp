@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy, nullable) NSString *title;
 @property (nonatomic, readonly, copy, nullable) NSString *subtitle;
 
--(instancetype)initWithTitle: (NSString *)newTitle location:(CLLocationCoordinate2D)location;
+-(instancetype)initWithTitle: (NSString *)newTitle subtitle: (NSString *)subtitle location:(CLLocationCoordinate2D)location;
 -(MKAnnotationView *)annotationView;
 
 @end

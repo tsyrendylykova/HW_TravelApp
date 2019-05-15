@@ -28,10 +28,6 @@
 @property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
-
-@property (nonatomic, strong) UIButton *testButton;
-@property (nonatomic, strong) UIButton *showMuseumOnMapButton;
-
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
@@ -61,9 +57,6 @@
     [self prepareUI];
     [self prepareCollectionView];
     [self prepareTableView];
-    
-    [self prepareTestButton];
-    [self prepareButtonShowMuseumOnMap];
 }
 
 -(void)prepareUI {
@@ -98,22 +91,6 @@
     self.labelChoose.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
     [self.labelChoose setTextColor:[UIColor blackColor]];
     [self.view addSubview:self.labelChoose];
-}
-
--(void)prepareTestButton {
-    self.testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height - 100, 200, 40)];
-    self.testButton.backgroundColor = [UIColor orangeColor];
-    [self.testButton setTitle:@"Show museums" forState:UIControlStateNormal];
-    [self.testButton addTarget:self action:@selector(testFunction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.testButton];
-}
-
--(void)prepareButtonShowMuseumOnMap {
-    self.showMuseumOnMapButton = [[UIButton alloc] initWithFrame:CGRectMake(100, self.view.frame.size.height - 50, 200, 40)];
-    self.showMuseumOnMapButton.backgroundColor = [UIColor orangeColor];
-    [self.showMuseumOnMapButton setTitle:@"Show museums on map" forState:UIControlStateNormal];
-    [self.showMuseumOnMapButton addTarget:self action:@selector(showMuseumsOnMap) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.showMuseumOnMapButton];
 }
 
 -(void)prepareCollectionView {
@@ -181,15 +158,6 @@
             }
         }
     }
-}
-
--(void)showMuseumsOnMap {
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.7514, 37.6285);
-    
-    TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:@"Zaryadye Park" location:coord];
-    
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [[TARouter sharedRouter] showMuseumOnMapWithAnnotation:annotation];
 }
 
 #pragma mark - CoreData Stack
@@ -288,10 +256,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.arrayMuseums[indexPath.row].latitude, self.arrayMuseums[indexPath.row].longitude);
-    NSLog(@"%f", self.arrayMuseums[indexPath.row].latitude);
-    NSLog(@"%f", coord.latitude);
-    
-    TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:self.arrayMuseums[indexPath.row].name location:coord];
+    TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:self.arrayMuseums[indexPath.row].name subtitle:self.arrayMuseums[indexPath.row].address location:coord];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     [[TARouter sharedRouter] showMuseumOnMapWithAnnotation:annotation];
