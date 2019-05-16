@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *urlImage;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImage *categoryImage;
 
 -(instancetype)initWithName: (NSString *)name urlImage:(NSString *)urlImage;
 

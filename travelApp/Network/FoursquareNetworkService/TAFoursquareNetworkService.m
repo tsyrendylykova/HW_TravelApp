@@ -48,12 +48,16 @@
 
 -(void)getImageNSDataFromURL: (NSString *)urlString withCompletionHandler:(void (^)(NSData *data))completionHandler {
     NSURL *imageURL = [NSURL URLWithString:urlString];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        if (completionHandler && imageData) {
-            completionHandler(imageData);
-        }
-    });
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    if (completionHandler && imageData) {
+        completionHandler(imageData);
+    }
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+//        if (completionHandler && imageData) {
+//            completionHandler(imageData);
+//        }
+//    });
 }
 
 

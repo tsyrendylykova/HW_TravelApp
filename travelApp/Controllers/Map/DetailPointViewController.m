@@ -10,7 +10,7 @@
 
 @interface DetailPointViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) MapPoint *mapPoint;
+@property (nonatomic, strong) MapPoint *mapPoint;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UITableView *buttonTableView;
 
@@ -34,18 +34,22 @@
     [self.buttonTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellButton"];
     self.buttonTableView.delegate = self;
     self.buttonTableView.dataSource = self;
-    
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
-    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
 }
 
 -(void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = self.mapPoint.name;
     
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height * 0.35)];
-//    self.imageView.image = self.imageView.image;
-    self.imageView.image = [UIImage imageNamed:@"7.jpg"];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    self.navigationItem.title = self.mapPoint.name;
+    self.title = self.mapPoint.name;
+    
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height * 0.25)];
+    self.imageView.image = self.mapPoint.categoryImage;
+    [self.imageView.layer setCornerRadius:5];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.imageView setClipsToBounds:YES];
+    [self.imageView setBackgroundColor:[UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1]];
     [self.view addSubview:self.imageView];
     
     self.buttonTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + 20, self.view.frame.size.width, 220)];
