@@ -201,6 +201,7 @@
 
 #pragma mark - Methods
 
+// prevent availability to add museum for off-day
 -(void)chooseAvailableDaysForMuseum {
     self.availableDates = [NSMutableArray<NSDate *> new];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];

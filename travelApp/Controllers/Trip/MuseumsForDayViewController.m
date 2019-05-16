@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSArray<Day *> *sortedDaysArray;
 
 @end
 
@@ -52,6 +53,9 @@
     [super viewDidLoad];
     
     self.selectedDate = nil;
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    self.sortedDaysArray = [NSArray<Day *> arrayWithArray:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]];
     
     [self prepareDateFormatter];
     [self prepareUI];
@@ -196,7 +200,7 @@
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:self.coreDataContext sectionNameKeyPath:nil
-                                                   cacheName:@"Root"];
+                                                   cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
     
@@ -207,18 +211,16 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.trip.days.count;
+    return self.sortedDaysArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellDay" forIndexPath:indexPath];
     if (cell) {
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        NSString *date = [self.dateFormatterShort stringFromDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date];
-        cell.dateLabel.text = date;
+        cell.dateLabel.text = [self.dateFormatterShort stringFromDate:self.sortedDaysArray[indexPath.row].date];
         cell.dateLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
         
-        if ([self.selectedDate isEqualToDate:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date]) {
+        if ([self.selectedDate isEqualToDate:self.sortedDaysArray[indexPath.row].date]) {
             [cell selectedCell:YES];
         } else {
             [cell selectedCell:NO];
@@ -229,8 +231,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    self.selectedDate = [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]][indexPath.row].date;
+    self.selectedDate = self.sortedDaysArray[indexPath.row].date;
     Day *dayInTrip = [self.trip dayForDate:self.selectedDate];
     self.arrayMuseums = [[NSArray<Museum *> alloc] initWithArray:[dayInTrip.museums allObjects]];
     

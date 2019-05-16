@@ -147,7 +147,7 @@
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:NSStringFromClass([Trip class]) inManagedObjectContext:self.coreDataContext];
     [fetchRequest setEntity:entity];
-    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]];
+    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"startDate" ascending:YES]]];
     [fetchRequest setFetchBatchSize:20];
     
     NSFetchedResultsController *theFetchedResultsController =
