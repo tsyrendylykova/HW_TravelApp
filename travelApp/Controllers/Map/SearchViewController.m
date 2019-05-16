@@ -50,7 +50,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MapPoint *mapPoint = [[MapPoint alloc] initWithName:self.dataArray[indexPath.row].name urlImage:self.dataArray[indexPath.row].urlImage];
+    MapPoint *mapPoint = [[MapPoint alloc] initWithName:self.dataArray[indexPath.row].name urlImage:self.dataArray[indexPath.row].urlImage address:self.dataArray[indexPath.row].address];
     
     [self.networkService getImageNSDataFromURL: mapPoint.urlImage withCompletionHandler:^(NSData *data) {
         NSLog(@"%@", mapPoint.urlImage);
@@ -71,7 +71,7 @@
     NSMutableArray<MapPoint *> *tempArray = [NSMutableArray<MapPoint *> new];
     for (int i = 0; i < array.count; i++) {
         NSString *imageURL = [NSString stringWithFormat:@"%@88%@", array[i][@"categories"][0][@"icon"][@"prefix"], array[i][@"categories"][0][@"icon"][@"suffix"]];
-        MapPoint *obj = [[MapPoint alloc] initWithName:array[i][@"name"] urlImage:imageURL];
+        MapPoint *obj = [[MapPoint alloc] initWithName:array[i][@"name"] urlImage:imageURL address:[NSString stringWithFormat:@"%@, %@", array[i][@"location"][@"city"], array[i][@"location"][@"address"]]];
         [tempArray addObject:obj];
     }
     self.dataArray = tempArray;
