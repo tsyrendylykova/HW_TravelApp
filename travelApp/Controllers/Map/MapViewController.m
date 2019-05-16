@@ -134,9 +134,10 @@
 
 -(void)didSelectRow:(MapPoint *)mapPoint {
     self.searchController.active = NO;
-    DetailPointViewController *detailPointVC = [[DetailPointViewController alloc] initWithMapPoint:mapPoint];
-    [detailPointVC.view layoutIfNeeded]; // avoid warning
-    [self.navigationController pushViewController:detailPointVC animated:YES];
+    UINavigationController *detailNC = [[UINavigationController alloc] initWithRootViewController:[[DetailPointViewController alloc] initWithMapPoint:mapPoint]];
+//    DetailPointViewController *detailPointVC = [[DetailPointViewController alloc] initWithMapPoint:mapPoint];
+//    [detailPointVC.view layoutIfNeeded]; // avoid warning
+    [self presentViewController:detailNC animated:YES completion:nil];
 }
 
 @end

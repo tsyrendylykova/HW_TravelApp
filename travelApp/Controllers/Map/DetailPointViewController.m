@@ -34,6 +34,9 @@
     [self.buttonTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellButton"];
     self.buttonTableView.delegate = self;
     self.buttonTableView.dataSource = self;
+    
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
 }
 
 -(void)prepareUI {
@@ -74,6 +77,12 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
+}
+
+#pragma mark - Methods
+
+-(void)goBackToVC {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
