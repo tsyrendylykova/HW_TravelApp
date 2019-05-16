@@ -95,11 +95,11 @@
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if (trip) {
-        cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
+        cell.coverImageView.image = [UIImage imageNamed:@"sun2"];
         cell.name.text = trip.name;
         cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", [self.dateFormatter stringFromDate:trip.startDate], [self.dateFormatter stringFromDate:trip.endDate]];
     } else {
-        cell.coverImageView.image = [UIImage imageNamed:@"sun2.jpg"];
+        cell.coverImageView.image = [UIImage imageNamed:@"sun2"];
         cell.name.text = @"Название поездки";
         cell.descriptionTrip.text = @"29 апреля 2019";
     }

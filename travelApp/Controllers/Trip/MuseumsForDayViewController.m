@@ -52,10 +52,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.selectedDate = nil;
-    
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     self.sortedDaysArray = [NSArray<Day *> arrayWithArray:[self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]];
+    self.selectedDate = nil;
     
     [self prepareDateFormatter];
     [self prepareUI];

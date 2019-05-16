@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9521784722732B93007A3E02 /* sun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9521784622732B93007A3E02 /* sun.jpg */; };
 		9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */; };
 		9521784E22763A2F007A3E02 /* TACustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784D22763A2F007A3E02 /* TACustomAnnotation.m */; };
 		952178532277077F007A3E02 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178522277077F007A3E02 /* AddTripViewController.m */; };
@@ -24,7 +23,6 @@
 		952178EF227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178EE227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m */; };
 		9521795E227CAD1B007A3E02 /* ChooseMuseumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */; };
 		95217961227CBA4E007A3E02 /* AddMuseumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217960227CBA4E007A3E02 /* AddMuseumViewController.m */; };
-		95217AE1228082F2007A3E02 /* sun2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 95217AE0228082F2007A3E02 /* sun2.jpg */; };
 		95217C502282C120007A3E02 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */; };
 		95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */; };
 		95217C5E2289FC7D007A3E02 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TARouter.m */; };
@@ -37,8 +35,6 @@
 		9571FCA2226F1BC200602FB4 /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCA1226F1BC200602FB4 /* TripsViewController.m */; };
 		9571FCA5226F1BEF00602FB4 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */; };
 		9571FCAA226F29DC00602FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9571FCA9226F29DC00602FB4 /* Assets.xcassets */; };
-		9571FCB122707C8A00602FB4 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9571FCB022707C8A00602FB4 /* search.png */; };
-		9571FCB322707DD100602FB4 /* magnifier.png in Resources */ = {isa = PBXBuildFile; fileRef = 9571FCB222707DD100602FB4 /* magnifier.png */; };
 		9571FCB622707FA000602FB4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCB522707FA000602FB4 /* SearchViewController.m */; };
 		9571FCBD2270A41700602FB4 /* TAFoursquareNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCBC2270A41700602FB4 /* TAFoursquareNetworkService.m */; };
 		9571FCC12271DDD100602FB4 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC02271DDD100602FB4 /* MapPoint.m */; };
@@ -46,7 +42,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9521784622732B93007A3E02 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sun.jpg; path = ../../../../../Downloads/sun.jpg; sourceTree = "<group>"; };
 		9521784822735EC0007A3E02 /* MuseumCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuseumCollectionViewCell.h; sourceTree = "<group>"; };
 		9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseumCollectionViewCell.m; sourceTree = "<group>"; };
 		9521784C22763A2F007A3E02 /* TACustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACustomAnnotation.h; sourceTree = "<group>"; };
@@ -79,7 +74,6 @@
 		9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseMuseumViewController.m; sourceTree = "<group>"; };
 		9521795F227CBA4E007A3E02 /* AddMuseumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMuseumViewController.h; sourceTree = "<group>"; };
 		95217960227CBA4E007A3E02 /* AddMuseumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMuseumViewController.m; sourceTree = "<group>"; };
-		95217AE0228082F2007A3E02 /* sun2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sun2.jpg; path = ../../../../../Downloads/sun2.jpg; sourceTree = "<group>"; };
 		95217C4E2282C120007A3E02 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
 		95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
 		95217C52228885C6007A3E02 /* TAMosDataNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMosDataNetworkService.h; sourceTree = "<group>"; };
@@ -102,8 +96,6 @@
 		9571FCA3226F1BEF00602FB4 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		9571FCA9226F29DC00602FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9571FCB022707C8A00602FB4 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
-		9571FCB222707DD100602FB4 /* magnifier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier.png; sourceTree = "<group>"; };
 		9571FCB422707FA000602FB4 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		9571FCB522707FA000602FB4 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		9571FCBB2270A41700602FB4 /* TAFoursquareNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAFoursquareNetworkService.h; sourceTree = "<group>"; };
@@ -224,10 +216,6 @@
 				9571FC8A226F16F900602FB4 /* Main.storyboard */,
 				9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */,
 				9571FCA9226F29DC00602FB4 /* Assets.xcassets */,
-				9571FCB222707DD100602FB4 /* magnifier.png */,
-				95217AE0228082F2007A3E02 /* sun2.jpg */,
-				9521784622732B93007A3E02 /* sun.jpg */,
-				9571FCB022707C8A00602FB4 /* search.png */,
 				9571FC95226F16FB00602FB4 /* Info.plist */,
 				9571FC96226F16FB00602FB4 /* main.m */,
 				9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */,
@@ -362,12 +350,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9571FC94226F16FB00602FB4 /* LaunchScreen.storyboard in Resources */,
-				9571FCB322707DD100602FB4 /* magnifier.png in Resources */,
 				9571FCAA226F29DC00602FB4 /* Assets.xcassets in Resources */,
-				95217AE1228082F2007A3E02 /* sun2.jpg in Resources */,
-				9571FCB122707C8A00602FB4 /* search.png in Resources */,
 				9571FC8C226F16F900602FB4 /* Main.storyboard in Resources */,
-				9521784722732B93007A3E02 /* sun.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

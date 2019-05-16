@@ -53,7 +53,7 @@
     self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 45)];
     self.navBar.backgroundColor = [UIColor whiteColor];
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Sightseeing"];
-    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"magnifier.png"] style:UIBarButtonItemStyleDone target:self action:@selector(didTapSearchButton)];
+    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"magnifier"] style:UIBarButtonItemStyleDone target:self action:@selector(didTapSearchButton)];
     self.navBar.items = [NSArray arrayWithObjects:item, nil];
     [self.view addSubview:self.navBar];
 }
