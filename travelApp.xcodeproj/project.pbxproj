@@ -40,6 +40,8 @@
 		9571FCC12271DDD100602FB4 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC02271DDD100602FB4 /* MapPoint.m */; };
 		9571FCC52271E05900602FB4 /* DetailPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC42271E05900602FB4 /* DetailPointViewController.m */; };
 		95A2066F228EAE2700583AC4 /* AddNewTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A2066E228EAE2700583AC4 /* AddNewTrip.m */; };
+		95A20674228EE4F200583AC4 /* MuseumsForDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A20673228EE4F200583AC4 /* MuseumsForDayView.m */; };
+		95A20677228EEB4500583AC4 /* AddMuseumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A20676228EEB4500583AC4 /* AddMuseumView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +113,11 @@
 		95A2066D228EAE2700583AC4 /* AddNewTrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewTrip.h; sourceTree = "<group>"; };
 		95A2066E228EAE2700583AC4 /* AddNewTrip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewTrip.m; sourceTree = "<group>"; };
 		95A20670228EB59300583AC4 /* AddNewTripDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewTripDelegate.h; sourceTree = "<group>"; };
+		95A20672228EE4F200583AC4 /* MuseumsForDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuseumsForDayView.h; sourceTree = "<group>"; };
+		95A20673228EE4F200583AC4 /* MuseumsForDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseumsForDayView.m; sourceTree = "<group>"; };
+		95A20675228EEB4500583AC4 /* AddMuseumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMuseumView.h; sourceTree = "<group>"; };
+		95A20676228EEB4500583AC4 /* AddMuseumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMuseumView.m; sourceTree = "<group>"; };
+		95A20678228EEFDC00583AC4 /* AddMuseumDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMuseumDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +135,12 @@
 			isa = PBXGroup;
 			children = (
 				95A2066A228D95C500583AC4 /* Cells */,
-				95A2066D228EAE2700583AC4 /* AddNewTrip.h */,
-				95A2066E228EAE2700583AC4 /* AddNewTrip.m */,
-				95A20670228EB59300583AC4 /* AddNewTripDelegate.h */,
+				95A20671228EE48300583AC4 /* AddNewTripView */,
+				95A20672228EE4F200583AC4 /* MuseumsForDayView.h */,
+				95A20673228EE4F200583AC4 /* MuseumsForDayView.m */,
+				95A20675228EEB4500583AC4 /* AddMuseumView.h */,
+				95A20676228EEB4500583AC4 /* AddMuseumView.m */,
+				95A20678228EEFDC00583AC4 /* AddMuseumDelegate.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,6 +329,16 @@
 			path = "Supported Files";
 			sourceTree = "<group>";
 		};
+		95A20671228EE48300583AC4 /* AddNewTripView */ = {
+			isa = PBXGroup;
+			children = (
+				95A2066D228EAE2700583AC4 /* AddNewTrip.h */,
+				95A2066E228EAE2700583AC4 /* AddNewTrip.m */,
+				95A20670228EB59300583AC4 /* AddNewTripDelegate.h */,
+			);
+			path = AddNewTripView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -391,6 +411,7 @@
 			files = (
 				95217884227878F6007A3E02 /* Day+CoreDataClass.m in Sources */,
 				95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */,
+				95A20674228EE4F200583AC4 /* MuseumsForDayView.m in Sources */,
 				9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */,
 				9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */,
 				95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */,
@@ -398,6 +419,7 @@
 				95217888227878F6007A3E02 /* Museum+CoreDataClass.m in Sources */,
 				9571FCC12271DDD100602FB4 /* MapPoint.m in Sources */,
 				95217886227878F6007A3E02 /* Person+CoreDataClass.m in Sources */,
+				95A20677228EEB4500583AC4 /* AddMuseumView.m in Sources */,
 				9571FC9F226F1BA100602FB4 /* MapViewController.m in Sources */,
 				9521788A227878F6007A3E02 /* Trip+CoreDataClass.m in Sources */,
 				952178532277077F007A3E02 /* AddTripViewController.m in Sources */,

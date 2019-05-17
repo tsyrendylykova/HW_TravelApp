@@ -18,7 +18,6 @@
 
 @property (nonatomic, strong) AddNewTrip *addNewTrip;
 
-
 @end
 
 @implementation AddTripViewController

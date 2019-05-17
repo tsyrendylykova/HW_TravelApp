@@ -11,19 +11,15 @@
 #import "Museum+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 #import "Constants.h"
+#import "AddMuseumView.h"
 
 @import CoreData;
 
-@interface AddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate>
+@interface AddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate, AddMuseumDelegate>
 
 @property (nonatomic, strong) Trip *trip;
 @property (nonatomic, assign) NSInteger rowNumber;
 @property (nonatomic, strong) NSMutableDictionary *info;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *labelName;
-@property (nonatomic, strong) UILabel *labelAddress;
-@property (nonatomic, strong) NSArray *weekDays;
-@property (nonatomic, strong) UIButton *buttonAdd;
 @property (nonatomic, strong) UIPickerView *picker;
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) NSDate *selectedDateInPicker;
@@ -31,6 +27,7 @@
 @property (nonatomic, strong) NSDictionary *weakDaysEnRu;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
+@property (nonatomic, strong) AddMuseumView *addMuseumView;
 
 @end
 
@@ -49,11 +46,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.weekDays = [NSArray arrayWithObjects:@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье", nil];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.weakDaysEnRu = [NSDictionary dictionaryWithObjectsAndKeys:@"понедельник", @"Monday",  @"вторник", @"Tuesday", @"среда", @"Wednesday", @"четверг", @"Thursday", @"пятница", @"Friday", @"суббота", @"Saturday", @"воскресенье", @"Sunday", nil];
     [self chooseAvailableDaysForMuseum];
+    self.addMuseumView = [[AddMuseumView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) trip:self.trip info:self.info rowNumber:self.rowNumber];
+    self.addMuseumView.addNewMuseumDelegate = self;
+    [self.view addSubview:self.addMuseumView];
     
     [self prepareUI];
+    [self prepareDateRormatter];
+}
+
+-(void)prepareUI {
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * AddMuseumPickerPartTopOffset + AddMuseumPickerTopOffset, self.view.frame.size.width, self.view.frame.size.height * AddMuseumPickerPartHeight)];
     self.picker.backgroundColor = [UIColor whiteColor];
     self.picker.showsSelectionIndicator = YES;
@@ -72,53 +77,6 @@
     
     [self.picker setHidden:YES];
     [self.toolBar setHidden:YES];
-    
-    [self prepareDateRormatter];
-}
-
--(void)prepareUI {
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * AddMuseumImagePartHeight)];
-    self.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg", (long)self.rowNumber + 1]];
-    [self.view addSubview:self.imageView];
-    
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(AddMuseumLeftOffset, CGRectGetMaxY(self.imageView.frame) + AddMuseumLabelNameTopOffset, self.view.frame.size.width - AddMuseumLabelNameWidth, AddMuseumLabelNameHeight)];
-    self.labelName.numberOfLines = 0;
-    self.labelName.text = self.info[@"CommonName"];
-    self.labelName.font = [UIFont systemFontOfSize:AddMuseumLabelNameFont weight:UIFontWeightSemibold];
-    [self.labelName setTextColor:[UIColor blackColor]];
-    [self.view addSubview:self.labelName];
-    
-    self.labelAddress = [[UILabel alloc] initWithFrame:CGRectMake(AddMuseumLeftOffset, CGRectGetMaxY(self.labelName.frame) + AddMuseumLabelAddressTopOffset, self.view.frame.size.width - AddMuseumLabelNameWidth, AddMuseumLabelAddressHeight)];
-    self.labelAddress.numberOfLines = 0;
-    self.labelAddress.text = self.info[@"Address"];
-    self.labelAddress.font = [UIFont systemFontOfSize:AddMuseumFont weight:UIFontWeightSemibold];
-    [self.labelAddress setTextColor:[UIColor grayColor]];
-    [self.view addSubview:self.labelAddress];
-    
-    CGFloat y = CGRectGetMaxY(self.labelAddress.frame) + AddMuseumDayTopOffset;
-    for (int i = 0; i < 7; i++) {
-        UILabel *day = [[UILabel alloc] initWithFrame:CGRectMake(AddMuseumLeftOffset, y, self.view.frame.size.width / 3, AddMuseumDayHeight)];
-        day.text = self.weekDays[i];
-        day.font = [UIFont systemFontOfSize:AddMuseumFont weight:UIFontWeightSemibold];
-        [day setTextColor:[UIColor blackColor]];
-        [self.view addSubview:day];
-        
-        UILabel *hour = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 + AddMuseumHourTopOffset, y, self.view.frame.size.width / 3, AddMuseumDayHeight)];
-        hour.text = self.info[@"WorkHours"][[NSString stringWithFormat:@"%@", self.weekDays[i]]];
-        hour.font = [UIFont systemFontOfSize:AddMuseumFont weight:UIFontWeightSemibold];
-        [hour setTextColor:[UIColor blackColor]];
-        [self.view addSubview:hour];
-        y += AddMuseumHourHeight;
-    }
-    
-    self.buttonAdd = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - AddMuseumButtonTopOffset, self.view.frame.size.height - AddMuseumButtonLeftOffset, AddMuseumButtonWidth, AddMuseumButtonHeight)];
-    [self.buttonAdd setTitle:@"Add" forState:UIControlStateNormal];
-    self.buttonAdd.backgroundColor = [UIColor orangeColor];
-    [self.buttonAdd setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.buttonAdd addTarget:self action:@selector(chooseDates) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.buttonAdd];
 }
 
 -(void)prepareDateRormatter {
@@ -129,12 +87,14 @@
     [self.dateFormatterShort setDateFormat:@"EEEE"];
 }
 
-#pragma mark - Actions
+#pragma mark - AddMuseumDelegate
 
 -(void)chooseDates {
     [self.toolBar setHidden:NO];
     [self.picker setHidden:NO];
 }
+
+#pragma mark - Actions
 
 - (void)doneTouched:(UIBarButtonItem *)sender {
     [self.toolBar setHidden:YES];

@@ -14,13 +14,11 @@
 #import "DayCollectionViewCell.h"
 #import "TARouter.h"
 #import "Constants.h"
+#import "MuseumsForDayView.h"
 
 @interface MuseumsForDayViewController () <NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) Trip *trip;
-@property (nonatomic, strong) UILabel *labelName;
-@property (nonatomic, strong) UILabel *labelDate;
-@property (nonatomic, strong) UILabel *labelChoose;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDate *selectedDate;
@@ -30,6 +28,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, strong) NSArray<Day *> *sortedDaysArray;
+@property (nonatomic, strong) MuseumsForDayView *museumsForDay;
 
 @end
 
@@ -56,6 +55,8 @@
     self.selectedDate = nil;
     
     [self prepareDateFormatter];
+    self.museumsForDay = [[MuseumsForDayView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * 0.25) trip:self.trip];
+    [self.view addSubview:self.museumsForDay];
     [self prepareUI];
     [self prepareCollectionView];
     [self prepareTableView];
@@ -70,29 +71,6 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addNewMuseums)];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, MuseumLabelFirstTopOffset, self.view.frame.size.width - MuseumLabelWidth, MuseumLabelHeight)];
-    self.labelName.text = self.trip.name;
-    self.labelName.font = [UIFont systemFontOfSize:MuseumLabelNameFontSize weight:UIFontWeightSemibold];
-    self.labelName.numberOfLines = 0;
-    [self.labelName setTextColor:[UIColor blackColor]];
-    [self.view addSubview:self.labelName];
-    
-    self.labelDate = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.labelName.frame) + MuseumLabelTopOffset, self.view.frame.size.width - MuseumLabelWidth, MuseumLabelDateHeight)];
-    
-    NSString *startDateString = [self.dateFormatterFull stringFromDate:self.trip.startDate];
-    NSString *startEndString = [self.dateFormatterFull stringFromDate:self.trip.endDate];
-    
-    self.labelDate.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
-    self.labelDate.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
-    self.labelDate.numberOfLines = 0;
-    [self.labelDate setTextColor:[UIColor grayColor]];
-    [self.view addSubview:self.labelDate];
-    
-    self.labelChoose = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.labelDate.frame) + MuseumLabelSecondTopOffset, self.view.frame.size.width - MuseumLabelWidth, MuseumLabelHeight)];
-    self.labelChoose.text = @"Choose";
-    self.labelChoose.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
-    [self.labelChoose setTextColor:[UIColor blackColor]];
-    [self.view addSubview:self.labelChoose];
 }
 
 -(void)prepareCollectionView {
@@ -102,7 +80,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets);
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(MuseumCollectionViewTopOffset, CGRectGetMaxY(self.labelChoose.frame) + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumCollectionViewWidth, MuseumCollectionViewHeight) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(MuseumCollectionViewTopOffset, self.view.frame.size.height * 0.25 + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumCollectionViewWidth, MuseumCollectionViewHeight) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
@@ -127,7 +105,7 @@
 -(void)prepareDateFormatter {
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
-    
+
     self.dateFormatterShort = [[NSDateFormatter alloc] init];
     [self.dateFormatterShort setDateFormat:@"MMM d"];
 }
