@@ -12,13 +12,13 @@
 #import "Trip+CoreDataClass.h"
 #import "MuseumsForDayViewController.h"
 #import "MuseumCollectionViewCell.h"
+#import "Constants.h"
 
 @import CoreData;
 
 @interface TripsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
@@ -35,16 +35,16 @@
     [super viewDidLoad];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) - 2.5, CGRectGetWidth(self.view.frame)/2 - 2.5);
+    layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) - TripLayoutWidth, CGRectGetWidth(self.view.frame)/2 - TripLayoutHeight);
     layout.minimumInteritemSpacing = 0;
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height - 89) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, TopOffset, self.view.frame.size.width, self.view.frame.size.height - TopOffset) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    [self.collectionView registerClass:[MuseumCollectionViewCell class] forCellWithReuseIdentifier:@"CellCollectionView"];
+    [self.collectionView registerClass:[MuseumCollectionViewCell class] forCellWithReuseIdentifier:TripsViewControllerCellIdentifier];
     [self.view addSubview:self.collectionView];
 
     [self prepareUI];
@@ -71,8 +71,8 @@
 }
 
 -(void)prepareBarButtonItems {
-    self.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(presentNewTrip)];
-    self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(presentNewTrip)];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
 -(void)prepareDateFormatter {
@@ -91,17 +91,13 @@
     return self.fetchedResultsController.fetchedObjects.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
+    MuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TripsViewControllerCellIdentifier forIndexPath:indexPath];
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if (trip) {
         cell.coverImageView.image = [UIImage imageNamed:@"sun2"];
         cell.name.text = trip.name;
         cell.descriptionTrip.text = [NSString stringWithFormat:@"%@ - %@", [self.dateFormatter stringFromDate:trip.startDate], [self.dateFormatter stringFromDate:trip.endDate]];
-    } else {
-        cell.coverImageView.image = [UIImage imageNamed:@"sun2"];
-        cell.name.text = @"Название поездки";
-        cell.descriptionTrip.text = @"29 апреля 2019";
     }
     
     return cell;

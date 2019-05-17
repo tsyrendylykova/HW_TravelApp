@@ -105,6 +105,8 @@
 		9571FCC02271DDD100602FB4 /* MapPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
 		9571FCC32271E05900602FB4 /* DetailPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailPointViewController.h; sourceTree = "<group>"; };
 		9571FCC42271E05900602FB4 /* DetailPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailPointViewController.m; sourceTree = "<group>"; };
+		95A20669228D912300583AC4 /* TARouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARouterProtocol.h; sourceTree = "<group>"; };
+		95A2066C228D98C300583AC4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,14 +123,7 @@
 		9521784B22735ECA007A3E02 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9521784C22763A2F007A3E02 /* TACustomAnnotation.h */,
-				9521784D22763A2F007A3E02 /* TACustomAnnotation.m */,
-				9521784822735EC0007A3E02 /* MuseumCollectionViewCell.h */,
-				9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */,
-				952178ED227B5D83007A3E02 /* DetailMuseumCollectionViewCell.h */,
-				952178EE227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m */,
-				95217C4E2282C120007A3E02 /* DayCollectionViewCell.h */,
-				95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */,
+				95A2066A228D95C500583AC4 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +177,7 @@
 			children = (
 				95217C5C2289FC7D007A3E02 /* TARouter.h */,
 				95217C5D2289FC7D007A3E02 /* TARouter.m */,
+				95A20669228D912300583AC4 /* TARouterProtocol.h */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -205,20 +201,17 @@
 		9571FC83226F16F900602FB4 /* travelApp */ = {
 			isa = PBXGroup;
 			children = (
+				9571FC84226F16F900602FB4 /* AppDelegate.h */,
+				9571FC85226F16F900602FB4 /* AppDelegate.m */,
+				9571FC95226F16FB00602FB4 /* Info.plist */,
+				9571FC96226F16FB00602FB4 /* main.m */,
 				9571FCC22271DDD900602FB4 /* Model */,
 				9521784B22735ECA007A3E02 /* View */,
 				9571FCA6226F1BF600602FB4 /* Controllers */,
 				952178732278547F007A3E02 /* CoreDataModel */,
 				9571FCBA22709F2800602FB4 /* Network */,
 				95217C5B2289D5F8007A3E02 /* Router */,
-				9571FC84226F16F900602FB4 /* AppDelegate.h */,
-				9571FC85226F16F900602FB4 /* AppDelegate.m */,
-				9571FC8A226F16F900602FB4 /* Main.storyboard */,
-				9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */,
-				9571FCA9226F29DC00602FB4 /* Assets.xcassets */,
-				9571FC95226F16FB00602FB4 /* Info.plist */,
-				9571FC96226F16FB00602FB4 /* main.m */,
-				9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */,
+				95A2066B228D989300583AC4 /* Supported Files */,
 			);
 			path = travelApp;
 			sourceTree = "<group>";
@@ -288,8 +281,35 @@
 				9571FCC02271DDD100602FB4 /* MapPoint.m */,
 				9521788C22788278007A3E02 /* TAPerson.h */,
 				9521788D22788278007A3E02 /* TAPerson.m */,
+				9521784C22763A2F007A3E02 /* TACustomAnnotation.h */,
+				9521784D22763A2F007A3E02 /* TACustomAnnotation.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		95A2066A228D95C500583AC4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9521784822735EC0007A3E02 /* MuseumCollectionViewCell.h */,
+				9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */,
+				952178ED227B5D83007A3E02 /* DetailMuseumCollectionViewCell.h */,
+				952178EE227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m */,
+				95217C4E2282C120007A3E02 /* DayCollectionViewCell.h */,
+				95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		95A2066B228D989300583AC4 /* Supported Files */ = {
+			isa = PBXGroup;
+			children = (
+				9571FC8A226F16F900602FB4 /* Main.storyboard */,
+				9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */,
+				9571FCA9226F29DC00602FB4 /* Assets.xcassets */,
+				9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */,
+				95A2066C228D98C300583AC4 /* Constants.h */,
+			);
+			path = "Supported Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

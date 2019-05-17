@@ -8,15 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "TACustomAnnotation.h"
+#import "TARouterProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TARouter : NSObject
+@interface TARouter : NSObject <TARouterProtocol>
 
 @property (nonatomic, strong) UITabBarController *tabBarController;
-
-+(TARouter *)sharedRouter;
--(void)showMuseumOnMapWithAnnotation:(TACustomAnnotation *)annotation;
 
 @end
 

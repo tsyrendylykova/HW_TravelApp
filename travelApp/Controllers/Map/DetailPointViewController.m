@@ -7,13 +7,13 @@
 //
 
 #import "DetailPointViewController.h"
+#import "Constants.h"
 
 @interface DetailPointViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) MapPoint *mapPoint;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UITableView *buttonTableView;
-@property (nonatomic, strong) NSArray *info;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -31,9 +31,9 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    [self.buttonTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellButton"];
-    self.buttonTableView.delegate = self;
-    self.buttonTableView.dataSource = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:DetailPointViewControllerCellIdentifier];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 -(void)prepareUI {
@@ -44,23 +44,23 @@
     self.navigationItem.title = self.mapPoint.name;
     self.title = self.mapPoint.name;
     
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 89, self.view.frame.size.width, self.view.frame.size.height * 0.25)];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, TopOffset, self.view.frame.size.width, self.view.frame.size.height * DetailViewImageViewPercentHeight)];
     self.imageView.image = self.mapPoint.categoryImage;
-    [self.imageView.layer setCornerRadius:5];
+    [self.imageView.layer setCornerRadius:DetailViewImageCornerRadius];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.imageView setClipsToBounds:YES];
-    [self.imageView setBackgroundColor:[UIColor colorWithRed:192/255.0 green:192/255.0 blue:192/255.0 alpha:1]];
+    [self.imageView setBackgroundColor:[UIColor colorWithRed:DetailViewImageRed green:DetailViewImageGreen blue:DetailViewImageBlue alpha:AlphaColor]];
     [self.view addSubview:self.imageView];
     
-    self.buttonTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + 20, self.view.frame.size.width, 88)];
-    [self.view addSubview:self.buttonTableView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + DetailTableViewTopOffset, self.view.frame.size.width, DetailTableViewHeight)];
+    [self.view addSubview:self.tableView];
     
 }
 
 
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellButton" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DetailPointViewControllerCellIdentifier forIndexPath:indexPath];
     if (indexPath.row == 0) {
         cell.textLabel.text = self.mapPoint.name;
     }

@@ -52,35 +52,6 @@
     if (completionHandler && imageData) {
         completionHandler(imageData);
     }
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-//        if (completionHandler && imageData) {
-//            completionHandler(imageData);
-//        }
-//    });
 }
-
-
-
-
-#pragma mark - URLSessionDelegate
-
-//-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-//didFinishDownloadingToURL:(NSURL *)location {
-//    NSData *data = [NSData dataWithContentsOfURL:location];
-//    NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.output loadingIsDoneWithDataRecieved:temp];
-//    });
-//    [session finishTasksAndInvalidate];
-//}
-//
-//-(void)downloadTaskWithURL: (NSString *)stringURL {
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
-//    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:stringURL]];
-//
-//    [downloadTask resume];
-//}
 
 @end

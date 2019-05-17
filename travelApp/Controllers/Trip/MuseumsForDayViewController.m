@@ -12,9 +12,8 @@
 #import "Day+CoreDataClass.h"
 #import "Museum+CoreDataClass.h"
 #import "DayCollectionViewCell.h"
-
-#import "MapViewController.h"
 #import "TARouter.h"
+#import "Constants.h"
 
 @interface MuseumsForDayViewController () <NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
@@ -24,12 +23,12 @@
 @property (nonatomic, strong) UILabel *labelChoose;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, copy) NSDate *selectedDate;
-@property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
+@property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, strong) NSArray<Day *> *sortedDaysArray;
 
 @end
@@ -71,56 +70,56 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addNewMuseums)];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, self.view.frame.size.width - 40, 20)];
+    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, MuseumLabelFirstTopOffset, self.view.frame.size.width - MuseumLabelWidth, MuseumLabelHeight)];
     self.labelName.text = self.trip.name;
-    self.labelName.font = [UIFont systemFontOfSize:20 weight:UIFontWeightSemibold];
+    self.labelName.font = [UIFont systemFontOfSize:MuseumLabelNameFontSize weight:UIFontWeightSemibold];
     self.labelName.numberOfLines = 0;
     [self.labelName setTextColor:[UIColor blackColor]];
     [self.view addSubview:self.labelName];
     
-    self.labelDate = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.labelName.frame) + 10, self.view.frame.size.width - 40, 60)];
+    self.labelDate = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.labelName.frame) + MuseumLabelTopOffset, self.view.frame.size.width - MuseumLabelWidth, MuseumLabelDateHeight)];
     
     NSString *startDateString = [self.dateFormatterFull stringFromDate:self.trip.startDate];
     NSString *startEndString = [self.dateFormatterFull stringFromDate:self.trip.endDate];
     
     self.labelDate.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
-    self.labelDate.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
+    self.labelDate.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
     self.labelDate.numberOfLines = 0;
     [self.labelDate setTextColor:[UIColor grayColor]];
     [self.view addSubview:self.labelDate];
     
-    self.labelChoose = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.labelDate.frame) + 5, self.view.frame.size.width - 40, 20)];
-    self.labelChoose.text = @"Choose ";
-    self.labelChoose.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
+    self.labelChoose = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.labelDate.frame) + MuseumLabelSecondTopOffset, self.view.frame.size.width - MuseumLabelWidth, MuseumLabelHeight)];
+    self.labelChoose.text = @"Choose";
+    self.labelChoose.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
     [self.labelChoose setTextColor:[UIColor blackColor]];
     [self.view addSubview:self.labelChoose];
 }
 
 -(void)prepareCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(50, 50);
-    layout.minimumInteritemSpacing = 5;
+    layout.itemSize = CGSizeMake(MuseumLayoutSize, MuseumLayoutSize);
+    layout.minimumInteritemSpacing = MuseumCollectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.sectionInset = UIEdgeInsetsMake(8.0, 8.0, 8.0, 8.0);
+    layout.sectionInset = UIEdgeInsetsMake(MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets);
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.labelChoose.frame) + 20, self.view.frame.size.width - 50, 50) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(MuseumCollectionViewTopOffset, CGRectGetMaxY(self.labelChoose.frame) + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumCollectionViewWidth, MuseumCollectionViewHeight) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    [self.collectionView registerClass:[DayCollectionViewCell class] forCellWithReuseIdentifier:@"CellDay"];
+    [self.collectionView registerClass:[DayCollectionViewCell class] forCellWithReuseIdentifier:MuseumsViewControllerCollectionCellIdentifier];
     
     [self.view addSubview:self.collectionView];
 }
 
 -(void)prepareTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.collectionView.frame) + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 110 - CGRectGetMaxY(self.collectionView.frame) - 20)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.collectionView.frame) + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumTableViewWidth, self.view.frame.size.height - MuseumTableViewHeight - CGRectGetMaxY(self.collectionView.frame))];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellMuseum"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MuseumsViewControllerTableCellIdentifier];
     
     [self.view addSubview:self.tableView];
 }
@@ -143,24 +142,6 @@
     ChooseMuseumViewController *newVC = [[ChooseMuseumViewController alloc] initWithTrip:self.trip];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:newVC];
     [self presentViewController:navVC animated:YES completion:nil];
-}
-
--(void)testFunction {
-    NSError *error;
-    NSFetchRequest *fetch = [[NSFetchRequest alloc] initWithEntityName:@"Day"];
-    NSArray *result = [self.coreDataContext executeFetchRequest: fetch error:&error];
-    if (result.count > 0) {
-        for (int i = 0; i < result.count; i++) {
-            Day *day = [result objectAtIndex:i];
-            NSLog(@"%@", day.date);
-            NSSet *set = [[NSSet alloc] initWithSet:day.museums];
-            NSArray<Museum *> *array = [set allObjects];
-            for (int j = 0; j < array.count; j++) {
-                NSLog(@"%@", array[j].name);
-                NSLog(@"%@", array[j].address);
-            }
-        }
-    }
 }
 
 #pragma mark - CoreData Stack
@@ -214,7 +195,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    DayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellDay" forIndexPath:indexPath];
+    DayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MuseumsViewControllerCollectionCellIdentifier forIndexPath:indexPath];
     if (cell) {
         cell.dateLabel.text = [self.dateFormatterShort stringFromDate:self.sortedDaysArray[indexPath.row].date];
         cell.dateLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
@@ -245,7 +226,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellMuseum"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MuseumsViewControllerTableCellIdentifier];
     if (cell) {
         if (self.selectedDate) {
             cell.textLabel.text = self.arrayMuseums[indexPath.row].name;

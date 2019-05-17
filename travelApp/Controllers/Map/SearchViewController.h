@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SearchViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, FoursquareNetworkServiceOutputProtocol>
 
 @property (nonatomic, strong) TAFoursquareNetworkService *networkService;
-
-@property (nonatomic, strong) NSMutableArray<MapPoint *> *dataArray;
 @property (nonatomic, weak) id<SearchViewDelegate> delegate;
 
 @end

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
+#import "Constants.h"
 
 
 @interface AddTripViewController ()
@@ -46,46 +47,46 @@
 }
 
 -(void)prepareDetailsForTrip {
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(40, 100, 100, 60)];
+    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(AddTripLabelNameLeftOffset, AddTripLabelNameTopOffset, AddTripLabelNameWidth, AddTripLabelNameHeight)];
     self.labelName.text = @"Name";
-    self.labelName.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    self.labelName.font = [UIFont systemFontOfSize:AddTripFontSize weight:UIFontWeightSemibold];
     [self.view addSubview:self.labelName];
     
-    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(self.labelName.frame) + 10, self.view.frame.size.width - 60, 0.5)];
+    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(AddTripLineLeftOffset, CGRectGetMaxY(self.labelName.frame) + AddTripLineTopOffset, self.view.frame.size.width - AddTripLineWidth, AddTripLineHeight)];
     line1.backgroundColor = [UIColor grayColor];
     [self.view addSubview:line1];
     
-    self.labelStartDate = [[UILabel alloc] initWithFrame:CGRectMake(40, CGRectGetMaxY(line1.frame) + 10, 100, 60)];
+    self.labelStartDate = [[UILabel alloc] initWithFrame:CGRectMake(AddTripLabelNameLeftOffset, CGRectGetMaxY(line1.frame) + AddTripLabelTopOffset, AddTripLabelNameWidth, AddTripLabelNameHeight)];
     self.labelStartDate.text = @"Start date";
-    self.labelStartDate.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    self.labelStartDate.font = [UIFont systemFontOfSize:AddTripFontSize weight:UIFontWeightSemibold];
     [self.view addSubview:self.labelStartDate];
     
-    UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(self.labelStartDate.frame) + 10, self.view.frame.size.width - 60, 0.5)];
+    UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(AddTripLineLeftOffset, CGRectGetMaxY(self.labelStartDate.frame) + AddTripLineTopOffset, self.view.frame.size.width - AddTripLineWidth, AddTripLineHeight)];
     line2.backgroundColor = [UIColor grayColor];
     [self.view addSubview:line2];
     
-    self.labelEndDate = [[UILabel alloc] initWithFrame:CGRectMake(40, CGRectGetMaxY(line2.frame) + 10, 100, 60)];
+    self.labelEndDate = [[UILabel alloc] initWithFrame:CGRectMake(AddTripLabelNameLeftOffset, CGRectGetMaxY(line2.frame) + AddTripLabelTopOffset, AddTripLabelNameWidth, AddTripLabelNameHeight)];
     self.labelEndDate.text = @"End date";
-    self.labelEndDate.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    self.labelEndDate.font = [UIFont systemFontOfSize:AddTripFontSize weight:UIFontWeightSemibold];
     [self.view addSubview:self.labelEndDate];
     
-    UIView *line3 = [[UIView alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(self.labelEndDate.frame) + 10, self.view.frame.size.width - 60, 0.5)];
+    UIView *line3 = [[UIView alloc] initWithFrame:CGRectMake(AddTripLineLeftOffset, CGRectGetMaxY(self.labelEndDate.frame) + AddTripLineTopOffset, self.view.frame.size.width - AddTripLineWidth, AddTripLineHeight)];
     line3.backgroundColor = [UIColor grayColor];
     [self.view addSubview:line3];
     
-    self.createTripButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 150, CGRectGetMaxY(line3.frame) + 40, 300, 40)];
+    self.createTripButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - AddTripCreateTopOffset, CGRectGetMaxY(line3.frame) + AddTripCreateLeftOffset, AddTripCreateWidth, AddTripCreateHeight)];
     self.createTripButton.backgroundColor = [UIColor blueColor];
     [self.createTripButton setTitle:@"CREATE TRIP" forState:UIControlStateNormal];
     [self.createTripButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.createTripButton.layer.cornerRadius = 10;
+    self.createTripButton.layer.cornerRadius = AddTripCreateCornerRadius;
     self.createTripButton.layer.masksToBounds = YES;
     [self.createTripButton addTarget:self action:@selector(addNewTripAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.createTripButton];
     
-    self.textFieldName = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 230, 100, 200, 60)];
+    self.textFieldName = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width - AddTripFieldLeftOffset, AddTripFieldFirstTopOffset, AddTripFieldWidth, AddTripFieldHeight)];
     self.textFieldName.textAlignment = NSTextAlignmentRight;
     self.textFieldName.placeholder = @"Trip to London";
-    [self.textFieldName setFont:[UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]];
+    [self.textFieldName setFont:[UIFont systemFontOfSize:AddTripFontSize weight:UIFontWeightSemibold]];
     [self.textFieldName setTextColor:[UIColor blueColor]];
     [self.view addSubview:self.textFieldName];
     
@@ -97,19 +98,19 @@
     [self.endDatePicker setDatePickerMode:UIDatePickerModeDate];
     [self.endDatePicker addTarget:self action:@selector(onDateEndPickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     
-    self.textFieldStartDate = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 230, CGRectGetMaxY(line1.frame) + 10, 200, 60)];
+    self.textFieldStartDate = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width - AddTripFieldLeftOffset, CGRectGetMaxY(line1.frame) + AddTripFieldTopOffset, AddTripFieldWidth, AddTripFieldHeight)];
     self.textFieldStartDate.inputView = self.startDatePicker;
     self.textFieldStartDate.textAlignment = NSTextAlignmentRight;
     self.textFieldStartDate.placeholder = @"30/04/2019";
-    [self.textFieldStartDate setFont:[UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]];
+    [self.textFieldStartDate setFont:[UIFont systemFontOfSize:AddTripFontSize weight:UIFontWeightSemibold]];
     [self.textFieldStartDate setTextColor:[UIColor blueColor]];
     [self.view addSubview:self.textFieldStartDate];
     
-    self.textFieldEndDate = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 230, CGRectGetMaxY(line2.frame) + 10, 200, 60)];
+    self.textFieldEndDate = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width - AddTripFieldLeftOffset, CGRectGetMaxY(line2.frame) + AddTripFieldTopOffset, AddTripFieldWidth, AddTripFieldHeight)];
     self.textFieldEndDate.inputView = self.endDatePicker;
     self.textFieldEndDate.textAlignment = NSTextAlignmentRight;
     self.textFieldEndDate.placeholder = @"01/05/2019";
-    [self.textFieldEndDate setFont:[UIFont systemFontOfSize:18 weight:UIFontWeightSemibold]];
+    [self.textFieldEndDate setFont:[UIFont systemFontOfSize:AddTripFontSize weight:UIFontWeightSemibold]];
     [self.textFieldEndDate setTextColor:[UIColor blueColor]];
     [self.view addSubview:self.textFieldEndDate];
 

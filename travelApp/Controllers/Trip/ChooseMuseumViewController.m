@@ -9,6 +9,7 @@
 #import "ChooseMuseumViewController.h"
 #import "DetailMuseumCollectionViewCell.h"
 #import "AddMuseumViewController.h"
+#import "Constants.h"
 
 @interface ChooseMuseumViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -42,15 +43,15 @@
     [self.networkService findMosDataMuseums];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) / 3 - 2.5, CGRectGetWidth(self.view.frame) / 3 - 2.5);
+    layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) / 3 - ChooseMuseumLayout, CGRectGetWidth(self.view.frame) / 3 - ChooseMuseumLayout);
     layout.minimumInteritemSpacing = 0;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.labelName.frame) + 10, self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(self.labelName.frame) - 10) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.labelName.frame) + ChooseMuseumCollectionView, self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(self.labelName.frame) - ChooseMuseumCollectionView) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    [self.collectionView registerClass:[DetailMuseumCollectionViewCell class] forCellWithReuseIdentifier:@"CellCollectionView"];
+    [self.collectionView registerClass:[DetailMuseumCollectionViewCell class] forCellWithReuseIdentifier:ChooseMuseumViewControllerCollectionCellIdentifier];
     
     [self.view addSubview:self.collectionView];
 }
@@ -61,9 +62,9 @@
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 200, 20)];
+    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(ChooseMuseumLeftOffset, ChooseMuseumTopOffset, ChooseMuseumWidth, ChooseMuseumHeight)];
     self.labelName.text = @"Museums near Moscow";
-    self.labelName.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    self.labelName.font = [UIFont systemFontOfSize:ChooseMuseumFont weight:UIFontWeightSemibold];
     [self.labelName setTextColor:[UIColor blackColor]];
     [self.view addSubview:self.labelName];
 }
@@ -81,7 +82,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    DetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellCollectionView" forIndexPath:indexPath];
+    DetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ChooseMuseumViewControllerCollectionCellIdentifier forIndexPath:indexPath];
     NSString *photoNameString = self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]][@"PhotoName"];
     cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", photoNameString]];
     

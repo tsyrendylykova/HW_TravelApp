@@ -7,10 +7,11 @@
 //
 
 #import "SearchViewController.h"
+#import "Constants.h"
 
 @interface SearchViewController ()
 
-
+@property (nonatomic, strong) NSMutableArray<MapPoint *> *dataArray;
 
 @end
 
@@ -19,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SearchViewControllerCellIdentifier];
     self.networkService = [TAFoursquareNetworkService new];
     self.networkService.output = self;
 }
@@ -36,7 +37,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchViewControllerCellIdentifier forIndexPath:indexPath];
     
     MapPoint *point = [MapPoint new];
     if (self.dataArray.count > 0) {
@@ -53,7 +54,6 @@
     MapPoint *mapPoint = [[MapPoint alloc] initWithName:self.dataArray[indexPath.row].name urlImage:self.dataArray[indexPath.row].urlImage address:self.dataArray[indexPath.row].address];
     
     [self.networkService getImageNSDataFromURL: mapPoint.urlImage withCompletionHandler:^(NSData *data) {
-        NSLog(@"%@", mapPoint.urlImage);
         mapPoint.categoryImage = [UIImage imageWithData:data];
     }];
     if (_delegate && [_delegate respondsToSelector:@selector(didSelectRow:)]) {
