@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, strong) NSArray<Day *> *sortedDaysArray;
 @property (nonatomic, strong) MuseumsForDayView *museumsForDay;
+//@property (nonatomic, strong) UILabel *labelShow;
 
 @end
 
@@ -60,6 +61,7 @@
     [self prepareUI];
     [self prepareCollectionView];
     [self prepareTableView];
+    self.tableView.alpha = 0;
 }
 
 -(void)prepareUI {
@@ -80,7 +82,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets);
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(MuseumCollectionViewTopOffset, self.view.frame.size.height * 0.25 + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumCollectionViewWidth, MuseumCollectionViewHeight) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(MuseumCollectionViewTopOffset, CGRectGetMaxY(self.museumsForDay.frame) + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumCollectionViewWidth, MuseumCollectionViewHeight) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
@@ -195,6 +197,12 @@
     
     [self.tableView reloadData];
     [self.collectionView reloadData];
+    
+    [UIView animateWithDuration:1 animations:^{
+        self.museumsForDay.labelShow.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.tableView.alpha = 1;
+    }];
 }
 
 #pragma mark - UITableViewDataSource

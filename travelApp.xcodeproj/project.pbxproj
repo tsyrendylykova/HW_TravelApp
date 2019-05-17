@@ -138,9 +138,7 @@
 				95A20671228EE48300583AC4 /* AddNewTripView */,
 				95A20672228EE4F200583AC4 /* MuseumsForDayView.h */,
 				95A20673228EE4F200583AC4 /* MuseumsForDayView.m */,
-				95A20675228EEB4500583AC4 /* AddMuseumView.h */,
-				95A20676228EEB4500583AC4 /* AddMuseumView.m */,
-				95A20678228EEFDC00583AC4 /* AddMuseumDelegate.h */,
+				9562AE9E228F0F3C002222F1 /* AddMuseumView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +195,16 @@
 				95A20669228D912300583AC4 /* TARouterProtocol.h */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		9562AE9E228F0F3C002222F1 /* AddMuseumView */ = {
+			isa = PBXGroup;
+			children = (
+				95A20675228EEB4500583AC4 /* AddMuseumView.h */,
+				95A20676228EEB4500583AC4 /* AddMuseumView.m */,
+				95A20678228EEFDC00583AC4 /* AddMuseumDelegate.h */,
+			);
+			path = AddMuseumView;
 			sourceTree = "<group>";
 		};
 		9571FC78226F16F900602FB4 = {

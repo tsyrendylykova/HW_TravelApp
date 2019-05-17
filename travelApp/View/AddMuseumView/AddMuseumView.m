@@ -19,8 +19,6 @@
 @property (nonatomic, strong) UILabel *labelAddress;
 @property (nonatomic, strong) NSArray *weekDays;
 @property (nonatomic, strong) UIButton *buttonAdd;
-//@property (nonatomic, strong) UIPickerView *picker;
-//@property (nonatomic, strong) UIToolbar *toolBar;
 
 @end
 
@@ -38,6 +36,7 @@
 }
 
 -(void)prepareUI {
+    self.backgroundColor = [UIColor whiteColor];
 
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * AddMuseumImagePartHeight)];
     self.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.jpg", (long)self.rowNumber + 1]];

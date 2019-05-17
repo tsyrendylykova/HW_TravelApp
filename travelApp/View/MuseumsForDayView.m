@@ -56,6 +56,13 @@
     self.labelChoose.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
     [self.labelChoose setTextColor:[UIColor blackColor]];
     [self addSubview:self.labelChoose];
+    
+    self.labelShow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.labelChoose.frame) + 100, [UIScreen mainScreen].bounds.size.width, 40)];
+    self.labelShow.text = @"Выберите даты";
+    self.labelShow.font = [UIFont systemFontOfSize:22 weight:UIFontWeightSemibold];
+    self.labelShow.textColor = [UIColor blackColor];
+    self.labelShow.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.labelShow];
 }
 
 -(void)prepareDateFormatter {
