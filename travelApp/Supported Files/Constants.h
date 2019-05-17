@@ -45,8 +45,8 @@ static CGFloat const AddTripLineTopOffset = 10;
 static CGFloat const AddTripLineWidth = 60;
 static CGFloat const AddTripLineHeight = 0.5;
 
-static CGFloat const AddTripCreateLeftOffset = 150;
-static CGFloat const AddTripCreateTopOffset = 40;
+static CGFloat const AddTripCreateTopOffset = 150;
+static CGFloat const AddTripCreateLeftOffset = 40;
 static CGFloat const AddTripCreateWidth = 300;
 static CGFloat const AddTripCreateHeight = 40;
 static CGFloat const AddTripCreateCornerRadius = 10;
