@@ -30,12 +30,11 @@
     createTripNC.tabBarItem.image = [UIImage imageNamed:@"trip"];
     
     ProfileViewController *profileViewVC = [ProfileViewController new];
-    UINavigationController *profileNC = [[UINavigationController alloc] initWithRootViewController:profileViewVC];
-    profileNC.tabBarItem.title = @"Profile";
-    profileNC.tabBarItem.image = [UIImage imageNamed:@"profile"];
+    profileViewVC.tabBarItem.title = @"Profile";
+    profileViewVC.tabBarItem.image = [UIImage imageNamed:@"profile"];
     
     
-    NSArray *array = @[mapVC, createTripNC, profileNC];
+    NSArray *array = @[mapVC, createTripNC, profileViewVC];
     
     router.tabBarController.tabBar.translucent = YES;
     router.tabBarController.tabBar.tintColor = [UIColor blackColor];

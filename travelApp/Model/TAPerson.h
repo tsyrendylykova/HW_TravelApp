@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TAPerson : NSObject
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *sirName;
+@property (nonatomic, assign) NSInteger *age;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *preferences;
+
 -(instancetype)initWithName: (NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences;
 
 @end

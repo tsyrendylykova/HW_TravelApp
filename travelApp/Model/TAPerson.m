@@ -8,15 +8,6 @@
 
 #import "TAPerson.h"
 
-@interface TAPerson ()
-
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, assign) NSInteger *age;
-@property (nonatomic, strong) NSString *address;
-@property (nonatomic, strong) NSString *preferences;
-
-@end
-
 @implementation TAPerson
 
 -(instancetype)initWithName: (NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences {

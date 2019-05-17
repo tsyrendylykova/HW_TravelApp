@@ -26,6 +26,7 @@
 		95217C502282C120007A3E02 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */; };
 		95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */; };
 		95217C5E2289FC7D007A3E02 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TARouter.m */; };
+		9562AEA1228F1F4E002222F1 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA0228F1F4E002222F1 /* ProfileView.m */; };
 		9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC85226F16F900602FB4 /* AppDelegate.m */; };
 		9571FC8C226F16F900602FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC8A226F16F900602FB4 /* Main.storyboard */; };
 		9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */; };
@@ -84,6 +85,8 @@
 		95217C552288929C007A3E02 /* TAMosDataNetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMosDataNetworkServiceProtocol.h; sourceTree = "<group>"; };
 		95217C5C2289FC7D007A3E02 /* TARouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARouter.h; sourceTree = "<group>"; };
 		95217C5D2289FC7D007A3E02 /* TARouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARouter.m; sourceTree = "<group>"; };
+		9562AE9F228F1F4E002222F1 /* ProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		9562AEA0228F1F4E002222F1 /* ProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		9571FC81226F16F900602FB4 /* travelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9571FC84226F16F900602FB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9571FC85226F16F900602FB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				95A20672228EE4F200583AC4 /* MuseumsForDayView.h */,
 				95A20673228EE4F200583AC4 /* MuseumsForDayView.m */,
 				9562AE9E228F0F3C002222F1 /* AddMuseumView */,
+				9562AE9F228F1F4E002222F1 /* ProfileView.h */,
+				9562AEA0228F1F4E002222F1 /* ProfileView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				952178EF227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m in Sources */,
 				9571FCA2226F1BC200602FB4 /* TripsViewController.m in Sources */,
 				9571FCA5226F1BEF00602FB4 /* ProfileViewController.m in Sources */,
+				9562AEA1228F1F4E002222F1 /* ProfileView.m in Sources */,
 				9521788E22788278007A3E02 /* TAPerson.m in Sources */,
 				95217961227CBA4E007A3E02 /* AddMuseumViewController.m in Sources */,
 				9571FCBD2270A41700602FB4 /* TAFoursquareNetworkService.m in Sources */,
