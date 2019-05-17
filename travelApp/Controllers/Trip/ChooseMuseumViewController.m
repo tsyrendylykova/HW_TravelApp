@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableDictionary *dictInfo;
+@property (nonatomic, strong) UIActivityIndicatorView *activityView;
 
 @end
 
@@ -34,6 +35,14 @@
     [super viewDidLoad];
     
     [self prepareUI];
+    [self prepareCollectionView];
+    
+    self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    self.activityView.center = self.view.center;
+    self.activityView.color = [UIColor blackColor];
+    [self.activityView startAnimating];
+    [self.view addSubview:self.activityView];
     
     self.dictInfo = [NSMutableDictionary new];
     
@@ -41,7 +50,9 @@
     self.networkService.output = self;
     
     [self.networkService findMosDataMuseums];
-    
+}
+
+-(void)prepareCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) / 3 - ChooseMuseumLayout, CGRectGetWidth(self.view.frame) / 3 - ChooseMuseumLayout);
     layout.minimumInteritemSpacing = 0;
@@ -67,6 +78,7 @@
     self.labelName.font = [UIFont systemFontOfSize:ChooseMuseumFont weight:UIFontWeightSemibold];
     [self.labelName setTextColor:[UIColor blackColor]];
     [self.view addSubview:self.labelName];
+    
 }
 
 #pragma mark - Actions
@@ -115,7 +127,7 @@
         
         [self.dictInfo setObject:dict forKey:[NSString stringWithFormat:@"%@", elem[@"Number"]]];
     }
-    
+    [self.activityView stopAnimating];
     [self.collectionView reloadData];
 }
 
