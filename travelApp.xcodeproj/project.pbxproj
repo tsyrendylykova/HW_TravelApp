@@ -137,11 +137,11 @@
 		9521784B22735ECA007A3E02 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				95A2066A228D95C500583AC4 /* Cells */,
 				95A20671228EE48300583AC4 /* AddNewTripView */,
+				9562AE9E228F0F3C002222F1 /* AddMuseumView */,
+				95A2066A228D95C500583AC4 /* Cells */,
 				95A20672228EE4F200583AC4 /* MuseumsForDayView.h */,
 				95A20673228EE4F200583AC4 /* MuseumsForDayView.m */,
-				9562AE9E228F0F3C002222F1 /* AddMuseumView */,
 				9562AE9F228F1F4E002222F1 /* ProfileView.h */,
 				9562AEA0228F1F4E002222F1 /* ProfileView.m */,
 			);

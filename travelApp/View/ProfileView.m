@@ -31,7 +31,7 @@
     [self addSubview:topView];
     
     UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.3, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.3)];
-    centerView.backgroundColor = [UIColor colorWithRed:216/255.0 green:208/255.0 blue:195/255.0 alpha:0.1];
+    centerView.backgroundColor = [UIColor colorWithRed:216/255.0 green:208/255.0 blue:195/255.0 alpha:0.15];
     [self addSubview:centerView];
     
     UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.4, [UIScreen mainScreen].bounds.size.width, 30)];
