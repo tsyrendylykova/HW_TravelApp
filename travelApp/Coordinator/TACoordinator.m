@@ -41,7 +41,6 @@
     router.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
     
     router.tabBarController.viewControllers = array;
-//    router.tabBarController.selectedIndex = 1;
     
     return router;
 }

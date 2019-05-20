@@ -17,7 +17,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UILabel *labelAddress;
-@property (nonatomic, strong) NSArray *weekDays;
+@property (nonatomic, copy) NSArray *weekDays;
 @property (nonatomic, strong) UIButton *buttonAdd;
 
 @end

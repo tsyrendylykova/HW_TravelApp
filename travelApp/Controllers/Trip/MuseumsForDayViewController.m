@@ -26,8 +26,8 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) NSArray<Museum *> *arrayMuseums;
-@property (nonatomic, strong) NSArray<Day *> *sortedDaysArray;
+@property (nonatomic, copy) NSArray<Museum *> *arrayMuseums;
+@property (nonatomic, copy) NSArray<Day *> *sortedDaysArray;
 @property (nonatomic, strong) MuseumsForDayView *museumsForDay;
 //@property (nonatomic, strong) UILabel *labelShow;
 

@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) NSDate *selectedDateInPicker;
 @property (nonatomic, strong) NSMutableArray<NSDate *> *availableDates;
-@property (nonatomic, strong) NSDictionary *weakDaysEnRu;
+@property (nonatomic, copy) NSDictionary *weakDaysEnRu;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) AddMuseumView *addMuseumView;
