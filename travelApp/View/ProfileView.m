@@ -51,7 +51,7 @@
     iconView.contentMode = UIViewContentModeScaleAspectFit;
     iconView.backgroundColor = [UIColor whiteColor];
     iconView.layer.cornerRadius = iconView.frame.size.height / 2;
-    iconView.layer.masksToBounds = YES;
+    iconView.layer.masksToBounds = @YES;
     [self addSubview:iconView];
 }
 

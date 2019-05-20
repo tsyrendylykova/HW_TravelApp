@@ -16,7 +16,7 @@
     if (self) {
         UIView *cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
         cellView.layer.cornerRadius = 10;
-        cellView.layer.masksToBounds = YES;
+        cellView.layer.masksToBounds = @YES;
         cellView.layer.borderWidth = 3.0;
         cellView.layer.borderColor = [UIColor blackColor].CGColor;
         [self.contentView addSubview:cellView];
@@ -24,7 +24,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame) * 0.7)];
         _coverImageView = imageView;
         _coverImageView.layer.cornerRadius = 10;
-        _coverImageView.layer.masksToBounds = YES;
+        _coverImageView.layer.masksToBounds = @YES;
         [self.contentView addSubview:_coverImageView];
         
         _name = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetHeight(frame) * 0.7, CGRectGetWidth(frame) - 10, CGRectGetHeight(frame) * 0.1)];

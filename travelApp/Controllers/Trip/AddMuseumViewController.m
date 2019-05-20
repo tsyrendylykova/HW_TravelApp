@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.weakDaysEnRu = [NSDictionary dictionaryWithObjectsAndKeys:@"понедельник", @"Monday",  @"вторник", @"Tuesday", @"среда", @"Wednesday", @"четверг", @"Thursday", @"пятница", @"Friday", @"суббота", @"Saturday", @"воскресенье", @"Sunday", nil];
+    self.weakDaysEnRu = @{@"понедельник": @"Monday", @"вторник": @"Tuesday", @"среда": @"Wednesday", @"четверг": @"Thursday", @"пятница": @"Friday", @"суббота": @"Saturday", @"воскресенье": @"Sunday"};
     [self chooseAvailableDaysForMuseum];
     self.addMuseumView = [[AddMuseumView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) trip:self.trip info:self.info rowNumber:self.rowNumber];
     self.addMuseumView.addNewMuseumDelegate = self;
@@ -59,16 +59,15 @@
 -(void)prepareUI {
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * AddMuseumPickerPartTopOffset + AddMuseumPickerTopOffset, self.view.frame.size.width, self.view.frame.size.height * AddMuseumPickerPartHeight)];
     self.picker.backgroundColor = [UIColor whiteColor];
-    self.picker.showsSelectionIndicator = YES;
+    self.picker.showsSelectionIndicator = @YES;
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
     self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * AddMuseumToolbarPartTopOffset, self.view.frame.size.width, AddMuseumToolbarHeight)];
     self.toolBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
-    // add cancel button
     
-    [self.toolBar setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+    self.toolBar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton];
     
     [self.view addSubview:self.toolBar];
     [self.view addSubview:self.picker];

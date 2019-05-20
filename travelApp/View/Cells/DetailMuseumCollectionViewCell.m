@@ -17,7 +17,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
         _coverImageView = imageView;
         _coverImageView.layer.cornerRadius = CGRectGetHeight(frame) / 2;
-        _coverImageView.layer.masksToBounds = YES;
+        _coverImageView.layer.masksToBounds = @YES;
         [self.contentView addSubview:_coverImageView];
         
     }

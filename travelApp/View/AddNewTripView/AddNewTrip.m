@@ -65,12 +65,12 @@
     [self addSubview:line3];
     
     self.createTripButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - AddTripCreateTopOffset, CGRectGetMaxY(line3.frame) + AddTripCreateLeftOffset, AddTripCreateWidth, AddTripCreateHeight)];
-    self.createTripButton.userInteractionEnabled = YES;
+    self.createTripButton.userInteractionEnabled = @YES;
     self.createTripButton.backgroundColor = [UIColor blueColor];
     [self.createTripButton setTitle:@"CREATE TRIP" forState:UIControlStateNormal];
     [self.createTripButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.createTripButton.layer.cornerRadius = AddTripCreateCornerRadius;
-    self.createTripButton.layer.masksToBounds = YES;
+    self.createTripButton.layer.masksToBounds = @YES;
     [self.createTripButton addTarget:self action:@selector(addNewTripButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.createTripButton];
     

@@ -53,7 +53,7 @@
     self.navBar.backgroundColor = [UIColor whiteColor];
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Sightseeing"];
     item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"magnifier"] style:UIBarButtonItemStyleDone target:self action:@selector(didTapSearchButton)];
-    self.navBar.items = [NSArray arrayWithObjects:item, nil];
+    self.navBar.items = @[item];
     [self.view addSubview:self.navBar];
 }
 

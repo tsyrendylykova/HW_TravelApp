@@ -25,7 +25,7 @@
     self.contentView.layer.borderWidth = 0.5;
     self.contentView.layer.borderColor = [UIColor blackColor].CGColor;
     self.contentView.layer.cornerRadius = 25;
-    self.contentView.layer.masksToBounds = YES;
+    self.contentView.layer.masksToBounds = @YES;
     [self.contentView addSubview:_dateLabel];
 }
 

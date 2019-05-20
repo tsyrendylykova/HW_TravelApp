@@ -23,8 +23,8 @@
 -(MKAnnotationView *)annotationView {
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"myCustomAnnotation"];
     
-    annotationView.enabled = YES;
-    annotationView.canShowCallout = YES;
+    annotationView.enabled = @YES;
+    annotationView.canShowCallout = @YES;
     annotationView.image = [UIImage imageNamed:@"pin"];
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     return annotationView;

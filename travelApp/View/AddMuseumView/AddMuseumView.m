@@ -56,7 +56,7 @@
     [self.labelAddress setTextColor:[UIColor grayColor]];
     [self addSubview:self.labelAddress];
     
-    self.weekDays = [NSArray arrayWithObjects:@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье", nil];
+    self.weekDays = @[@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье"];
 
     CGFloat y = CGRectGetMaxY(self.labelAddress.frame) + AddMuseumDayTopOffset;
     for (int i = 0; i < 7; i++) {

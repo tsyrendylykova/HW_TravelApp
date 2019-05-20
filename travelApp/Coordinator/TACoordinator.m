@@ -25,7 +25,7 @@
     mapVC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
     TripsViewController *createTripVC = [TripsViewController new];
-    UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:createTripVC]; // VC не UINAV
+    UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:createTripVC];
     createTripNC.tabBarItem.title = @"New trip";
     createTripNC.tabBarItem.image = [UIImage imageNamed:@"trip"];
     
@@ -36,7 +36,7 @@
     
     NSArray *array = @[mapVC, createTripNC, profileViewVC];
     
-    router.tabBarController.tabBar.translucent = YES;
+    router.tabBarController.tabBar.translucent = @YES;
     router.tabBarController.tabBar.tintColor = [UIColor blackColor];
     router.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
     
@@ -48,10 +48,10 @@
 -(void)showMuseumOnMapWithAnnotation:(TACustomAnnotation *)annotation {
     
     UITabBarController *tabBarC = (UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
-    MapViewController *mapViewController = [tabBarC.viewControllers objectAtIndex:0];
+    MapViewController *mapViewController = tabBarC.viewControllers[0];
     mapViewController.annotation = annotation;
     [tabBarC setSelectedIndex:0];
-    [tabBarC setSelectedViewController:[tabBarC.viewControllers objectAtIndex:0]];
+    [tabBarC setSelectedViewController:tabBarC.viewControllers[0]];
 }
 
 @end
