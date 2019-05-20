@@ -11,6 +11,9 @@
 #import "MapViewController.h"
 #import "TripsViewController.h"
 #import "ProfileViewController.h"
+#import "CoreDataProvider.h"
+#import "AddMuseumViewController.h"
+#import "TLAAddTripService.h"
 
 @implementation TACoordinator
 
@@ -24,7 +27,28 @@
     mapVC.tabBarItem.title = @"Map";
     mapVC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
+    CoreDataProvider *coreDataProvider = [CoreDataProvider new];
+    
     TripsViewController *createTripVC = [TripsViewController new];
+    AddTripViewController *addTripVC = [AddTripViewController new];
+    MuseumsForDayViewController *museumForDayVC = [MuseumsForDayViewController new];
+    ChooseMuseumViewController *chooseMuseumVC = [ChooseMuseumViewController new];
+    AddMuseumViewController *addMuseumVC = [AddMuseumViewController new];
+    
+    createTripVC.tripsService = [[TLATripsService alloc] initWithCoreDataProvider:coreDataProvider];
+    addTripVC.addTripService = [[TLAAddTripService alloc] initWithCoreDataProvider:coreDataProvider];
+    museumForDayVC.museumsForDayService = [[TLAMuseumsForDayService alloc] initWithCoreDataProvider:coreDataProvider];
+    addMuseumVC.addMuseumService = [[TLAAddMuseumService alloc] initWithCoreDataProvider:coreDataProvider];
+    
+    createTripVC.addTripVC = addTripVC;
+    chooseMuseumVC.addMuseumVC = addMuseumVC;
+    museumForDayVC.chooseMuseumVC = chooseMuseumVC;
+    createTripVC.museumForDayVC = museumForDayVC;
+    
+    AddTripViewController *addVC = [AddTripViewController new];
+    addVC.addTripService = [[TLAAddTripService alloc] initWithCoreDataProvider:coreDataProvider];
+    createTripVC.addTripVC = addVC;
+    
     UINavigationController *createTripNC = [[UINavigationController alloc] initWithRootViewController:createTripVC];
     createTripNC.tabBarItem.title = @"New trip";
     createTripNC.tabBarItem.image = [UIImage imageNamed:@"trip"];

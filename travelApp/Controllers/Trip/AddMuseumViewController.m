@@ -17,9 +17,7 @@
 
 @interface AddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate, AddMuseumDelegate>
 
-@property (nonatomic, strong) Trip *trip;
-@property (nonatomic, assign) NSInteger rowNumber;
-@property (nonatomic, strong) NSMutableDictionary *info;
+
 @property (nonatomic, strong) UIPickerView *picker;
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) NSDate *selectedDateInPicker;
@@ -32,16 +30,6 @@
 @end
 
 @implementation AddMuseumViewController
-
--(instancetype)initWithTrip: (Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info {
-    self = [super init];
-    if (self) {
-        _trip = trip;
-        _rowNumber = rowNumber;
-        _info = info;
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -97,23 +85,8 @@
     [self.toolBar setHidden:YES];
     [self.picker setHidden:YES];
     
-    Museum *museum = [NSEntityDescription insertNewObjectForEntityForName:@"Museum" inManagedObjectContext:self.coreDataContext];
-    museum.name = self.info[@"CommonName"];
-    museum.address = self.info[@"Address"];
-    museum.museumId = [NSString stringWithFormat:@"%ld", (long)self.rowNumber];
-    museum.latitude = [self.info[@"Coordinates"][1] doubleValue];
-    museum.longitude = [self.info[@"Coordinates"][0] doubleValue];
-    
-    Day *dayInTrip = [self.trip dayForDate:self.selectedDateInPicker];
-    [dayInTrip addMuseumsObject:museum];
-    
-    NSError *error;
-    if (![museum.managedObjectContext save:&error]) {
-        NSLog(@"Не удалось сохранить объект");
-        NSLog(@"%@, %@", error, error.localizedDescription);
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self.addMuseumService saveWithInfo:self.info rowNumber:self.rowNumber trip:self.trip electedDateInPicker:self.selectedDateInPicker];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
@@ -132,17 +105,6 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.selectedDateInPicker = self.availableDates[row];
-}
-
-#pragma mark - CoreData Stack
-
-- (NSManagedObjectContext *)coreDataContext
-{
-    UIApplication *application = [UIApplication sharedApplication];
-    NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).persistentContainer;
-    NSManagedObjectContext *context = container.viewContext;
-    
-    return context;
 }
 
 #pragma mark - Methods

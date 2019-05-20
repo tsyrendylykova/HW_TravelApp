@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Trip+CoreDataClass.h"
+#import "TLAAddMuseumService.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddMuseumViewController : UIViewController
 
--(instancetype)initWithTrip: (Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info;
+@property (nonatomic, strong) TLAAddMuseumService *addMuseumService;
+@property (nonatomic, strong) Trip *trip;
+@property (nonatomic, assign) NSInteger rowNumber;
+@property (nonatomic, strong) NSMutableDictionary *info;
 
 @end
 

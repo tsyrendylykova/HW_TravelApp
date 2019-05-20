@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "TAMosDataNetworkService.h"
 #import "Trip+CoreDataClass.h"
+#import "AddMuseumViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ChooseMuseumViewController : UIViewController <MosDataNetworkServiceOutputProtocol>
 
--(instancetype)initWithTrip: (Trip *)trip;
-
+@property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) TAMosDataNetworkService *networkService;
+@property (nonatomic, strong) AddMuseumViewController *addMuseumVC;
 
 @end
 

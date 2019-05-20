@@ -9,12 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Trip+CoreDataClass.h"
 #import "TACoordinator.h"
+#import "CoreDataProvider.h"
+#import "TLAMuseumsForDayService.h"
+#import "ChooseMuseumViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MuseumsForDayViewController : UIViewController
 
--(instancetype)initWithTrip: (Trip *)trip;
+@property (nonatomic, strong) Trip *trip;
+@property (nonatomic, strong) TLAMuseumsForDayService *museumsForDayService;
+@property (nonatomic, strong) ChooseMuseumViewController *chooseMuseumVC;
 
 @end
 

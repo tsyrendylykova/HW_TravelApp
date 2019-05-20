@@ -7,29 +7,21 @@
 //
 
 #import "TripsViewController.h"
-#import "AddTripViewController.h"
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
-#import "MuseumsForDayViewController.h"
 #import "MuseumCollectionViewCell.h"
 #import "Constants.h"
 
 @import CoreData;
 
-@interface TripsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
+@interface TripsViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
 @implementation TripsViewController
-
-- (void)dealloc
-{
-    _fetchedResultsController.delegate = nil;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,7 +49,7 @@
     [super viewWillAppear:animated];
     
     NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    [self.tripsService.fetchedResultsController performFetch:&error];
     if (error) {
         NSLog(@"Error");
     }
@@ -84,15 +76,15 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.fetchedResultsController.sections.count;
+    return self.tripsService.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.fetchedResultsController.fetchedObjects.count;
+    return self.tripsService.fetchedResultsController.fetchedObjects.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TripsViewControllerCellIdentifier forIndexPath:indexPath];
-    Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Trip *trip = [self.tripsService.fetchedResultsController objectAtIndexPath:indexPath];
     
     if (trip) {
         cell.coverImageView.image = [UIImage imageNamed:@"sun2"];
@@ -104,58 +96,17 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    MuseumsForDayViewController *chooseMuseumVC = [[MuseumsForDayViewController alloc] initWithTrip:trip];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:chooseMuseumVC];
+    Trip *trip = [self.tripsService.fetchedResultsController objectAtIndexPath:indexPath];
+    self.museumForDayVC.trip = trip;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.museumForDayVC];
     [self presentViewController:navVC animated:YES completion:nil];
 }
 
 #pragma mark - Actions
 
 -(void)presentNewTrip {
-    AddTripViewController *addTripVC = [AddTripViewController new];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:addTripVC];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.addTripVC];
     [self presentViewController:navVC animated:YES completion:nil];
-}
-
-#pragma mark - CoreData Stack
-
-- (NSManagedObjectContext *)coreDataContext
-{
-    UIApplication *application = [UIApplication sharedApplication];
-    NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).
-    persistentContainer;
-    NSManagedObjectContext *context = container.viewContext;
-    
-    return context;
-}
-
-
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (_fetchedResultsController)
-    {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:NSStringFromClass([Trip class]) inManagedObjectContext:self.coreDataContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"startDate" ascending:YES]]];
-    [fetchRequest setFetchBatchSize:20];
-    
-    NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:self.coreDataContext sectionNameKeyPath:nil
-                                                   cacheName:nil];
-    
-    _fetchedResultsController = theFetchedResultsController;
-    _fetchedResultsController.delegate = self;
-    
-    return _fetchedResultsController;
-    
 }
 
 @end

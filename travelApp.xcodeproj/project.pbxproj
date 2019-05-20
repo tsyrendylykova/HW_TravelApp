@@ -27,6 +27,12 @@
 		95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */; };
 		95217C5E2289FC7D007A3E02 /* TACoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TACoordinator.m */; };
 		9562AEA1228F1F4E002222F1 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA0228F1F4E002222F1 /* ProfileView.m */; };
+		9562AEA42292CFB8002222F1 /* CoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA32292CFB8002222F1 /* CoreDataProvider.m */; };
+		9562AEA92292DE26002222F1 /* TLAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA82292DE26002222F1 /* TLAService.m */; };
+		9562AEAC2292DF1A002222F1 /* TLATripsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEAB2292DF1A002222F1 /* TLATripsService.m */; };
+		9562AEAF2292E2C3002222F1 /* TLAAddTripService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEAE2292E2C3002222F1 /* TLAAddTripService.m */; };
+		9562AEB22292E846002222F1 /* TLAMuseumsForDayService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEB12292E846002222F1 /* TLAMuseumsForDayService.m */; };
+		9562AEB52292EB5D002222F1 /* TLAAddMuseumService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEB42292EB5D002222F1 /* TLAAddMuseumService.m */; };
 		9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC85226F16F900602FB4 /* AppDelegate.m */; };
 		9571FC8C226F16F900602FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC8A226F16F900602FB4 /* Main.storyboard */; };
 		9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */; };
@@ -87,6 +93,18 @@
 		95217C5D2289FC7D007A3E02 /* TACoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACoordinator.m; sourceTree = "<group>"; };
 		9562AE9F228F1F4E002222F1 /* ProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
 		9562AEA0228F1F4E002222F1 /* ProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		9562AEA22292CFB8002222F1 /* CoreDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataProvider.h; sourceTree = "<group>"; };
+		9562AEA32292CFB8002222F1 /* CoreDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataProvider.m; sourceTree = "<group>"; };
+		9562AEA72292DE26002222F1 /* TLAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAService.h; sourceTree = "<group>"; };
+		9562AEA82292DE26002222F1 /* TLAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAService.m; sourceTree = "<group>"; };
+		9562AEAA2292DF1A002222F1 /* TLATripsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLATripsService.h; sourceTree = "<group>"; };
+		9562AEAB2292DF1A002222F1 /* TLATripsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLATripsService.m; sourceTree = "<group>"; };
+		9562AEAD2292E2C3002222F1 /* TLAAddTripService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddTripService.h; sourceTree = "<group>"; };
+		9562AEAE2292E2C3002222F1 /* TLAAddTripService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddTripService.m; sourceTree = "<group>"; };
+		9562AEB02292E846002222F1 /* TLAMuseumsForDayService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMuseumsForDayService.h; sourceTree = "<group>"; };
+		9562AEB12292E846002222F1 /* TLAMuseumsForDayService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMuseumsForDayService.m; sourceTree = "<group>"; };
+		9562AEB32292EB5D002222F1 /* TLAAddMuseumService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddMuseumService.h; sourceTree = "<group>"; };
+		9562AEB42292EB5D002222F1 /* TLAAddMuseumService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddMuseumService.m; sourceTree = "<group>"; };
 		9571FC81226F16F900602FB4 /* travelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9571FC84226F16F900602FB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9571FC85226F16F900602FB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -212,6 +230,42 @@
 			path = AddMuseumView;
 			sourceTree = "<group>";
 		};
+		9562AEA52292D00F002222F1 /* CoreDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9562AEA22292CFB8002222F1 /* CoreDataProvider.h */,
+				9562AEA32292CFB8002222F1 /* CoreDataProvider.m */,
+			);
+			path = CoreDataProvider;
+			sourceTree = "<group>";
+		};
+		9562AEA62292D022002222F1 /* CoreDataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9562AEB62292F47A002222F1 /* Services */,
+				952178732278547F007A3E02 /* CoreDataModel */,
+				9562AEA52292D00F002222F1 /* CoreDataProvider */,
+			);
+			path = CoreDataLayer;
+			sourceTree = "<group>";
+		};
+		9562AEB62292F47A002222F1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9562AEA72292DE26002222F1 /* TLAService.h */,
+				9562AEA82292DE26002222F1 /* TLAService.m */,
+				9562AEAA2292DF1A002222F1 /* TLATripsService.h */,
+				9562AEAB2292DF1A002222F1 /* TLATripsService.m */,
+				9562AEAD2292E2C3002222F1 /* TLAAddTripService.h */,
+				9562AEAE2292E2C3002222F1 /* TLAAddTripService.m */,
+				9562AEB02292E846002222F1 /* TLAMuseumsForDayService.h */,
+				9562AEB12292E846002222F1 /* TLAMuseumsForDayService.m */,
+				9562AEB32292EB5D002222F1 /* TLAAddMuseumService.h */,
+				9562AEB42292EB5D002222F1 /* TLAAddMuseumService.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9571FC78226F16F900602FB4 = {
 			isa = PBXGroup;
 			children = (
@@ -238,7 +292,7 @@
 				9571FCC22271DDD900602FB4 /* Model */,
 				9521784B22735ECA007A3E02 /* View */,
 				9571FCA6226F1BF600602FB4 /* Controllers */,
-				952178732278547F007A3E02 /* CoreDataModel */,
+				9562AEA62292D022002222F1 /* CoreDataLayer */,
 				9571FCBA22709F2800602FB4 /* Network */,
 				95217C5B2289D5F8007A3E02 /* Coordinator */,
 				95A2066B228D989300583AC4 /* Supported Files */,
@@ -422,9 +476,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9562AEA92292DE26002222F1 /* TLAService.m in Sources */,
 				95217884227878F6007A3E02 /* Day+CoreDataClass.m in Sources */,
 				95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */,
 				95A20674228EE4F200583AC4 /* MuseumsForDayView.m in Sources */,
+				9562AEAC2292DF1A002222F1 /* TLATripsService.m in Sources */,
 				9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */,
 				9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */,
 				95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */,
@@ -441,6 +497,7 @@
 				95217891227B2F1B007A3E02 /* MuseumsForDayViewController.m in Sources */,
 				95A2066F228EAE2700583AC4 /* AddNewTrip.m in Sources */,
 				9571FCC52271E05900602FB4 /* DetailPointViewController.m in Sources */,
+				9562AEAF2292E2C3002222F1 /* TLAAddTripService.m in Sources */,
 				952178EF227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m in Sources */,
 				9571FCA2226F1BC200602FB4 /* TripsViewController.m in Sources */,
 				9571FCA5226F1BEF00602FB4 /* ProfileViewController.m in Sources */,
@@ -449,12 +506,15 @@
 				95217961227CBA4E007A3E02 /* AddMuseumViewController.m in Sources */,
 				9571FCBD2270A41700602FB4 /* TAFoursquareNetworkService.m in Sources */,
 				95217C5E2289FC7D007A3E02 /* TACoordinator.m in Sources */,
+				9562AEB52292EB5D002222F1 /* TLAAddMuseumService.m in Sources */,
 				9571FC97226F16FB00602FB4 /* main.m in Sources */,
 				9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */,
 				95217889227878F6007A3E02 /* Museum+CoreDataProperties.m in Sources */,
 				9521795E227CAD1B007A3E02 /* ChooseMuseumViewController.m in Sources */,
 				9521784E22763A2F007A3E02 /* TACustomAnnotation.m in Sources */,
 				95217887227878F6007A3E02 /* Person+CoreDataProperties.m in Sources */,
+				9562AEB22292E846002222F1 /* TLAMuseumsForDayService.m in Sources */,
+				9562AEA42292CFB8002222F1 /* CoreDataProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

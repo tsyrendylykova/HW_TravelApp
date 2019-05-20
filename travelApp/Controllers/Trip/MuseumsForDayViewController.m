@@ -9,44 +9,34 @@
 #import "MuseumsForDayViewController.h"
 #import "ChooseMuseumViewController.h"
 #import "AppDelegate.h"
-#import "Day+CoreDataClass.h"
 #import "Museum+CoreDataClass.h"
 #import "DayCollectionViewCell.h"
 #import "TACoordinator.h"
 #import "Constants.h"
 #import "MuseumsForDayView.h"
+#import "Day+CoreDataClass.h"
 
-@interface MuseumsForDayViewController () <NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
+@interface MuseumsForDayViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+//@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, copy) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, copy) NSArray<Day *> *sortedDaysArray;
 @property (nonatomic, strong) MuseumsForDayView *museumsForDay;
-//@property (nonatomic, strong) UILabel *labelShow;
 
 @end
 
 @implementation MuseumsForDayViewController
 
-- (void)dealloc
-{
-    _fetchedResultsController.delegate = nil;
-}
-
--(instancetype)initWithTrip: (Trip *)trip {
-    self = [super init];
-    if (self) {
-        _trip = trip;
-    }
-    return self;
-}
+//- (void)dealloc
+//{
+//    _fetchedResultsController.delegate = nil;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -119,53 +109,9 @@
 }
 
 -(void)addNewMuseums {
-    ChooseMuseumViewController *newVC = [[ChooseMuseumViewController alloc] initWithTrip:self.trip];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:newVC];
+    self.chooseMuseumVC.trip = self.trip;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.chooseMuseumVC];
     [self presentViewController:navVC animated:YES completion:nil];
-}
-
-#pragma mark - CoreData Stack
-
-- (NSManagedObjectContext *)coreDataContext
-{
-    if (_coreDataContext)
-    {
-        return _coreDataContext;
-    }
-    
-    UIApplication *application = [UIApplication sharedApplication];
-    NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).
-    persistentContainer;
-    NSManagedObjectContext *context = container.viewContext;
-    
-    return context;
-}
-
-
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    
-    if (_fetchedResultsController)
-    {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:NSStringFromClass([Day class]) inManagedObjectContext:self.coreDataContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setSortDescriptors:@[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]]];
-    [fetchRequest setFetchBatchSize:20];
-    
-    NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:self.coreDataContext sectionNameKeyPath:nil
-                                                   cacheName:nil];
-    self.fetchedResultsController = theFetchedResultsController;
-    _fetchedResultsController.delegate = self;
-    
-    return _fetchedResultsController;
-    
 }
 
 #pragma mark - UICollectionViewDataSource

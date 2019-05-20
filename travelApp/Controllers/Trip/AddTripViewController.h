@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataProvider.h"
+#import "TLAAddTripService.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddTripViewController : UIViewController
+
+@property (nonatomic, strong) TLAAddTripService *addTripService;
 
 @end
 

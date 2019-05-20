@@ -8,12 +8,11 @@
 
 #import "ChooseMuseumViewController.h"
 #import "DetailMuseumCollectionViewCell.h"
-#import "AddMuseumViewController.h"
 #import "Constants.h"
 
 @interface ChooseMuseumViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong) Trip *trip;
+
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableDictionary *dictInfo;
@@ -22,14 +21,6 @@
 @end
 
 @implementation ChooseMuseumViewController
-
--(instancetype)initWithTrip: (Trip *)trip {
-    self = [super init];
-    if (self) {
-        _trip = trip;
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -102,8 +93,10 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    AddMuseumViewController *addMuseumVC = [[AddMuseumViewController alloc] initWithTrip:self.trip rowNumber:indexPath.row info:self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]]];
-    [self.navigationController pushViewController:addMuseumVC animated:YES];
+    self.addMuseumVC.rowNumber = indexPath.row;
+    self.addMuseumVC.info = self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]];
+    self.addMuseumVC.trip = self.trip;
+    [self.navigationController pushViewController:self.addMuseumVC animated:YES];
 }
 
 #pragma mark - MosDataNetworkServiceOutputProtocol
