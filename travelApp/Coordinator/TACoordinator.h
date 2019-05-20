@@ -1,5 +1,5 @@
 //
-//  TARouter.h
+//  TACoordinator.h
 //  travelApp
 //
 //  Created by Цырендылыкова Эржена on 13/05/2019.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "TACustomAnnotation.h"
-#import "TARouterProtocol.h"
+#import "TACoordinatorProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TARouter : NSObject <TARouterProtocol>
+@interface TACoordinator : NSObject <TACoordinatorProtocol>
 
 @property (nonatomic, strong) UITabBarController *tabBarController;
 

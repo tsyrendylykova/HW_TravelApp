@@ -1,5 +1,5 @@
 //
-//  TARouter.m
+//  TACoordinator.m
 //  travelApp
 //
 //  Created by Цырендылыкова Эржена on 13/05/2019.
@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TARouter.h"
+#import "TACoordinator.h"
 #import "MapViewController.h"
 #import "TripsViewController.h"
 #import "ProfileViewController.h"
 
-@implementation TARouter
+@implementation TACoordinator
 
-+(TARouter *)sharedRouter {
-    TARouter *router = [TARouter new];
++(TACoordinator *)sharedRouter {
+    TACoordinator *router = [TACoordinator new];
     
     router.tabBarController = [UITabBarController new];
     

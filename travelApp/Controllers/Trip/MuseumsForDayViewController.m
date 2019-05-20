@@ -12,7 +12,7 @@
 #import "Day+CoreDataClass.h"
 #import "Museum+CoreDataClass.h"
 #import "DayCollectionViewCell.h"
-#import "TARouter.h"
+#import "TACoordinator.h"
 #import "Constants.h"
 #import "MuseumsForDayView.h"
 
@@ -226,7 +226,7 @@
     TACustomAnnotation *annotation = [[TACustomAnnotation alloc] initWithTitle:self.arrayMuseums[indexPath.row].name subtitle:self.arrayMuseums[indexPath.row].address location:coord];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [[TARouter sharedRouter] showMuseumOnMapWithAnnotation:annotation];
+    [[TACoordinator sharedRouter] showMuseumOnMapWithAnnotation:annotation];
 }
 
 
