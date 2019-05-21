@@ -10,7 +10,7 @@
 
 @implementation TLAService
 
--(instancetype)initWithCoreDataProvider: (CoreDataProvider *)coreDataProvider {
+-(instancetype)initWithCoreDataProvider: (TLACoreDataProvider *)coreDataProvider {
     self = [super init];
     if (self) {
         _coreDataProvider = coreDataProvider;

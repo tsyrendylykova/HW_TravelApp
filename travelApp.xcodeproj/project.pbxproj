@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */; };
-		9521784E22763A2F007A3E02 /* TACustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784D22763A2F007A3E02 /* TACustomAnnotation.m */; };
-		952178532277077F007A3E02 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178522277077F007A3E02 /* AddTripViewController.m */; };
+		9521784A22735EC0007A3E02 /* TLAMuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784922735EC0007A3E02 /* TLAMuseumCollectionViewCell.m */; };
+		9521784E22763A2F007A3E02 /* TLACustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521784D22763A2F007A3E02 /* TLACustomAnnotation.m */; };
+		952178532277077F007A3E02 /* TLAAddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178522277077F007A3E02 /* TLAAddTripViewController.m */; };
 		95217884227878F6007A3E02 /* Day+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217876227878F6007A3E02 /* Day+CoreDataClass.m */; };
 		95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217877227878F6007A3E02 /* Day+CoreDataProperties.m */; };
 		95217886227878F6007A3E02 /* Person+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521787A227878F6007A3E02 /* Person+CoreDataClass.m */; };
@@ -18,16 +18,16 @@
 		95217889227878F6007A3E02 /* Museum+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521787F227878F6007A3E02 /* Museum+CoreDataProperties.m */; };
 		9521788A227878F6007A3E02 /* Trip+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217882227878F6007A3E02 /* Trip+CoreDataClass.m */; };
 		9521788B227878F6007A3E02 /* Trip+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217883227878F6007A3E02 /* Trip+CoreDataProperties.m */; };
-		9521788E22788278007A3E02 /* TAPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521788D22788278007A3E02 /* TAPerson.m */; };
-		95217891227B2F1B007A3E02 /* MuseumsForDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217890227B2F1B007A3E02 /* MuseumsForDayViewController.m */; };
-		952178EF227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178EE227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m */; };
-		9521795E227CAD1B007A3E02 /* ChooseMuseumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */; };
-		95217961227CBA4E007A3E02 /* AddMuseumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217960227CBA4E007A3E02 /* AddMuseumViewController.m */; };
-		95217C502282C120007A3E02 /* DayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */; };
-		95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */; };
-		95217C5E2289FC7D007A3E02 /* TACoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TACoordinator.m */; };
-		9562AEA1228F1F4E002222F1 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA0228F1F4E002222F1 /* ProfileView.m */; };
-		9562AEA42292CFB8002222F1 /* CoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA32292CFB8002222F1 /* CoreDataProvider.m */; };
+		9521788E22788278007A3E02 /* TLAPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521788D22788278007A3E02 /* TLAPerson.m */; };
+		95217891227B2F1B007A3E02 /* TLAMuseumsForDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217890227B2F1B007A3E02 /* TLAMuseumsForDayViewController.m */; };
+		952178EF227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952178EE227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.m */; };
+		9521795E227CAD1B007A3E02 /* TLAChooseMuseumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9521795D227CAD1B007A3E02 /* TLAChooseMuseumViewController.m */; };
+		95217961227CBA4E007A3E02 /* TLAAddMuseumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217960227CBA4E007A3E02 /* TLAAddMuseumViewController.m */; };
+		95217C502282C120007A3E02 /* TLADayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C4F2282C120007A3E02 /* TLADayCollectionViewCell.m */; };
+		95217C54228885C7007A3E02 /* TLAMosDataNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C53228885C7007A3E02 /* TLAMosDataNetworkService.m */; };
+		95217C5E2289FC7D007A3E02 /* TLACoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 95217C5D2289FC7D007A3E02 /* TLACoordinator.m */; };
+		9562AEA1228F1F4E002222F1 /* TLAProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA0228F1F4E002222F1 /* TLAProfileView.m */; };
+		9562AEA42292CFB8002222F1 /* TLACoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA32292CFB8002222F1 /* TLACoreDataProvider.m */; };
 		9562AEA92292DE26002222F1 /* TLAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEA82292DE26002222F1 /* TLAService.m */; };
 		9562AEAC2292DF1A002222F1 /* TLATripsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEAB2292DF1A002222F1 /* TLATripsService.m */; };
 		9562AEAF2292E2C3002222F1 /* TLAAddTripService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9562AEAE2292E2C3002222F1 /* TLAAddTripService.m */; };
@@ -38,26 +38,26 @@
 		9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */; };
 		9571FC94226F16FB00602FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */; };
 		9571FC97226F16FB00602FB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC96226F16FB00602FB4 /* main.m */; };
-		9571FC9F226F1BA100602FB4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC9E226F1BA100602FB4 /* MapViewController.m */; };
-		9571FCA2226F1BC200602FB4 /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCA1226F1BC200602FB4 /* TripsViewController.m */; };
-		9571FCA5226F1BEF00602FB4 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */; };
+		9571FC9F226F1BA100602FB4 /* TLAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FC9E226F1BA100602FB4 /* TLAMapViewController.m */; };
+		9571FCA2226F1BC200602FB4 /* TLATripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCA1226F1BC200602FB4 /* TLATripsViewController.m */; };
+		9571FCA5226F1BEF00602FB4 /* TLAProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCA4226F1BEF00602FB4 /* TLAProfileViewController.m */; };
 		9571FCAA226F29DC00602FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9571FCA9226F29DC00602FB4 /* Assets.xcassets */; };
-		9571FCB622707FA000602FB4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCB522707FA000602FB4 /* SearchViewController.m */; };
-		9571FCBD2270A41700602FB4 /* TAFoursquareNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCBC2270A41700602FB4 /* TAFoursquareNetworkService.m */; };
-		9571FCC12271DDD100602FB4 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC02271DDD100602FB4 /* MapPoint.m */; };
-		9571FCC52271E05900602FB4 /* DetailPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC42271E05900602FB4 /* DetailPointViewController.m */; };
-		95A2066F228EAE2700583AC4 /* AddNewTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A2066E228EAE2700583AC4 /* AddNewTrip.m */; };
-		95A20674228EE4F200583AC4 /* MuseumsForDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A20673228EE4F200583AC4 /* MuseumsForDayView.m */; };
-		95A20677228EEB4500583AC4 /* AddMuseumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A20676228EEB4500583AC4 /* AddMuseumView.m */; };
+		9571FCB622707FA000602FB4 /* TLASearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCB522707FA000602FB4 /* TLASearchViewController.m */; };
+		9571FCBD2270A41700602FB4 /* TLAFoursquareNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCBC2270A41700602FB4 /* TLAFoursquareNetworkService.m */; };
+		9571FCC12271DDD100602FB4 /* TLAMapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC02271DDD100602FB4 /* TLAMapPoint.m */; };
+		9571FCC52271E05900602FB4 /* TLADetailPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9571FCC42271E05900602FB4 /* TLADetailPointViewController.m */; };
+		95A2066F228EAE2700583AC4 /* TLAAddNewTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A2066E228EAE2700583AC4 /* TLAAddNewTrip.m */; };
+		95A20674228EE4F200583AC4 /* TLAMuseumsForDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A20673228EE4F200583AC4 /* TLAMuseumsForDayView.m */; };
+		95A20677228EEB4500583AC4 /* TLAAddMuseumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A20676228EEB4500583AC4 /* TLAAddMuseumView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9521784822735EC0007A3E02 /* MuseumCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuseumCollectionViewCell.h; sourceTree = "<group>"; };
-		9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseumCollectionViewCell.m; sourceTree = "<group>"; };
-		9521784C22763A2F007A3E02 /* TACustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACustomAnnotation.h; sourceTree = "<group>"; };
-		9521784D22763A2F007A3E02 /* TACustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACustomAnnotation.m; sourceTree = "<group>"; };
-		952178512277077F007A3E02 /* AddTripViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
-		952178522277077F007A3E02 /* AddTripViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
+		9521784822735EC0007A3E02 /* TLAMuseumCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMuseumCollectionViewCell.h; sourceTree = "<group>"; };
+		9521784922735EC0007A3E02 /* TLAMuseumCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMuseumCollectionViewCell.m; sourceTree = "<group>"; };
+		9521784C22763A2F007A3E02 /* TLACustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLACustomAnnotation.h; sourceTree = "<group>"; };
+		9521784D22763A2F007A3E02 /* TLACustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLACustomAnnotation.m; sourceTree = "<group>"; };
+		952178512277077F007A3E02 /* TLAAddTripViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddTripViewController.h; sourceTree = "<group>"; };
+		952178522277077F007A3E02 /* TLAAddTripViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddTripViewController.m; sourceTree = "<group>"; };
 		95217874227878F6007A3E02 /* Day+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Day+CoreDataProperties.h"; sourceTree = "<group>"; };
 		95217875227878F6007A3E02 /* Day+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Day+CoreDataClass.h"; sourceTree = "<group>"; };
 		95217876227878F6007A3E02 /* Day+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Day+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -74,27 +74,27 @@
 		95217881227878F6007A3E02 /* Trip+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trip+CoreDataClass.h"; sourceTree = "<group>"; };
 		95217882227878F6007A3E02 /* Trip+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Trip+CoreDataClass.m"; sourceTree = "<group>"; };
 		95217883227878F6007A3E02 /* Trip+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Trip+CoreDataProperties.m"; sourceTree = "<group>"; };
-		9521788C22788278007A3E02 /* TAPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPerson.h; sourceTree = "<group>"; };
-		9521788D22788278007A3E02 /* TAPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPerson.m; sourceTree = "<group>"; };
-		9521788F227B2F1B007A3E02 /* MuseumsForDayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuseumsForDayViewController.h; sourceTree = "<group>"; };
-		95217890227B2F1B007A3E02 /* MuseumsForDayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseumsForDayViewController.m; sourceTree = "<group>"; };
-		952178ED227B5D83007A3E02 /* DetailMuseumCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailMuseumCollectionViewCell.h; sourceTree = "<group>"; };
-		952178EE227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailMuseumCollectionViewCell.m; sourceTree = "<group>"; };
-		9521795C227CAD1B007A3E02 /* ChooseMuseumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseMuseumViewController.h; sourceTree = "<group>"; };
-		9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseMuseumViewController.m; sourceTree = "<group>"; };
-		9521795F227CBA4E007A3E02 /* AddMuseumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMuseumViewController.h; sourceTree = "<group>"; };
-		95217960227CBA4E007A3E02 /* AddMuseumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMuseumViewController.m; sourceTree = "<group>"; };
-		95217C4E2282C120007A3E02 /* DayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayCollectionViewCell.h; sourceTree = "<group>"; };
-		95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayCollectionViewCell.m; sourceTree = "<group>"; };
-		95217C52228885C6007A3E02 /* TAMosDataNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMosDataNetworkService.h; sourceTree = "<group>"; };
-		95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMosDataNetworkService.m; sourceTree = "<group>"; };
-		95217C552288929C007A3E02 /* TAMosDataNetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMosDataNetworkServiceProtocol.h; sourceTree = "<group>"; };
-		95217C5C2289FC7D007A3E02 /* TACoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACoordinator.h; sourceTree = "<group>"; };
-		95217C5D2289FC7D007A3E02 /* TACoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACoordinator.m; sourceTree = "<group>"; };
-		9562AE9F228F1F4E002222F1 /* ProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
-		9562AEA0228F1F4E002222F1 /* ProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
-		9562AEA22292CFB8002222F1 /* CoreDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataProvider.h; sourceTree = "<group>"; };
-		9562AEA32292CFB8002222F1 /* CoreDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataProvider.m; sourceTree = "<group>"; };
+		9521788C22788278007A3E02 /* TLAPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAPerson.h; sourceTree = "<group>"; };
+		9521788D22788278007A3E02 /* TLAPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAPerson.m; sourceTree = "<group>"; };
+		9521788F227B2F1B007A3E02 /* TLAMuseumsForDayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMuseumsForDayViewController.h; sourceTree = "<group>"; };
+		95217890227B2F1B007A3E02 /* TLAMuseumsForDayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMuseumsForDayViewController.m; sourceTree = "<group>"; };
+		952178ED227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLADetailMuseumCollectionViewCell.h; sourceTree = "<group>"; };
+		952178EE227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLADetailMuseumCollectionViewCell.m; sourceTree = "<group>"; };
+		9521795C227CAD1B007A3E02 /* TLAChooseMuseumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAChooseMuseumViewController.h; sourceTree = "<group>"; };
+		9521795D227CAD1B007A3E02 /* TLAChooseMuseumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAChooseMuseumViewController.m; sourceTree = "<group>"; };
+		9521795F227CBA4E007A3E02 /* TLAAddMuseumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddMuseumViewController.h; sourceTree = "<group>"; };
+		95217960227CBA4E007A3E02 /* TLAAddMuseumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddMuseumViewController.m; sourceTree = "<group>"; };
+		95217C4E2282C120007A3E02 /* TLADayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLADayCollectionViewCell.h; sourceTree = "<group>"; };
+		95217C4F2282C120007A3E02 /* TLADayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLADayCollectionViewCell.m; sourceTree = "<group>"; };
+		95217C52228885C6007A3E02 /* TLAMosDataNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMosDataNetworkService.h; sourceTree = "<group>"; };
+		95217C53228885C7007A3E02 /* TLAMosDataNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMosDataNetworkService.m; sourceTree = "<group>"; };
+		95217C552288929C007A3E02 /* TLAMosDataNetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMosDataNetworkServiceProtocol.h; sourceTree = "<group>"; };
+		95217C5C2289FC7D007A3E02 /* TLACoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLACoordinator.h; sourceTree = "<group>"; };
+		95217C5D2289FC7D007A3E02 /* TLACoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLACoordinator.m; sourceTree = "<group>"; };
+		9562AE9F228F1F4E002222F1 /* TLAProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAProfileView.h; sourceTree = "<group>"; };
+		9562AEA0228F1F4E002222F1 /* TLAProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAProfileView.m; sourceTree = "<group>"; };
+		9562AEA22292CFB8002222F1 /* TLACoreDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLACoreDataProvider.h; sourceTree = "<group>"; };
+		9562AEA32292CFB8002222F1 /* TLACoreDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLACoreDataProvider.m; sourceTree = "<group>"; };
 		9562AEA72292DE26002222F1 /* TLAService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAService.h; sourceTree = "<group>"; };
 		9562AEA82292DE26002222F1 /* TLAService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAService.m; sourceTree = "<group>"; };
 		9562AEAA2292DF1A002222F1 /* TLATripsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLATripsService.h; sourceTree = "<group>"; };
@@ -113,32 +113,32 @@
 		9571FC93226F16FB00602FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9571FC95226F16FB00602FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9571FC96226F16FB00602FB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9571FC9D226F1BA100602FB4 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		9571FC9E226F1BA100602FB4 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		9571FCA0226F1BC200602FB4 /* TripsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
-		9571FCA1226F1BC200602FB4 /* TripsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
-		9571FCA3226F1BEF00602FB4 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		9571FC9D226F1BA100602FB4 /* TLAMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMapViewController.h; sourceTree = "<group>"; };
+		9571FC9E226F1BA100602FB4 /* TLAMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMapViewController.m; sourceTree = "<group>"; };
+		9571FCA0226F1BC200602FB4 /* TLATripsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLATripsViewController.h; sourceTree = "<group>"; };
+		9571FCA1226F1BC200602FB4 /* TLATripsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLATripsViewController.m; sourceTree = "<group>"; };
+		9571FCA3226F1BEF00602FB4 /* TLAProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAProfileViewController.h; sourceTree = "<group>"; };
+		9571FCA4226F1BEF00602FB4 /* TLAProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAProfileViewController.m; sourceTree = "<group>"; };
 		9571FCA9226F29DC00602FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9571FCB422707FA000602FB4 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		9571FCB522707FA000602FB4 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		9571FCBB2270A41700602FB4 /* TAFoursquareNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAFoursquareNetworkService.h; sourceTree = "<group>"; };
-		9571FCBC2270A41700602FB4 /* TAFoursquareNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAFoursquareNetworkService.m; sourceTree = "<group>"; };
-		9571FCBE2270A4EF00602FB4 /* TAFoursquareNetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAFoursquareNetworkServiceProtocol.h; sourceTree = "<group>"; };
-		9571FCBF2271DDD100602FB4 /* MapPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
-		9571FCC02271DDD100602FB4 /* MapPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
-		9571FCC32271E05900602FB4 /* DetailPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailPointViewController.h; sourceTree = "<group>"; };
-		9571FCC42271E05900602FB4 /* DetailPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailPointViewController.m; sourceTree = "<group>"; };
-		95A20669228D912300583AC4 /* TACoordinatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACoordinatorProtocol.h; sourceTree = "<group>"; };
+		9571FCB422707FA000602FB4 /* TLASearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLASearchViewController.h; sourceTree = "<group>"; };
+		9571FCB522707FA000602FB4 /* TLASearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLASearchViewController.m; sourceTree = "<group>"; };
+		9571FCBB2270A41700602FB4 /* TLAFoursquareNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAFoursquareNetworkService.h; sourceTree = "<group>"; };
+		9571FCBC2270A41700602FB4 /* TLAFoursquareNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAFoursquareNetworkService.m; sourceTree = "<group>"; };
+		9571FCBE2270A4EF00602FB4 /* TLAFoursquareNetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAFoursquareNetworkServiceProtocol.h; sourceTree = "<group>"; };
+		9571FCBF2271DDD100602FB4 /* TLAMapPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMapPoint.h; sourceTree = "<group>"; };
+		9571FCC02271DDD100602FB4 /* TLAMapPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMapPoint.m; sourceTree = "<group>"; };
+		9571FCC32271E05900602FB4 /* TLADetailPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLADetailPointViewController.h; sourceTree = "<group>"; };
+		9571FCC42271E05900602FB4 /* TLADetailPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLADetailPointViewController.m; sourceTree = "<group>"; };
+		95A20669228D912300583AC4 /* TLACoordinatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLACoordinatorProtocol.h; sourceTree = "<group>"; };
 		95A2066C228D98C300583AC4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		95A2066D228EAE2700583AC4 /* AddNewTrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewTrip.h; sourceTree = "<group>"; };
-		95A2066E228EAE2700583AC4 /* AddNewTrip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewTrip.m; sourceTree = "<group>"; };
-		95A20670228EB59300583AC4 /* AddNewTripDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewTripDelegate.h; sourceTree = "<group>"; };
-		95A20672228EE4F200583AC4 /* MuseumsForDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuseumsForDayView.h; sourceTree = "<group>"; };
-		95A20673228EE4F200583AC4 /* MuseumsForDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseumsForDayView.m; sourceTree = "<group>"; };
-		95A20675228EEB4500583AC4 /* AddMuseumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMuseumView.h; sourceTree = "<group>"; };
-		95A20676228EEB4500583AC4 /* AddMuseumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMuseumView.m; sourceTree = "<group>"; };
-		95A20678228EEFDC00583AC4 /* AddMuseumDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMuseumDelegate.h; sourceTree = "<group>"; };
+		95A2066D228EAE2700583AC4 /* TLAAddNewTrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddNewTrip.h; sourceTree = "<group>"; };
+		95A2066E228EAE2700583AC4 /* TLAAddNewTrip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddNewTrip.m; sourceTree = "<group>"; };
+		95A20670228EB59300583AC4 /* TLAAddNewTripDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddNewTripDelegate.h; sourceTree = "<group>"; };
+		95A20672228EE4F200583AC4 /* TLAMuseumsForDayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAMuseumsForDayView.h; sourceTree = "<group>"; };
+		95A20673228EE4F200583AC4 /* TLAMuseumsForDayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAMuseumsForDayView.m; sourceTree = "<group>"; };
+		95A20675228EEB4500583AC4 /* TLAAddMuseumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddMuseumView.h; sourceTree = "<group>"; };
+		95A20676228EEB4500583AC4 /* TLAAddMuseumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddMuseumView.m; sourceTree = "<group>"; };
+		95A20678228EEFDC00583AC4 /* TLAAddMuseumDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddMuseumDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,10 +158,10 @@
 				95A20671228EE48300583AC4 /* AddNewTripView */,
 				9562AE9E228F0F3C002222F1 /* AddMuseumView */,
 				95A2066A228D95C500583AC4 /* Cells */,
-				95A20672228EE4F200583AC4 /* MuseumsForDayView.h */,
-				95A20673228EE4F200583AC4 /* MuseumsForDayView.m */,
-				9562AE9F228F1F4E002222F1 /* ProfileView.h */,
-				9562AEA0228F1F4E002222F1 /* ProfileView.m */,
+				95A20672228EE4F200583AC4 /* TLAMuseumsForDayView.h */,
+				95A20673228EE4F200583AC4 /* TLAMuseumsForDayView.m */,
+				9562AE9F228F1F4E002222F1 /* TLAProfileView.h */,
+				9562AEA0228F1F4E002222F1 /* TLAProfileView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,9 +192,9 @@
 		95217C562288962A007A3E02 /* FoursquareNetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				9571FCBB2270A41700602FB4 /* TAFoursquareNetworkService.h */,
-				9571FCBC2270A41700602FB4 /* TAFoursquareNetworkService.m */,
-				9571FCBE2270A4EF00602FB4 /* TAFoursquareNetworkServiceProtocol.h */,
+				9571FCBB2270A41700602FB4 /* TLAFoursquareNetworkService.h */,
+				9571FCBC2270A41700602FB4 /* TLAFoursquareNetworkService.m */,
+				9571FCBE2270A4EF00602FB4 /* TLAFoursquareNetworkServiceProtocol.h */,
 			);
 			path = FoursquareNetworkService;
 			sourceTree = "<group>";
@@ -202,9 +202,9 @@
 		95217C5722889639007A3E02 /* MosDataNetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				95217C52228885C6007A3E02 /* TAMosDataNetworkService.h */,
-				95217C53228885C7007A3E02 /* TAMosDataNetworkService.m */,
-				95217C552288929C007A3E02 /* TAMosDataNetworkServiceProtocol.h */,
+				95217C52228885C6007A3E02 /* TLAMosDataNetworkService.h */,
+				95217C53228885C7007A3E02 /* TLAMosDataNetworkService.m */,
+				95217C552288929C007A3E02 /* TLAMosDataNetworkServiceProtocol.h */,
 			);
 			path = MosDataNetworkService;
 			sourceTree = "<group>";
@@ -212,9 +212,9 @@
 		95217C5B2289D5F8007A3E02 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				95217C5C2289FC7D007A3E02 /* TACoordinator.h */,
-				95217C5D2289FC7D007A3E02 /* TACoordinator.m */,
-				95A20669228D912300583AC4 /* TACoordinatorProtocol.h */,
+				95217C5C2289FC7D007A3E02 /* TLACoordinator.h */,
+				95217C5D2289FC7D007A3E02 /* TLACoordinator.m */,
+				95A20669228D912300583AC4 /* TLACoordinatorProtocol.h */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -222,9 +222,9 @@
 		9562AE9E228F0F3C002222F1 /* AddMuseumView */ = {
 			isa = PBXGroup;
 			children = (
-				95A20675228EEB4500583AC4 /* AddMuseumView.h */,
-				95A20676228EEB4500583AC4 /* AddMuseumView.m */,
-				95A20678228EEFDC00583AC4 /* AddMuseumDelegate.h */,
+				95A20675228EEB4500583AC4 /* TLAAddMuseumView.h */,
+				95A20676228EEB4500583AC4 /* TLAAddMuseumView.m */,
+				95A20678228EEFDC00583AC4 /* TLAAddMuseumDelegate.h */,
 			);
 			path = AddMuseumView;
 			sourceTree = "<group>";
@@ -232,8 +232,8 @@
 		9562AEA52292D00F002222F1 /* CoreDataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				9562AEA22292CFB8002222F1 /* CoreDataProvider.h */,
-				9562AEA32292CFB8002222F1 /* CoreDataProvider.m */,
+				9562AEA22292CFB8002222F1 /* TLACoreDataProvider.h */,
+				9562AEA32292CFB8002222F1 /* TLACoreDataProvider.m */,
 			);
 			path = CoreDataProvider;
 			sourceTree = "<group>";
@@ -268,12 +268,12 @@
 		9562AEB722944205002222F1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				9571FC9D226F1BA100602FB4 /* MapViewController.h */,
-				9571FC9E226F1BA100602FB4 /* MapViewController.m */,
-				9571FCB422707FA000602FB4 /* SearchViewController.h */,
-				9571FCB522707FA000602FB4 /* SearchViewController.m */,
-				9571FCC32271E05900602FB4 /* DetailPointViewController.h */,
-				9571FCC42271E05900602FB4 /* DetailPointViewController.m */,
+				9571FC9D226F1BA100602FB4 /* TLAMapViewController.h */,
+				9571FC9E226F1BA100602FB4 /* TLAMapViewController.m */,
+				9571FCB422707FA000602FB4 /* TLASearchViewController.h */,
+				9571FCB522707FA000602FB4 /* TLASearchViewController.m */,
+				9571FCC32271E05900602FB4 /* TLADetailPointViewController.h */,
+				9571FCC42271E05900602FB4 /* TLADetailPointViewController.m */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -281,8 +281,8 @@
 		9562AEB822944236002222F1 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				9571FCA3226F1BEF00602FB4 /* ProfileViewController.h */,
-				9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */,
+				9571FCA3226F1BEF00602FB4 /* TLAProfileViewController.h */,
+				9571FCA4226F1BEF00602FB4 /* TLAProfileViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -290,16 +290,16 @@
 		9562AEB922944252002222F1 /* Trip */ = {
 			isa = PBXGroup;
 			children = (
-				9571FCA0226F1BC200602FB4 /* TripsViewController.h */,
-				9571FCA1226F1BC200602FB4 /* TripsViewController.m */,
-				952178512277077F007A3E02 /* AddTripViewController.h */,
-				952178522277077F007A3E02 /* AddTripViewController.m */,
-				9521788F227B2F1B007A3E02 /* MuseumsForDayViewController.h */,
-				95217890227B2F1B007A3E02 /* MuseumsForDayViewController.m */,
-				9521795C227CAD1B007A3E02 /* ChooseMuseumViewController.h */,
-				9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */,
-				9521795F227CBA4E007A3E02 /* AddMuseumViewController.h */,
-				95217960227CBA4E007A3E02 /* AddMuseumViewController.m */,
+				9571FCA0226F1BC200602FB4 /* TLATripsViewController.h */,
+				9571FCA1226F1BC200602FB4 /* TLATripsViewController.m */,
+				952178512277077F007A3E02 /* TLAAddTripViewController.h */,
+				952178522277077F007A3E02 /* TLAAddTripViewController.m */,
+				9521788F227B2F1B007A3E02 /* TLAMuseumsForDayViewController.h */,
+				95217890227B2F1B007A3E02 /* TLAMuseumsForDayViewController.m */,
+				9521795C227CAD1B007A3E02 /* TLAChooseMuseumViewController.h */,
+				9521795D227CAD1B007A3E02 /* TLAChooseMuseumViewController.m */,
+				9521795F227CBA4E007A3E02 /* TLAAddMuseumViewController.h */,
+				95217960227CBA4E007A3E02 /* TLAAddMuseumViewController.m */,
 			);
 			path = Trip;
 			sourceTree = "<group>";
@@ -360,12 +360,12 @@
 		9571FCC22271DDD900602FB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9571FCBF2271DDD100602FB4 /* MapPoint.h */,
-				9571FCC02271DDD100602FB4 /* MapPoint.m */,
-				9521788C22788278007A3E02 /* TAPerson.h */,
-				9521788D22788278007A3E02 /* TAPerson.m */,
-				9521784C22763A2F007A3E02 /* TACustomAnnotation.h */,
-				9521784D22763A2F007A3E02 /* TACustomAnnotation.m */,
+				9571FCBF2271DDD100602FB4 /* TLAMapPoint.h */,
+				9571FCC02271DDD100602FB4 /* TLAMapPoint.m */,
+				9521788C22788278007A3E02 /* TLAPerson.h */,
+				9521788D22788278007A3E02 /* TLAPerson.m */,
+				9521784C22763A2F007A3E02 /* TLACustomAnnotation.h */,
+				9521784D22763A2F007A3E02 /* TLACustomAnnotation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,12 +373,12 @@
 		95A2066A228D95C500583AC4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9521784822735EC0007A3E02 /* MuseumCollectionViewCell.h */,
-				9521784922735EC0007A3E02 /* MuseumCollectionViewCell.m */,
-				952178ED227B5D83007A3E02 /* DetailMuseumCollectionViewCell.h */,
-				952178EE227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m */,
-				95217C4E2282C120007A3E02 /* DayCollectionViewCell.h */,
-				95217C4F2282C120007A3E02 /* DayCollectionViewCell.m */,
+				9521784822735EC0007A3E02 /* TLAMuseumCollectionViewCell.h */,
+				9521784922735EC0007A3E02 /* TLAMuseumCollectionViewCell.m */,
+				952178ED227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.h */,
+				952178EE227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.m */,
+				95217C4E2282C120007A3E02 /* TLADayCollectionViewCell.h */,
+				95217C4F2282C120007A3E02 /* TLADayCollectionViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -398,9 +398,9 @@
 		95A20671228EE48300583AC4 /* AddNewTripView */ = {
 			isa = PBXGroup;
 			children = (
-				95A2066D228EAE2700583AC4 /* AddNewTrip.h */,
-				95A2066E228EAE2700583AC4 /* AddNewTrip.m */,
-				95A20670228EB59300583AC4 /* AddNewTripDelegate.h */,
+				95A2066D228EAE2700583AC4 /* TLAAddNewTrip.h */,
+				95A2066E228EAE2700583AC4 /* TLAAddNewTrip.m */,
+				95A20670228EB59300583AC4 /* TLAAddNewTripDelegate.h */,
 			);
 			path = AddNewTripView;
 			sourceTree = "<group>";
@@ -477,43 +477,43 @@
 			files = (
 				9562AEA92292DE26002222F1 /* TLAService.m in Sources */,
 				95217884227878F6007A3E02 /* Day+CoreDataClass.m in Sources */,
-				95217C54228885C7007A3E02 /* TAMosDataNetworkService.m in Sources */,
-				95A20674228EE4F200583AC4 /* MuseumsForDayView.m in Sources */,
+				95217C54228885C7007A3E02 /* TLAMosDataNetworkService.m in Sources */,
+				95A20674228EE4F200583AC4 /* TLAMuseumsForDayView.m in Sources */,
 				9562AEAC2292DF1A002222F1 /* TLATripsService.m in Sources */,
-				9521784A22735EC0007A3E02 /* MuseumCollectionViewCell.m in Sources */,
+				9521784A22735EC0007A3E02 /* TLAMuseumCollectionViewCell.m in Sources */,
 				9571FC8F226F16F900602FB4 /* travelApp.xcdatamodeld in Sources */,
 				95217885227878F6007A3E02 /* Day+CoreDataProperties.m in Sources */,
-				95217C502282C120007A3E02 /* DayCollectionViewCell.m in Sources */,
+				95217C502282C120007A3E02 /* TLADayCollectionViewCell.m in Sources */,
 				95217888227878F6007A3E02 /* Museum+CoreDataClass.m in Sources */,
-				9571FCC12271DDD100602FB4 /* MapPoint.m in Sources */,
+				9571FCC12271DDD100602FB4 /* TLAMapPoint.m in Sources */,
 				95217886227878F6007A3E02 /* Person+CoreDataClass.m in Sources */,
-				95A20677228EEB4500583AC4 /* AddMuseumView.m in Sources */,
-				9571FC9F226F1BA100602FB4 /* MapViewController.m in Sources */,
+				95A20677228EEB4500583AC4 /* TLAAddMuseumView.m in Sources */,
+				9571FC9F226F1BA100602FB4 /* TLAMapViewController.m in Sources */,
 				9521788A227878F6007A3E02 /* Trip+CoreDataClass.m in Sources */,
-				952178532277077F007A3E02 /* AddTripViewController.m in Sources */,
+				952178532277077F007A3E02 /* TLAAddTripViewController.m in Sources */,
 				9521788B227878F6007A3E02 /* Trip+CoreDataProperties.m in Sources */,
-				9571FCB622707FA000602FB4 /* SearchViewController.m in Sources */,
-				95217891227B2F1B007A3E02 /* MuseumsForDayViewController.m in Sources */,
-				95A2066F228EAE2700583AC4 /* AddNewTrip.m in Sources */,
-				9571FCC52271E05900602FB4 /* DetailPointViewController.m in Sources */,
+				9571FCB622707FA000602FB4 /* TLASearchViewController.m in Sources */,
+				95217891227B2F1B007A3E02 /* TLAMuseumsForDayViewController.m in Sources */,
+				95A2066F228EAE2700583AC4 /* TLAAddNewTrip.m in Sources */,
+				9571FCC52271E05900602FB4 /* TLADetailPointViewController.m in Sources */,
 				9562AEAF2292E2C3002222F1 /* TLAAddTripService.m in Sources */,
-				952178EF227B5D83007A3E02 /* DetailMuseumCollectionViewCell.m in Sources */,
-				9571FCA2226F1BC200602FB4 /* TripsViewController.m in Sources */,
-				9571FCA5226F1BEF00602FB4 /* ProfileViewController.m in Sources */,
-				9562AEA1228F1F4E002222F1 /* ProfileView.m in Sources */,
-				9521788E22788278007A3E02 /* TAPerson.m in Sources */,
-				95217961227CBA4E007A3E02 /* AddMuseumViewController.m in Sources */,
-				9571FCBD2270A41700602FB4 /* TAFoursquareNetworkService.m in Sources */,
-				95217C5E2289FC7D007A3E02 /* TACoordinator.m in Sources */,
+				952178EF227B5D83007A3E02 /* TLADetailMuseumCollectionViewCell.m in Sources */,
+				9571FCA2226F1BC200602FB4 /* TLATripsViewController.m in Sources */,
+				9571FCA5226F1BEF00602FB4 /* TLAProfileViewController.m in Sources */,
+				9562AEA1228F1F4E002222F1 /* TLAProfileView.m in Sources */,
+				9521788E22788278007A3E02 /* TLAPerson.m in Sources */,
+				95217961227CBA4E007A3E02 /* TLAAddMuseumViewController.m in Sources */,
+				9571FCBD2270A41700602FB4 /* TLAFoursquareNetworkService.m in Sources */,
+				95217C5E2289FC7D007A3E02 /* TLACoordinator.m in Sources */,
 				9562AEB52292EB5D002222F1 /* TLAAddMuseumService.m in Sources */,
 				9571FC97226F16FB00602FB4 /* main.m in Sources */,
 				9571FC86226F16F900602FB4 /* AppDelegate.m in Sources */,
 				95217889227878F6007A3E02 /* Museum+CoreDataProperties.m in Sources */,
-				9521795E227CAD1B007A3E02 /* ChooseMuseumViewController.m in Sources */,
-				9521784E22763A2F007A3E02 /* TACustomAnnotation.m in Sources */,
+				9521795E227CAD1B007A3E02 /* TLAChooseMuseumViewController.m in Sources */,
+				9521784E22763A2F007A3E02 /* TLACustomAnnotation.m in Sources */,
 				95217887227878F6007A3E02 /* Person+CoreDataProperties.m in Sources */,
 				9562AEB22292E846002222F1 /* TLAMuseumsForDayService.m in Sources */,
-				9562AEA42292CFB8002222F1 /* CoreDataProvider.m in Sources */,
+				9562AEA42292CFB8002222F1 /* TLACoreDataProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

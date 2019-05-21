@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TACoordinator.h"
+#import "TLACoordinator.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [TACoordinator sharedRouter].tabBarController;
+    self.window.rootViewController = [TLACoordinator sharedRouter].tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }

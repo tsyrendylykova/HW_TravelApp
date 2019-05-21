@@ -1,5 +1,5 @@
 //
-//  TLAService.h
+//  TLACoreDataProvider.h
 //  travelApp
 //
 //  Created by Цырендылыкова Эржена on 20/05/2019.
@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TLACoreDataProvider.h"
+#import <CoreData/CoreData.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TLAService : NSObject
+@interface TLACoreDataProvider : NSObject
 
-@property (nonatomic, strong) TLACoreDataProvider *coreDataProvider;
+@property (readonly, strong) NSPersistentContainer *persistentContainer;
 
--(instancetype)initWithCoreDataProvider: (TLACoreDataProvider *)coreDataProvider;
+- (void)saveContext;
 
 @end
 
