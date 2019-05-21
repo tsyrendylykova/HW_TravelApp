@@ -22,7 +22,6 @@
     NSSet<Day *> *dates = [NSSet setWithSet:[self getArrayOfDays:trip]];
     [trip addDays:dates];
     
-    //  TO-DO - сделать проверку : endDate > startDate
     NSError *error;
     if (![trip.managedObjectContext save:&error]) {
         NSLog(@"Не удалось сохранить объект");

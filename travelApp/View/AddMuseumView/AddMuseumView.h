@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AddMuseumView : UIView
 
-@property (nonatomic, weak) id<AddMuseumDelegate> addNewMuseumDelegate;
+@property (nonatomic, weak, nullable) id<AddMuseumDelegate> addNewMuseumDelegate;
 
 -(instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip info:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber;
 

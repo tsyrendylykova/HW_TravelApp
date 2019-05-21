@@ -75,9 +75,7 @@
 
 #pragma mark - MKMapViewDelegate
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-//    CLLocationCoordinate2D location = self.mapView.userLocation.location.coordinate;
-    
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {    
     //show moscow for simulator usage
     CLLocationCoordinate2D location;
     location.latitude = MoscowLatitude;

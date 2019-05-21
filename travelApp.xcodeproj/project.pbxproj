@@ -186,8 +186,7 @@
 				95217880227878F6007A3E02 /* Trip+CoreDataProperties.h */,
 				95217883227878F6007A3E02 /* Trip+CoreDataProperties.m */,
 			);
-			name = CoreDataModel;
-			path = "New Group";
+			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		95217C562288962A007A3E02 /* FoursquareNetworkService */ = {
@@ -266,6 +265,45 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		9562AEB722944205002222F1 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9571FC9D226F1BA100602FB4 /* MapViewController.h */,
+				9571FC9E226F1BA100602FB4 /* MapViewController.m */,
+				9571FCB422707FA000602FB4 /* SearchViewController.h */,
+				9571FCB522707FA000602FB4 /* SearchViewController.m */,
+				9571FCC32271E05900602FB4 /* DetailPointViewController.h */,
+				9571FCC42271E05900602FB4 /* DetailPointViewController.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		9562AEB822944236002222F1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9571FCA3226F1BEF00602FB4 /* ProfileViewController.h */,
+				9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9562AEB922944252002222F1 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				9571FCA0226F1BC200602FB4 /* TripsViewController.h */,
+				9571FCA1226F1BC200602FB4 /* TripsViewController.m */,
+				952178512277077F007A3E02 /* AddTripViewController.h */,
+				952178522277077F007A3E02 /* AddTripViewController.m */,
+				9521788F227B2F1B007A3E02 /* MuseumsForDayViewController.h */,
+				95217890227B2F1B007A3E02 /* MuseumsForDayViewController.m */,
+				9521795C227CAD1B007A3E02 /* ChooseMuseumViewController.h */,
+				9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */,
+				9521795F227CBA4E007A3E02 /* AddMuseumViewController.h */,
+				95217960227CBA4E007A3E02 /* AddMuseumViewController.m */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
 		9571FC78226F16F900602FB4 = {
 			isa = PBXGroup;
 			children = (
@@ -303,50 +341,11 @@
 		9571FCA6226F1BF600602FB4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9571FCB722707FAB00602FB4 /* Map */,
-				9571FCB822707FC000602FB4 /* Trip */,
-				9571FCB922707FC900602FB4 /* Profile */,
+				9562AEB722944205002222F1 /* Map */,
+				9562AEB922944252002222F1 /* Trip */,
+				9562AEB822944236002222F1 /* Profile */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		9571FCB722707FAB00602FB4 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				9571FC9D226F1BA100602FB4 /* MapViewController.h */,
-				9571FC9E226F1BA100602FB4 /* MapViewController.m */,
-				9571FCB422707FA000602FB4 /* SearchViewController.h */,
-				9571FCB522707FA000602FB4 /* SearchViewController.m */,
-				9571FCC32271E05900602FB4 /* DetailPointViewController.h */,
-				9571FCC42271E05900602FB4 /* DetailPointViewController.m */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		9571FCB822707FC000602FB4 /* Trip */ = {
-			isa = PBXGroup;
-			children = (
-				9571FCA0226F1BC200602FB4 /* TripsViewController.h */,
-				9571FCA1226F1BC200602FB4 /* TripsViewController.m */,
-				952178512277077F007A3E02 /* AddTripViewController.h */,
-				952178522277077F007A3E02 /* AddTripViewController.m */,
-				9521788F227B2F1B007A3E02 /* MuseumsForDayViewController.h */,
-				95217890227B2F1B007A3E02 /* MuseumsForDayViewController.m */,
-				9521795C227CAD1B007A3E02 /* ChooseMuseumViewController.h */,
-				9521795D227CAD1B007A3E02 /* ChooseMuseumViewController.m */,
-				9521795F227CBA4E007A3E02 /* AddMuseumViewController.h */,
-				95217960227CBA4E007A3E02 /* AddMuseumViewController.m */,
-			);
-			path = Trip;
-			sourceTree = "<group>";
-		};
-		9571FCB922707FC900602FB4 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				9571FCA3226F1BEF00602FB4 /* ProfileViewController.h */,
-				9571FCA4226F1BEF00602FB4 /* ProfileViewController.m */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		9571FCBA22709F2800602FB4 /* Network */ = {

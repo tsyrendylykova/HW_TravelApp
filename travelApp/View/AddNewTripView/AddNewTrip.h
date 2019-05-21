@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AddNewTrip : UIView
 
-@property (nonatomic, weak) id<AddNewTripDelegate> addNewTripDelegate;
+@property (nonatomic, weak, nullable) id<AddNewTripDelegate> addNewTripDelegate;
 
 -(instancetype)initWithFrame:(CGRect)frame;
 

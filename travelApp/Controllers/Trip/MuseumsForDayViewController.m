@@ -24,7 +24,6 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
-//@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, copy) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, copy) NSArray<Day *> *sortedDaysArray;
 @property (nonatomic, strong) MuseumsForDayView *museumsForDay;
@@ -32,11 +31,6 @@
 @end
 
 @implementation MuseumsForDayViewController
-
-//- (void)dealloc
-//{
-//    _fetchedResultsController.delegate = nil;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

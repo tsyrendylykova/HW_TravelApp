@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TAMosDataNetworkService : NSObject <MosDataNetworkServiceInputProtocolMuseums>
 
-@property (nonatomic, weak) id<MosDataNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
+@property (nonatomic, weak, nullable) id<MosDataNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
 
 @end
 

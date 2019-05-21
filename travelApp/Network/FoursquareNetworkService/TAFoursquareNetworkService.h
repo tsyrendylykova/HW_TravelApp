@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TAFoursquareNetworkService : NSObject <FoursquareNetworkServiceInputProtocol>
 
-@property (nonatomic, weak) id<FoursquareNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
+@property (nonatomic, weak, nullable) id<FoursquareNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
 
 @end
 
