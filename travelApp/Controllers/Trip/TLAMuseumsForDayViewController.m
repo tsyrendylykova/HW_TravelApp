@@ -9,30 +9,42 @@
 
 #import "TLAMuseumsForDayViewController.h"
 #import "TLAChooseMuseumViewController.h"
-#import "AppDelegate.h"
 #import "Museum+CoreDataClass.h"
 #import "TLADayCollectionViewCell.h"
 #import "TLACoordinator.h"
 #import "TLAConstants.h"
 #import "TLAMuseumsForDayView.h"
 #import "Day+CoreDataClass.h"
+#import "TLAAddMuseumService.h"
 
 
 @interface TLAMuseumsForDayViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) Trip *trip;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
-@property (nonatomic, strong) NSManagedObjectContext *coreDataContext;
 @property (nonatomic, copy) NSArray<Museum *> *arrayMuseums;
 @property (nonatomic, copy) NSArray<Day *> *sortedDaysArray;
 @property (nonatomic, strong) TLAMuseumsForDayView *museumsForDay;
+@property (nonatomic, strong) TLAMuseumsForDayService *museumsForDayService;
 
 @end
 
 @implementation TLAMuseumsForDayViewController
+
+- (instancetype)initWithCoreDataService:(TLAMuseumsForDayService *)service trip:(Trip *)trip
+{
+    self = [super init];
+    if (self)
+    {
+        _museumsForDayService = service;
+        _trip = trip;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,8 +118,9 @@
 }
 
 - (void)addNewMuseums {
-    self.chooseMuseumVC.trip = self.trip;
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.chooseMuseumVC];
+    TLAAddMuseumService *service = [[TLAAddMuseumService alloc] initWithCoreDataProvider:self.museumsForDayService.coreDataProvider];
+    TLAChooseMuseumViewController *VC = [[TLAChooseMuseumViewController alloc] initWithService:service trip:self.trip networkService:[TLAMosDataNetworkService new]];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:VC];
     [self presentViewController:navVC animated:YES completion:nil];
 }
 
@@ -177,7 +190,7 @@
     TLACustomAnnotation *annotation = [[TLACustomAnnotation alloc] initWithTitle:self.arrayMuseums[indexPath.row].name subtitle:self.arrayMuseums[indexPath.row].address location:coord];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [[TLACoordinator sharedRouter] showMuseumOnMapWithAnnotation:annotation];
+    [[TLACoordinator sharedCoordinator] showMuseumOnMapWithAnnotation:annotation];
 }
 
 

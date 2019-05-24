@@ -8,9 +8,10 @@
 
 
 #import "TLATripsViewController.h"
-#import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
 #import "TLAMuseumCollectionViewCell.h"
+#import "TLAAddTripViewController.h"
+#import "TLAMuseumsForDayViewController.h"
 #import "TLAConstants.h"
 
 
@@ -102,8 +103,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Trip *trip = [self.tripsService.fetchedResultsController objectAtIndexPath:indexPath];
-    self.museumForDayVC.trip = trip;
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.museumForDayVC];
+    TLAMuseumsForDayService *service = [[TLAMuseumsForDayService alloc] initWithCoreDataProvider:self.tripsService.coreDataProvider];
+    TLAMuseumsForDayViewController *VC = [[TLAMuseumsForDayViewController alloc] initWithCoreDataService:service trip:trip];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:VC];
     [self presentViewController:navVC animated:YES completion:nil];
 }
 
@@ -111,8 +113,11 @@
 #pragma mark - Actions
 
 - (void)presentNewTrip {
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.addTripVC];
+    TLAAddTripService *service = [[TLAAddTripService alloc] initWithCoreDataProvider:self.tripsService.coreDataProvider];
+    TLAAddTripViewController *VC = [[TLAAddTripViewController alloc] initWithAddTripService:service];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:VC];
     [self presentViewController:navVC animated:YES completion:nil];
+
 }
 
 @end

@@ -8,7 +8,6 @@
 
 
 #import "TLAAddTripViewController.h"
-#import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 #import "TLAConstants.h"
@@ -18,10 +17,20 @@
 @interface TLAAddTripViewController () <TLAAddNewTripDelegate>
 
 @property (nonatomic, strong) TLAAddNewTrip *addNewTrip;
+@property (nonatomic, strong) TLAAddTripService *addTripService;
 
 @end
 
 @implementation TLAAddTripViewController
+
+- (instancetype)initWithAddTripService:(TLAAddTripService *)service {
+    self = [super init];
+    if (self)
+    {
+        _addTripService = service;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

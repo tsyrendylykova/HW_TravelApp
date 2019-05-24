@@ -16,10 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAAddMuseumViewController : UIViewController
 
-@property (nonatomic, strong) TLAAddMuseumService *addMuseumService;
-@property (nonatomic, strong) Trip *trip;
-@property (nonatomic, assign) NSInteger rowNumber;
-@property (nonatomic, strong) NSMutableDictionary *info;
+- (instancetype)initWithTrip:(Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info addMuseumService:(TLAAddMuseumService *)service;
 
 @end
 

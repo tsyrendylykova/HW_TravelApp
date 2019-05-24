@@ -10,6 +10,7 @@
 #import "TLAChooseMuseumViewController.h"
 #import "TLADetailMuseumCollectionViewCell.h"
 #import "TLAConstants.h"
+#import "TLAAddMuseumViewController.h"
 
 
 @interface TLAChooseMuseumViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -19,10 +20,25 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableDictionary *dictInfo;
 @property (nonatomic, strong) UIActivityIndicatorView *activityView;
+@property (nonatomic, strong) TLAAddMuseumService *addMuseumService;
+@property (nonatomic, strong) Trip *trip;
+@property (nonatomic, strong) TLAMosDataNetworkService *networkService;
 
 @end
 
 @implementation TLAChooseMuseumViewController
+
+- (instancetype)initWithService:(TLAAddMuseumService *)service trip:(Trip *)trip networkService:(TLAMosDataNetworkService *)networkService;
+{
+    self = [super init];
+    if (self)
+    {
+        _addMuseumService = service;
+        _trip = trip;
+        _networkService = networkService;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -97,10 +113,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.addMuseumVC.rowNumber = indexPath.row;
-    self.addMuseumVC.info = self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]];
-    self.addMuseumVC.trip = self.trip;
-    [self.navigationController pushViewController:self.addMuseumVC animated:YES];
+    TLAAddMuseumViewController *VC = [[TLAAddMuseumViewController alloc] initWithTrip:self.trip rowNumber:indexPath.row info:self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]] addMuseumService:self.addMuseumService];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 

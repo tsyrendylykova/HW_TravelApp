@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [TLACoordinator sharedRouter].tabBarController;
+    self.window.rootViewController = [TLACoordinator sharedCoordinator].tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }

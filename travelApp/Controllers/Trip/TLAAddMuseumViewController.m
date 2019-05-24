@@ -8,7 +8,6 @@
 
 
 #import "TLAAddMuseumViewController.h"
-#import "AppDelegate.h"
 #import "Museum+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 #import "TLAConstants.h"
@@ -28,10 +27,27 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) TLAAddMuseumView *addMuseumView;
+@property (nonatomic, strong) TLAAddMuseumService *addMuseumService;
+@property (nonatomic, strong) Trip *trip;
+@property (nonatomic, assign) NSInteger rowNumber;
+@property (nonatomic, strong) NSMutableDictionary *info;
 
 @end
 
 @implementation TLAAddMuseumViewController
+
+- (instancetype)initWithTrip:(Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info addMuseumService:(TLAAddMuseumService *)service
+{
+    self = [super init];
+    if (self)
+    {
+        _trip = trip;
+        _rowNumber = rowNumber;
+        _info = info;
+        _addMuseumService = service;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

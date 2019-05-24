@@ -10,16 +10,14 @@
 #import <UIKit/UIKit.h>
 #import "TLAMosDataNetworkService.h"
 #import "Trip+CoreDataClass.h"
-#import "TLAAddMuseumViewController.h"
+#import "TLAAddMuseumService.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAChooseMuseumViewController : UIViewController <TLAMosDataNetworkServiceOutputProtocol>
 
-@property (nonatomic, strong) Trip *trip;
-@property (nonatomic, strong) TLAMosDataNetworkService *networkService;
-@property (nonatomic, strong) TLAAddMuseumViewController *addMuseumVC;
+- (instancetype)initWithService:(TLAAddMuseumService *)service trip:(Trip *)trip networkService:(TLAMosDataNetworkService *)networkService;
 
 @end
 

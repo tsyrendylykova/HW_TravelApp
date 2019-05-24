@@ -11,7 +11,7 @@
 
 @protocol TLACoordinatorProtocol <NSObject>
 
-+ (TLACoordinator *)sharedRouter;
++ (TLACoordinator *)sharedCoordinator;
 - (void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation;
 
 @end
