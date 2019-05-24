@@ -14,14 +14,17 @@
 
 @end
 
+
 @implementation TLAMosDataNetworkService
 
-- (NSString *)URLForMuseumSearch {
+- (NSString *)URLForMuseumSearch
+{
     NSString *api_key = @"4391df2ef2ed86f69c4bccbacba38a5a";
     return [NSString stringWithFormat:@"https://apidata.mos.ru/v1/datasets/529/rows?$top=54&api_key=%@", api_key];
 }
 
-- (void)findMosDataMuseums {
+- (void)findMosDataMuseums
+{
     NSString *urlString = [self URLForMuseumSearch];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:urlString]];

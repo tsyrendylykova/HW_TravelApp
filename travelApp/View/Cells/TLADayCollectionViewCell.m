@@ -12,7 +12,8 @@
 
 @implementation TLADayCollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self)
     {
@@ -21,7 +22,8 @@
     return self;
 }
 
-- (void)prepareLabel {
+- (void)prepareLabel
+{
     _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     _dateLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -32,7 +34,8 @@
     [self.contentView addSubview:_dateLabel];
 }
 
-- (void)selectedCell:(BOOL)selected {
+- (void)selectedCell:(BOOL)selected
+{
     if (selected)
     {
         self.dateLabel.backgroundColor = [UIColor blueColor];

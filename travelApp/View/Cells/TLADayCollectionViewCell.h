@@ -12,11 +12,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLADayCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *dateLabel;
 
-- (void)selectedCell: (BOOL)selected;
+- (void)selectedCell:(BOOL)selected;
 
 @end
 

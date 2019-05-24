@@ -24,9 +24,11 @@
 
 @end
 
+
 @implementation TLAAddMuseumView
 
-- (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip info:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber {
+- (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip info:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber
+{
     self = [super initWithFrame:frame];
     if (self)
     {
@@ -38,7 +40,8 @@
     return self;
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.backgroundColor = [UIColor whiteColor];
 
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * TLAAddMuseumImagePartHeight)];
@@ -62,7 +65,8 @@
     self.weekDays = @[@"понедельник", @"вторник", @"среда", @"четверг", @"пятница", @"суббота", @"воскресенье"];
 
     CGFloat y = CGRectGetMaxY(self.labelAddress.frame) + TLAAddMuseumDayTopOffset;
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 7; i++)
+    {
         UILabel *day = [[UILabel alloc] initWithFrame:CGRectMake(TLAAddMuseumLeftOffset, y, [UIScreen mainScreen].bounds.size.width / 3, TLAAddMuseumDayHeight)];
         day.text = self.weekDays[i];
         day.font = [UIFont systemFontOfSize:TLAAddMuseumFont weight:UIFontWeightSemibold];
@@ -88,7 +92,8 @@
 
 #pragma mark - Actions
 
-- (void)chooseDates {
+- (void)chooseDates
+{
     [self.addNewMuseumDelegate chooseDates];
 }
 

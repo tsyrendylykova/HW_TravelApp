@@ -13,6 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLACustomAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;

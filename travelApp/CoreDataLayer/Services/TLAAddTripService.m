@@ -14,7 +14,8 @@
 
 @implementation TLAAddTripService
 
-- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name {
+- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name
+{
     Trip *trip = [NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:self.coreDataProvider.persistentContainer.viewContext];
     
     trip.name = name;
@@ -32,7 +33,8 @@
     }
 }
 
-- (NSMutableSet<Day *> *)getArrayOfDays:(Trip *)trip {
+- (NSMutableSet<Day *> *)getArrayOfDays:(Trip *)trip
+{
     
     NSDate *startDate = trip.startDate;
     NSDate *endDate = trip.endDate;
@@ -49,7 +51,8 @@
                                                           toDate:endDate
                                                          options:0];
     
-    for (int i = 1; i < components.day; ++i) {
+    for (int i = 1; i < components.day; ++i)
+    {
         NSDateComponents *newComponents = [NSDateComponents new];
         newComponents.day = i;
         
@@ -66,7 +69,6 @@
     [setDays addObject: endDay];
     
     return setDays;
-    
 }
 
 @end

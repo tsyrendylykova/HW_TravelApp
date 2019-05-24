@@ -26,13 +26,16 @@
 
 @end
 
+
 @implementation TLAMapViewController
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [self prepareAnnotations];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUI];
@@ -44,13 +47,15 @@
     
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, TLATopOffset, self.view.frame.size.width, self.view.frame.size.height - TLATopOffset)];
     [self.view addSubview:self.mapView];
 }
 
-- (void)prepareNavBar {
+- (void)prepareNavBar
+{
     self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, TLANavBarLeftOffset, self.view.frame.size.width, TLANavBarLeftOffset)];
     self.navBar.backgroundColor = [UIColor whiteColor];
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Sightseeing"];
@@ -59,14 +64,16 @@
     [self.view addSubview:self.navBar];
 }
 
-- (void)initLocationManager {
+- (void)initLocationManager
+{
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
 }
 
-- (void)prepareAnnotations {
+- (void)prepareAnnotations
+{
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.mapView addAnnotation:self.annotation];
     if (self.annotation.title)
@@ -79,8 +86,8 @@
 
 #pragma mark - MKMapViewDelegate
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {    
-    //show moscow for simulator usage
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
     CLLocationCoordinate2D location;
     location.latitude = TLAMoscowLatitude;
     location.longitude = TLAMoscowLongitude;
@@ -90,7 +97,8 @@
     [self.mapView addAnnotation:self.annotation];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
     if ([annotation isKindOfClass:[TLACustomAnnotation class]])
     {
         TLACustomAnnotation *customAnnotation = (TLACustomAnnotation *)annotation;
@@ -116,7 +124,8 @@
 
 #pragma mark - Actions
 
-- (void)didTapSearchButton {
+- (void)didTapSearchButton
+{
     self.searchVC = [[TLASearchViewController alloc] init];
     self.searchVC.delegate = self;
 
@@ -128,7 +137,8 @@
 
 #pragma mark - UISearchResultsUpdating
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
     NSString *searchText = searchController.searchBar.text;
     
     if (searchController.searchResultsController) {
@@ -141,7 +151,8 @@
 
 #pragma mark - SearchViewDelegate
 
-- (void)didSelectRow:(TLAMapPoint *)mapPoint {
+- (void)didSelectRow:(TLAMapPoint *)mapPoint
+{
     self.searchController.active = NO;
     UINavigationController *detailNC = [[UINavigationController alloc] initWithRootViewController:[[TLADetailPointViewController alloc] initWithMapPoint:mapPoint]];
     [self presentViewController:detailNC animated:YES completion:nil];

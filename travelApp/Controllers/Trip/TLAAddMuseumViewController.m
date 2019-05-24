@@ -16,8 +16,8 @@
 
 @import CoreData;
 
-@interface TLAAddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate, TLAAddMuseumDelegate>
 
+@interface TLAAddMuseumViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate, TLAAddMuseumDelegate>
 
 @property (nonatomic, strong) UIPickerView *picker;
 @property (nonatomic, strong) UIToolbar *toolBar;
@@ -34,6 +34,7 @@
 
 @end
 
+
 @implementation TLAAddMuseumViewController
 
 - (instancetype)initWithTrip:(Trip *)trip rowNumber:(NSInteger)rowNumber info:(NSMutableDictionary *)info addMuseumService:(TLAAddMuseumService *)service
@@ -49,7 +50,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.weakDaysEnRu = @{@"понедельник": @"Monday", @"вторник": @"Tuesday", @"среда": @"Wednesday", @"четверг": @"Thursday", @"пятница": @"Friday", @"суббота": @"Saturday", @"воскресенье": @"Sunday"};
@@ -62,7 +64,8 @@
     [self prepareDateRormatter];
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * TLAAddMuseumPickerPartTopOffset + TLAAddMuseumPickerTopOffset, self.view.frame.size.width, self.view.frame.size.height * TLAAddMuseumPickerPartHeight)];
     self.picker.backgroundColor = [UIColor whiteColor];
     self.picker.showsSelectionIndicator = @YES;
@@ -82,7 +85,8 @@
     [self.toolBar setHidden:YES];
 }
 
-- (void)prepareDateRormatter {
+- (void)prepareDateRormatter
+{
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
     
@@ -93,7 +97,8 @@
 
 #pragma mark - AddMuseumDelegate
 
-- (void)chooseDates {
+- (void)chooseDates
+{
     [self.toolBar setHidden:NO];
     [self.picker setHidden:NO];
 }
@@ -101,7 +106,8 @@
 
 #pragma mark - Actions
 
-- (void)doneTouched:(UIBarButtonItem *)sender {
+- (void)doneTouched:(UIBarButtonItem *)sender
+{
     [self.toolBar setHidden:YES];
     [self.picker setHidden:YES];
     
@@ -112,30 +118,36 @@
 
 #pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
     return self.availableDates.count;
 }
 
-- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
     return [self.dateFormatterFull stringFromDate:self.availableDates[row]];
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
     self.selectedDateInPicker = self.availableDates[row];
 }
 
 
 #pragma mark - Methods
 
-- (void)chooseAvailableDaysForMuseum {
+- (void)chooseAvailableDaysForMuseum
+{
     self.availableDates = [NSMutableArray<NSDate *> new];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     
-    for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]) {
+    for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]])
+    {
         NSString *dayName = [self.dateFormatterShort stringFromDate:day.date];
         NSString *weekDayNameRu = self.weakDaysEnRu[dayName];
         if (![self.info[@"WorkHours"][weekDayNameRu] isEqualToString:@"выходной"])

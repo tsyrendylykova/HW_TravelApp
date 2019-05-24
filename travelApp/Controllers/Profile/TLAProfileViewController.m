@@ -18,9 +18,11 @@
 
 @end
 
+
 @implementation TLAProfileViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUI];
@@ -33,7 +35,8 @@
     [self.view addSubview:self.profileView];
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

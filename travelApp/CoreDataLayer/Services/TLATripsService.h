@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLATripsService : TLAService
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;

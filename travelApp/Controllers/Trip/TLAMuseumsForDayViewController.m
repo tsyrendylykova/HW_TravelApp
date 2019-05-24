@@ -33,6 +33,7 @@
 
 @end
 
+
 @implementation TLAMuseumsForDayViewController
 
 - (instancetype)initWithCoreDataService:(TLAMuseumsForDayService *)service trip:(Trip *)trip
@@ -46,7 +47,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
@@ -62,7 +64,8 @@
     self.tableView.alpha = 0;
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
@@ -73,7 +76,8 @@
     
 }
 
-- (void)prepareCollectionView {
+- (void)prepareCollectionView
+{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(TLAMuseumLayoutSize, TLAMuseumLayoutSize);
     layout.minimumInteritemSpacing = TLAMuseumCollectionViewLayout;
@@ -91,7 +95,8 @@
     [self.view addSubview:self.collectionView];
 }
 
-- (void)prepareTableView {
+- (void)prepareTableView
+{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(TLAMuseumLabelLeftOffset, CGRectGetMaxY(self.collectionView.frame) + TLAMuseumLabelLeftOffset, self.view.frame.size.width - TLAMuseumTableViewWidth, self.view.frame.size.height - TLAMuseumTableViewHeight - CGRectGetMaxY(self.collectionView.frame))];
     
     self.tableView.delegate = self;
@@ -102,7 +107,8 @@
     [self.view addSubview:self.tableView];
 }
 
-- (void)prepareDateFormatter {
+- (void)prepareDateFormatter
+{
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
 
@@ -113,11 +119,13 @@
 
 #pragma mark - Actions
 
-- (void)goBackToVC {
+- (void)goBackToVC
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)addNewMuseums {
+- (void)addNewMuseums
+{
     TLAAddMuseumService *service = [[TLAAddMuseumService alloc] initWithCoreDataProvider:self.museumsForDayService.coreDataProvider];
     TLAChooseMuseumViewController *VC = [[TLAChooseMuseumViewController alloc] initWithService:service trip:self.trip networkService:[TLAMosDataNetworkService new]];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:VC];
@@ -127,11 +135,13 @@
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return self.sortedDaysArray.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TLADayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TLAMuseumsViewControllerCollectionCellIdentifier forIndexPath:indexPath];
     if (cell)
     {
@@ -151,7 +161,8 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     self.selectedDate = self.sortedDaysArray[indexPath.row].date;
     Day *dayInTrip = [self.trip dayForDate:self.selectedDate];
     self.arrayMuseums = [[NSArray<Museum *> alloc] initWithArray:[dayInTrip.museums allObjects]];
@@ -169,11 +180,13 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.arrayMuseums.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TLAMuseumsViewControllerTableCellIdentifier];
     if (cell)
     {
@@ -185,7 +198,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.arrayMuseums[indexPath.row].latitude, self.arrayMuseums[indexPath.row].longitude);
     TLACustomAnnotation *annotation = [[TLACustomAnnotation alloc] initWithTitle:self.arrayMuseums[indexPath.row].name subtitle:self.arrayMuseums[indexPath.row].address location:coord];
     

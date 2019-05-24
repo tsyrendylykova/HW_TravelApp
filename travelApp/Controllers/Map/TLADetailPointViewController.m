@@ -19,9 +19,11 @@
 
 @end
 
+
 @implementation TLADetailPointViewController
 
-- (instancetype)initWithMapPoint:(TLAMapPoint *)mapPoint {
+- (instancetype)initWithMapPoint:(TLAMapPoint *)mapPoint
+{
     self = [super init];
     if (self)
     {
@@ -30,7 +32,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUI];
@@ -39,7 +42,8 @@
     self.tableView.dataSource = self;
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
@@ -62,7 +66,8 @@
 
 
 
-- (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TLADetailPointViewControllerCellIdentifier forIndexPath:indexPath];
     if (indexPath.row == 0)
     {
@@ -75,14 +80,16 @@
     return cell;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return 2;
 }
 
 
 #pragma mark - Methods
 
-- (void)goBackToVC {
+- (void)goBackToVC
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

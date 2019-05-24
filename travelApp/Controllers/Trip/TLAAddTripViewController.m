@@ -21,9 +21,11 @@
 
 @end
 
+
 @implementation TLAAddTripViewController
 
-- (instancetype)initWithAddTripService:(TLAAddTripService *)service {
+- (instancetype)initWithAddTripService:(TLAAddTripService *)service
+{
     self = [super init];
     if (self)
     {
@@ -32,7 +34,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUI];
@@ -42,7 +45,8 @@
     [self.view bringSubviewToFront:self.addNewTrip];
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"New trip";
     
@@ -53,13 +57,15 @@
 
 #pragma mark - AddNewTripDelegate
 
-- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name {
+- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name
+{
 
     [self.addTripService addNewTripActionWith:startDate endDate:endDate name:name];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)goBackToVC {
+- (void)goBackToVC
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

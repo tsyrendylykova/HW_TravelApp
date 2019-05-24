@@ -17,9 +17,11 @@
 
 @end
 
+
 @implementation TLASearchViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TLASearchViewControllerCellIdentifier];
@@ -30,16 +32,19 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.dataArray.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TLASearchViewControllerCellIdentifier forIndexPath:indexPath];
     
     TLAMapPoint *point = [TLAMapPoint new];
@@ -54,13 +59,14 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     TLAMapPoint *mapPoint = [[TLAMapPoint alloc] initWithName:self.dataArray[indexPath.row].name urlImage:self.dataArray[indexPath.row].urlImage address:self.dataArray[indexPath.row].address];
     
     [self.networkService getImageNSDataFromURL: mapPoint.urlImage withCompletionHandler:^(NSData *data) {
         mapPoint.categoryImage = [UIImage imageWithData:data];
     }];
-    if (_delegate && [_delegate respondsToSelector:@selector(didSelectRow:)])
+    if (_delegate)
     {
         [_delegate didSelectRow:mapPoint];
     }
@@ -70,7 +76,8 @@
 
 #pragma mark - FoursquareNetworkServiceOutputProtocol
 
-- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
+- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved
+{
     [self.dataArray removeAllObjects];
     
     NSArray *array = [[dataRecieved objectForKey:@"response"] objectForKey:@"venues"];

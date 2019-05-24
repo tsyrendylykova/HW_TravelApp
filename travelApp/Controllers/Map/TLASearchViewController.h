@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
 @interface TLASearchViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, TLAFoursquareNetworkServiceOutputProtocol>
 
 @property (nonatomic, strong) TLAFoursquareNetworkService *networkService;

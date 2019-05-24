@@ -18,7 +18,8 @@
 
 @implementation TLAProfileView
 
-- (instancetype)initWithFrame:(CGRect)frame person:(TLAPerson *)person {
+- (instancetype)initWithFrame:(CGRect)frame person:(TLAPerson *)person
+{
     self = [super initWithFrame:frame];
     if (self)
     {
@@ -28,7 +29,8 @@
     return self;
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     UIImageView *topView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.3)];
     topView.image = [UIImage imageNamed:@"color"];
     [self addSubview:topView];

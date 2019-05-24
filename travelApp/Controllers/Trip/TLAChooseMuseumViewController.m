@@ -15,7 +15,6 @@
 
 @interface TLAChooseMuseumViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-
 @property (nonatomic, strong) UILabel *labelName;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableDictionary *dictInfo;
@@ -25,6 +24,7 @@
 @property (nonatomic, strong) TLAMosDataNetworkService *networkService;
 
 @end
+
 
 @implementation TLAChooseMuseumViewController
 
@@ -40,7 +40,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self prepareUI];
@@ -61,7 +62,8 @@
     [self.networkService findMosDataMuseums];
 }
 
-- (void)prepareCollectionView {
+- (void)prepareCollectionView
+{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) / 3 - TLAChooseMuseumLayout, CGRectGetWidth(self.view.frame) / 3 - TLAChooseMuseumLayout);
     layout.minimumInteritemSpacing = 0;
@@ -76,7 +78,8 @@
     [self.view addSubview:self.collectionView];
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
@@ -93,18 +96,21 @@
 
 #pragma mark - Actions
 
-- (void)goBackToVC {
+- (void)goBackToVC
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return self.dictInfo.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TLADetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TLAChooseMuseumViewControllerCollectionCellIdentifier forIndexPath:indexPath];
     NSString *photoNameString = self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]][@"PhotoName"];
     cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", photoNameString]];
@@ -112,7 +118,8 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TLAAddMuseumViewController *VC = [[TLAAddMuseumViewController alloc] initWithTrip:self.trip rowNumber:indexPath.row info:self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]] addMuseumService:self.addMuseumService];
     [self.navigationController pushViewController:VC animated:YES];
 }
@@ -120,7 +127,8 @@
 
 #pragma mark - MosDataNetworkServiceOutputProtocol
 
-- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
+- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved
+{
     NSNumber *photoName = @1;
     for (id elem in dataRecieved) {
         NSMutableDictionary *dict = [NSMutableDictionary new];

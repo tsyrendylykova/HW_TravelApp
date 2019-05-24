@@ -17,6 +17,7 @@
 
 @import CoreData;
 
+
 @interface TLATripsViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -24,9 +25,11 @@
 
 @end
 
+
 @implementation TLATripsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -61,17 +64,20 @@
     [self.collectionView reloadData];
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"Your museum`s trips";
 }
 
-- (void)prepareBarButtonItems {
+- (void)prepareBarButtonItems
+{
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(presentNewTrip)];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
-- (void)prepareDateFormatter {
+- (void)prepareDateFormatter
+{
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
 }
@@ -84,10 +90,12 @@
     return self.tripsService.fetchedResultsController.sections.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return self.tripsService.fetchedResultsController.fetchedObjects.count;
 }
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     TLAMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TLATripsViewControllerCellIdentifier forIndexPath:indexPath];
     Trip *trip = [self.tripsService.fetchedResultsController objectAtIndexPath:indexPath];
     
@@ -101,7 +109,8 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     Trip *trip = [self.tripsService.fetchedResultsController objectAtIndexPath:indexPath];
     TLAMuseumsForDayService *service = [[TLAMuseumsForDayService alloc] initWithCoreDataProvider:self.tripsService.coreDataProvider];
     TLAMuseumsForDayViewController *VC = [[TLAMuseumsForDayViewController alloc] initWithCoreDataService:service trip:trip];
@@ -112,7 +121,8 @@
 
 #pragma mark - Actions
 
-- (void)presentNewTrip {
+- (void)presentNewTrip
+{
     TLAAddTripService *service = [[TLAAddTripService alloc] initWithCoreDataProvider:self.tripsService.coreDataProvider];
     TLAAddTripViewController *VC = [[TLAAddTripViewController alloc] initWithAddTripService:service];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:VC];

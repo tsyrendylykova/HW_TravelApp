@@ -13,10 +13,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLATripsViewController : UIViewController
 
 @property (nonatomic, strong) TLATripsService *tripsService;
-
 
 @end
 

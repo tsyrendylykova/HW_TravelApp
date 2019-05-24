@@ -22,9 +22,11 @@
 
 @end
 
+
 @implementation TLAMuseumsForDayView
 
-- (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip {
+- (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip
+{
     self = [super initWithFrame:frame];
     if (self)
     {
@@ -35,7 +37,8 @@
     return self;
 }
 
-- (void)prepareUI {
+- (void)prepareUI
+{
     self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(TLAMuseumLabelLeftOffset, TLAMuseumLabelFirstTopOffset, [UIScreen mainScreen].bounds.size.width - TLAMuseumLabelWidth, TLAMuseumLabelHeight)];
     self.labelName.text = self.trip.name;
     self.labelName.font = [UIFont systemFontOfSize:TLAMuseumLabelNameFontSize weight:UIFontWeightSemibold];
@@ -68,7 +71,8 @@
     [self addSubview:self.labelShow];
 }
 
-- (void)prepareDateFormatter {
+- (void)prepareDateFormatter
+{
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
     

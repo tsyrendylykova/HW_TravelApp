@@ -24,12 +24,13 @@
 @property (nonatomic, strong) UIDatePicker *endDatePicker;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
-
 @end
+
 
 @implementation TLAAddNewTrip
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self)
     {
@@ -39,7 +40,8 @@
     return self;
 }
 
-- (void)prepareDetailsForTrip {
+- (void)prepareDetailsForTrip
+{
     self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(TLAAddTripLabelNameLeftOffset, TLAAddTripLabelNameTopOffset, TLAAddTripLabelNameWidth, TLAAddTripLabelNameHeight)];
     self.labelName.text = @"Name";
     self.labelName.font = [UIFont systemFontOfSize:TLAAddTripFontSize weight:UIFontWeightSemibold];
@@ -110,7 +112,8 @@
     
 }
 
-- (void)prepareDateRormatter {
+- (void)prepareDateRormatter
+{
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
 }
@@ -118,16 +121,19 @@
 
 #pragma mark - Actions
 
-- (void)addNewTripButton {
+- (void)addNewTripButton
+{
     [self.addNewTripDelegate addNewTripActionWith:self.startDatePicker.date endDate:_endDatePicker.date name:self.textFieldName.text];
 }
 
-- (void)onDatePickerValueChanged:(UIDatePicker *)datePicker {
+- (void)onDatePickerValueChanged:(UIDatePicker *)datePicker
+{
     NSString *dateString = [self.dateFormatter stringFromDate:datePicker.date];
     self.textFieldStartDate.text = [NSString stringWithFormat:@"%@", dateString];;
 }
 
-- (void)onDateEndPickerValueChanged:(UIDatePicker *)datePicker {
+- (void)onDateEndPickerValueChanged:(UIDatePicker *)datePicker
+{
     NSString *dateString = [self.dateFormatter stringFromDate:datePicker.date];
     self.textFieldEndDate.text = [NSString stringWithFormat:@"%@",dateString];
 }

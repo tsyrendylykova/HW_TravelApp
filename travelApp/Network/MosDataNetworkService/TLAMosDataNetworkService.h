@@ -13,6 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLAMosDataNetworkService : NSObject <TLAMosDataNetworkServiceInputProtocolMuseums>
 
 @property (nonatomic, nullable, weak) id<TLAMosDataNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */

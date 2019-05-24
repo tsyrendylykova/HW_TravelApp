@@ -12,7 +12,8 @@
 
 @implementation TLAPerson
 
-- (instancetype)initWithName:(NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences {
+- (instancetype)initWithName:(NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences
+{
     self = [super init];
     if (self)
     {

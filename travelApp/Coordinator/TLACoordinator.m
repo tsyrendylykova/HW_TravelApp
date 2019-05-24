@@ -19,9 +19,9 @@
 
 @implementation TLACoordinator
 
-+ (TLACoordinator *)sharedCoordinator {
++ (TLACoordinator *)sharedCoordinator
+{
     TLACoordinator *coordinator = [TLACoordinator new];
-    
     coordinator.tabBarController = [UITabBarController new];
     
     TLAMapViewController *mapVC = [TLAMapViewController new];
@@ -30,7 +30,6 @@
     mapVC.tabBarItem.image = [UIImage imageNamed:@"map"];
     
     TLACoreDataProvider *coreDataProvider = [TLACoreDataProvider new];
-    
     TLATripsViewController *createTripVC = [TLATripsViewController new];
     createTripVC.tripsService = [[TLATripsService alloc] initWithCoreDataProvider:coreDataProvider];
     
@@ -52,7 +51,8 @@
     return coordinator;
 }
 
-- (void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation {
+- (void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation
+{
     UITabBarController *tabBarC = (UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
     TLAMapViewController *mapViewController = tabBarC.viewControllers[0];
     mapViewController.annotation = annotation;

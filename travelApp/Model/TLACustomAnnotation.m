@@ -12,7 +12,8 @@
 
 @implementation TLACustomAnnotation
 
-- (instancetype)initWithTitle:(NSString *)newTitle subtitle: (NSString *)subtitle location:(CLLocationCoordinate2D)location {
+- (instancetype)initWithTitle:(NSString *)newTitle subtitle: (NSString *)subtitle location:(CLLocationCoordinate2D)location
+{
     self = [super init];
     if (self)
     {
@@ -23,7 +24,8 @@
     return self;
 }
 
-- (MKAnnotationView *)annotationView {
+- (MKAnnotationView *)annotationView
+{
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"myCustomAnnotation"];
     
     annotationView.enabled = @YES;

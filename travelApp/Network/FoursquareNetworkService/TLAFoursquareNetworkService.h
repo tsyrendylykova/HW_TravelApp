@@ -13,6 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLAFoursquareNetworkService : NSObject <TLAFoursquareNetworkServiceInputProtocol>
 
 @property (nonatomic, nullable, weak) id<TLAFoursquareNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */

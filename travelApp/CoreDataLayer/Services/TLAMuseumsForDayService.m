@@ -32,7 +32,6 @@
     self.fetchedResultsController = theFetchedResultsController;
     
     return _fetchedResultsController;
-    
 }
 
 @end

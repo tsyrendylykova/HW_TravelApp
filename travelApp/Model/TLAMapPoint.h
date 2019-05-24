@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TLAMapPoint : NSObject
 
 @property (nonatomic, copy) NSString *name;
