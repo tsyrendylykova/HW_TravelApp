@@ -6,16 +6,16 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
-@protocol TLAMosDataNetworkServiceOutputProtocol <NSObject>
-@optional
 
--(void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved;
+@protocol TLAMosDataNetworkServiceOutputProtocol <NSObject>
+
+- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved;
 
 @end
 
-@protocol TLAMosDataNetworkServiceInputProtocolMuseums <NSObject>
-@optional
 
--(void)findMosDataMuseums;
+@protocol TLAMosDataNetworkServiceInputProtocolMuseums <NSObject>
+
+- (void)findMosDataMuseums;
 
 @end

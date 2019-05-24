@@ -6,7 +6,9 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAProfileView.h"
+
 
 @interface TLAProfileView()
 
@@ -16,16 +18,17 @@
 
 @implementation TLAProfileView
 
--(instancetype)initWithFrame:(CGRect)frame person:(TLAPerson *)person {
+- (instancetype)initWithFrame:(CGRect)frame person:(TLAPerson *)person {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         _person = person;
         [self prepareUI];
     }
     return self;
 }
 
--(void)prepareUI {
+- (void)prepareUI {
     UIImageView *topView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.3)];
     topView.image = [UIImage imageNamed:@"color"];
     [self addSubview:topView];

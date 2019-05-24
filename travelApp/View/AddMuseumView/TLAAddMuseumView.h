@@ -6,17 +6,19 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import "Trip+CoreDataClass.h"
 #import "TLAAddMuseumDelegate.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAAddMuseumView : UIView
 
-@property (nonatomic, weak, nullable) id<TLAAddMuseumDelegate> addNewMuseumDelegate;
+@property (nonatomic, nullable, weak) id<TLAAddMuseumDelegate> addNewMuseumDelegate;
 
--(instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip info:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber;
+- (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip info:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber;
 
 @end
 

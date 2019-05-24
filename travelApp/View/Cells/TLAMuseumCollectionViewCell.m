@@ -6,14 +6,17 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAMuseumCollectionViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @implementation TLAMuseumCollectionViewCell
 
--(instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         UIView *cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
         cellView.layer.cornerRadius = 10;
         cellView.layer.masksToBounds = @YES;

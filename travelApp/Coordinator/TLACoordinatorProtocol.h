@@ -8,10 +8,10 @@
 
 @class TLACoordinator;
 
-@protocol TLACoordinatorProtocol <NSObject>
-@optional
 
-+(TLACoordinator *)sharedRouter;
--(void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation;
+@protocol TLACoordinatorProtocol <NSObject>
+
++ (TLACoordinator *)sharedRouter;
+- (void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation;
 
 @end

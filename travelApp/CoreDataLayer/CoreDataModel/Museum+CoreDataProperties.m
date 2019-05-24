@@ -7,7 +7,9 @@
 //
 //
 
+
 #import "Museum+CoreDataProperties.h"
+
 
 @implementation Museum (CoreDataProperties)
 

@@ -7,6 +7,7 @@
 //
 //
 
+
 #import "Trip+CoreDataClass.h"
 
 

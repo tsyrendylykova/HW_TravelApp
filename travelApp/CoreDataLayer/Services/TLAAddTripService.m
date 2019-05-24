@@ -6,13 +6,15 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAAddTripService.h"
 #import "Trip+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 
+
 @implementation TLAAddTripService
 
--(void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name {
+- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name {
     Trip *trip = [NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:self.coreDataProvider.persistentContainer.viewContext];
     
     trip.name = name;
@@ -23,13 +25,14 @@
     [trip addDays:dates];
     
     NSError *error;
-    if (![trip.managedObjectContext save:&error]) {
+    if (![trip.managedObjectContext save:&error])
+    {
         NSLog(@"Не удалось сохранить объект");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
 }
 
--(NSMutableSet<Day *> *)getArrayOfDays:(Trip *)trip {
+- (NSMutableSet<Day *> *)getArrayOfDays:(Trip *)trip {
     
     NSDate *startDate = trip.startDate;
     NSDate *endDate = trip.endDate;

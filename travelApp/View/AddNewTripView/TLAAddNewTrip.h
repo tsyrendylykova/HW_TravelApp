@@ -6,16 +6,18 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import "TLAAddNewTripDelegate.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAAddNewTrip : UIView
 
-@property (nonatomic, weak, nullable) id<TLAAddNewTripDelegate> addNewTripDelegate;
+@property (nonatomic, nullable, weak) id<TLAAddNewTripDelegate> addNewTripDelegate;
 
--(instancetype)initWithFrame:(CGRect)frame;
+- (instancetype)initWithFrame:(CGRect)frame;
 
 @end
 

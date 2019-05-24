@@ -6,9 +6,11 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAProfileViewController.h"
 #import "TLAProfileView.h"
 #import "TLAPerson.h"
+
 
 @interface TLAProfileViewController ()
 
@@ -31,7 +33,7 @@
     [self.view addSubview:self.profileView];
 }
 
--(void)prepareUI {
+- (void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

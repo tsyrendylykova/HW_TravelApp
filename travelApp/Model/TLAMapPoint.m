@@ -6,13 +6,16 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAMapPoint.h"
+
 
 @implementation TLAMapPoint
 
--(instancetype)initWithName: (NSString *)name urlImage:(NSString *)urlImage address:(NSString *)address {
+- (instancetype)initWithName:(NSString *)name urlImage:(NSString *)urlImage address:(NSString *)address {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _name = name;
         _urlImage = urlImage;
         _address = address;

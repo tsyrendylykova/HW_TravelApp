@@ -6,8 +6,9 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 @protocol TLAAddMuseumDelegate <NSObject>
 
--(void)chooseDates;
+- (void)chooseDates;
 
 @end

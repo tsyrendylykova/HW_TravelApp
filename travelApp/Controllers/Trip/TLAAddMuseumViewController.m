@@ -6,12 +6,14 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAAddMuseumViewController.h"
 #import "AppDelegate.h"
 #import "Museum+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
-#import "Constants.h"
+#import "TLAConstants.h"
 #import "TLAAddMuseumView.h"
+
 
 @import CoreData;
 
@@ -22,7 +24,7 @@
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) NSDate *selectedDateInPicker;
 @property (nonatomic, strong) NSMutableArray<NSDate *> *availableDates;
-@property (nonatomic, copy) NSDictionary *weakDaysEnRu;
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> *weakDaysEnRu;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterFull;
 @property (nonatomic, strong) NSDateFormatter *dateFormatterShort;
 @property (nonatomic, strong) TLAAddMuseumView *addMuseumView;
@@ -44,14 +46,14 @@
     [self prepareDateRormatter];
 }
 
--(void)prepareUI {
-    self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * AddMuseumPickerPartTopOffset + AddMuseumPickerTopOffset, self.view.frame.size.width, self.view.frame.size.height * AddMuseumPickerPartHeight)];
+- (void)prepareUI {
+    self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * TLAAddMuseumPickerPartTopOffset + TLAAddMuseumPickerTopOffset, self.view.frame.size.width, self.view.frame.size.height * TLAAddMuseumPickerPartHeight)];
     self.picker.backgroundColor = [UIColor whiteColor];
     self.picker.showsSelectionIndicator = @YES;
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
-    self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * AddMuseumToolbarPartTopOffset, self.view.frame.size.width, AddMuseumToolbarHeight)];
+    self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height * TLAAddMuseumToolbarPartTopOffset, self.view.frame.size.width, TLAAddMuseumToolbarHeight)];
     self.toolBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
     
@@ -64,7 +66,7 @@
     [self.toolBar setHidden:YES];
 }
 
--(void)prepareDateRormatter {
+- (void)prepareDateRormatter {
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
     
@@ -72,12 +74,14 @@
     [self.dateFormatterShort setDateFormat:@"EEEE"];
 }
 
+
 #pragma mark - AddMuseumDelegate
 
--(void)chooseDates {
+- (void)chooseDates {
     [self.toolBar setHidden:NO];
     [self.picker setHidden:NO];
 }
+
 
 #pragma mark - Actions
 
@@ -88,6 +92,7 @@
     [self.addMuseumService saveWithInfo:self.info rowNumber:self.rowNumber trip:self.trip electedDateInPicker:self.selectedDateInPicker];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
 
@@ -107,17 +112,18 @@
     self.selectedDateInPicker = self.availableDates[row];
 }
 
+
 #pragma mark - Methods
 
-// prevent availability to add museum for off-day
--(void)chooseAvailableDaysForMuseum {
+- (void)chooseAvailableDaysForMuseum {
     self.availableDates = [NSMutableArray<NSDate *> new];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     
     for (Day *day in [self.trip.days sortedArrayUsingDescriptors:@[sortDescriptor]]) {
         NSString *dayName = [self.dateFormatterShort stringFromDate:day.date];
         NSString *weekDayNameRu = self.weakDaysEnRu[dayName];
-        if (![self.info[@"WorkHours"][weekDayNameRu] isEqualToString:@"выходной"]) {
+        if (![self.info[@"WorkHours"][weekDayNameRu] isEqualToString:@"выходной"])
+        {
             [self.availableDates addObject:day.date];
         }
     }

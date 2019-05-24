@@ -7,7 +7,9 @@
 //
 //
 
+
 #import "Day+CoreDataProperties.h"
+
 
 @implementation Day (CoreDataProperties)
 

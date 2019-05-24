@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLASearchViewController.h"
-#import "Constants.h"
+#import "TLAConstants.h"
+
 
 @interface TLASearchViewController ()
 
@@ -20,10 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:SearchViewControllerCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TLASearchViewControllerCellIdentifier];
     self.networkService = [TLAFoursquareNetworkService new];
     self.networkService.output = self;
 }
+
 
 #pragma mark - Table view data source
 
@@ -37,10 +40,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchViewControllerCellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TLASearchViewControllerCellIdentifier forIndexPath:indexPath];
     
     TLAMapPoint *point = [TLAMapPoint new];
-    if (self.dataArray.count > 0) {
+    if (self.dataArray.count > 0)
+    {
         point.name = self.dataArray[indexPath.row].name;
         point.urlImage = self.dataArray[indexPath.row].urlImage;
      
@@ -56,15 +60,17 @@
     [self.networkService getImageNSDataFromURL: mapPoint.urlImage withCompletionHandler:^(NSData *data) {
         mapPoint.categoryImage = [UIImage imageWithData:data];
     }];
-    if (_delegate && [_delegate respondsToSelector:@selector(didSelectRow:)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(didSelectRow:)])
+    {
         [_delegate didSelectRow:mapPoint];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+
 #pragma mark - FoursquareNetworkServiceOutputProtocol
 
--(void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
+- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
     [self.dataArray removeAllObjects];
     
     NSArray *array = [[dataRecieved objectForKey:@"response"] objectForKey:@"venues"];

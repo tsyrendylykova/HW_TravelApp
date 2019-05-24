@@ -6,15 +6,17 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAMuseumsForDayViewController.h"
 #import "TLAChooseMuseumViewController.h"
 #import "AppDelegate.h"
 #import "Museum+CoreDataClass.h"
 #import "TLADayCollectionViewCell.h"
 #import "TLACoordinator.h"
-#import "Constants.h"
+#import "TLAConstants.h"
 #import "TLAMuseumsForDayView.h"
 #import "Day+CoreDataClass.h"
+
 
 @interface TLAMuseumsForDayViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
@@ -48,7 +50,7 @@
     self.tableView.alpha = 0;
 }
 
--(void)prepareUI {
+- (void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
@@ -59,36 +61,36 @@
     
 }
 
--(void)prepareCollectionView {
+- (void)prepareCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(MuseumLayoutSize, MuseumLayoutSize);
-    layout.minimumInteritemSpacing = MuseumCollectionViewLayout;
+    layout.itemSize = CGSizeMake(TLAMuseumLayoutSize, TLAMuseumLayoutSize);
+    layout.minimumInteritemSpacing = TLAMuseumCollectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.sectionInset = UIEdgeInsetsMake(MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets, MuseumEdgeInsets);
+    layout.sectionInset = UIEdgeInsetsMake(TLAMuseumEdgeInsets, TLAMuseumEdgeInsets, TLAMuseumEdgeInsets, TLAMuseumEdgeInsets);
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(MuseumCollectionViewTopOffset, CGRectGetMaxY(self.museumsForDay.frame) + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumCollectionViewWidth, MuseumCollectionViewHeight) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(TLAMuseumCollectionViewTopOffset, CGRectGetMaxY(self.museumsForDay.frame) + TLAMuseumLabelLeftOffset, self.view.frame.size.width - TLAMuseumCollectionViewWidth, TLAMuseumCollectionViewHeight) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    [self.collectionView registerClass:[TLADayCollectionViewCell class] forCellWithReuseIdentifier:MuseumsViewControllerCollectionCellIdentifier];
+    [self.collectionView registerClass:[TLADayCollectionViewCell class] forCellWithReuseIdentifier:TLAMuseumsViewControllerCollectionCellIdentifier];
     
     [self.view addSubview:self.collectionView];
 }
 
--(void)prepareTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.collectionView.frame) + MuseumLabelLeftOffset, self.view.frame.size.width - MuseumTableViewWidth, self.view.frame.size.height - MuseumTableViewHeight - CGRectGetMaxY(self.collectionView.frame))];
+- (void)prepareTableView {
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(TLAMuseumLabelLeftOffset, CGRectGetMaxY(self.collectionView.frame) + TLAMuseumLabelLeftOffset, self.view.frame.size.width - TLAMuseumTableViewWidth, self.view.frame.size.height - TLAMuseumTableViewHeight - CGRectGetMaxY(self.collectionView.frame))];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MuseumsViewControllerTableCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TLAMuseumsViewControllerTableCellIdentifier];
     
     [self.view addSubview:self.tableView];
 }
 
--(void)prepareDateFormatter {
+- (void)prepareDateFormatter {
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
 
@@ -96,17 +98,19 @@
     [self.dateFormatterShort setDateFormat:@"MMM d"];
 }
 
+
 #pragma mark - Actions
 
--(void)goBackToVC {
+- (void)goBackToVC {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)addNewMuseums {
+- (void)addNewMuseums {
     self.chooseMuseumVC.trip = self.trip;
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.chooseMuseumVC];
     [self presentViewController:navVC animated:YES completion:nil];
 }
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -115,14 +119,18 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TLADayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MuseumsViewControllerCollectionCellIdentifier forIndexPath:indexPath];
-    if (cell) {
+    TLADayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TLAMuseumsViewControllerCollectionCellIdentifier forIndexPath:indexPath];
+    if (cell)
+    {
         cell.dateLabel.text = [self.dateFormatterShort stringFromDate:self.sortedDaysArray[indexPath.row].date];
         cell.dateLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
         
-        if ([self.selectedDate isEqualToDate:self.sortedDaysArray[indexPath.row].date]) {
+        if ([self.selectedDate isEqualToDate:self.sortedDaysArray[indexPath.row].date])
+        {
             [cell selectedCell:YES];
-        } else {
+        }
+        else
+        {
             [cell selectedCell:NO];
         }
     }
@@ -145,6 +153,7 @@
     }];
 }
 
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -152,9 +161,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MuseumsViewControllerTableCellIdentifier];
-    if (cell) {
-        if (self.selectedDate) {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TLAMuseumsViewControllerTableCellIdentifier];
+    if (cell)
+    {
+        if (self.selectedDate)
+        {
             cell.textLabel.text = self.arrayMuseums[indexPath.row].name;
         }
     }

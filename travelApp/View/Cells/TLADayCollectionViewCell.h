@@ -6,7 +6,9 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *dateLabel;
 
--(void)selectedCell: (BOOL)selected;
+- (void)selectedCell: (BOOL)selected;
 
 @end
 

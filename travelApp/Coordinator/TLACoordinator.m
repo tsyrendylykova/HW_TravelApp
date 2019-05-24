@@ -6,6 +6,7 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import "TLACoordinator.h"
 #import "TLAMapViewController.h"
@@ -14,6 +15,7 @@
 #import "TLACoreDataProvider.h"
 #import "TLAAddMuseumViewController.h"
 #import "TLAAddTripService.h"
+
 
 @implementation TLACoordinator
 
@@ -69,7 +71,7 @@
     return router;
 }
 
--(void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation {
+- (void)showMuseumOnMapWithAnnotation:(TLACustomAnnotation *)annotation {
     
     UITabBarController *tabBarC = (UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
     TLAMapViewController *mapViewController = tabBarC.viewControllers[0];

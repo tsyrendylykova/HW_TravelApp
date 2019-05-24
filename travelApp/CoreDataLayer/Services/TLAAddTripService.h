@@ -6,7 +6,9 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAService.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
--(void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name;
+- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name;
 
 @end
 

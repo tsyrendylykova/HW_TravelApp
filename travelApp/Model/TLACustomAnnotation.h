@@ -6,19 +6,21 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TLACustomAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (nonatomic, readonly, copy, nullable) NSString *title;
-@property (nonatomic, readonly, copy, nullable) NSString *subtitle;
+@property (nonatomic, nullable, readonly, copy) NSString *title;
+@property (nonatomic, nullable, readonly, copy) NSString *subtitle;
 
--(instancetype)initWithTitle: (NSString *)newTitle subtitle: (NSString *)subtitle location:(CLLocationCoordinate2D)location;
--(MKAnnotationView *)annotationView;
+- (instancetype)initWithTitle:(NSString *)newTitle subtitle: (NSString *)subtitle location:(CLLocationCoordinate2D)location;
+- (MKAnnotationView *)annotationView;
 
 @end
 

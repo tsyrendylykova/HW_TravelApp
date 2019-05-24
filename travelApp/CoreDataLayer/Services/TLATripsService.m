@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLATripsService.h"
 #import "Trip+CoreDataClass.h"
+
 
 @implementation TLATripsService
 

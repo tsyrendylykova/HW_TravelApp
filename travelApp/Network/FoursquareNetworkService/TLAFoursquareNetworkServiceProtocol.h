@@ -6,18 +6,18 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
-@protocol TLAFoursquareNetworkServiceOutputProtocol <NSObject>
-@optional
 
--(void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved;
+@protocol TLAFoursquareNetworkServiceOutputProtocol <NSObject>
+
+- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved;
 
 @end
 
-@protocol TLAFoursquareNetworkServiceInputProtocol <NSObject>
-@optional
 
--(void)findFoursquarePlacesWithSearchString: (NSString *)searchString latitude:(NSString *)latitude longitude:(NSString *)longitude;
--(void)getImageNSDataFromURL: (NSString *)urlString withCompletionHandler:(void (^)(NSData *data))completionHandler;
+@protocol TLAFoursquareNetworkServiceInputProtocol <NSObject>
+
+- (void)findFoursquarePlacesWithSearchString:(NSString *)searchString latitude:(NSString *)latitude longitude:(NSString *)longitude;
+- (void)getImageNSDataFromURL:(NSString *)urlString withCompletionHandler:(void (^)(NSData *data))completionHandler;
 
 @end
 

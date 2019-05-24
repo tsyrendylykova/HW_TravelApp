@@ -6,19 +6,22 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLADayCollectionViewCell.h"
+
 
 @implementation TLADayCollectionViewCell
 
--(instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         [self prepareLabel];
     }
     return self;
 }
 
--(void)prepareLabel {
+- (void)prepareLabel {
     _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     _dateLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -29,11 +32,14 @@
     [self.contentView addSubview:_dateLabel];
 }
 
--(void)selectedCell: (BOOL)selected {
-    if (selected) {
+- (void)selectedCell:(BOOL)selected {
+    if (selected)
+    {
         self.dateLabel.backgroundColor = [UIColor blueColor];
         self.dateLabel.textColor = [UIColor whiteColor];
-    } else {
+    }
+    else
+    {
         self.dateLabel.backgroundColor = [UIColor whiteColor];
         self.dateLabel.textColor = [UIColor blackColor];
     }

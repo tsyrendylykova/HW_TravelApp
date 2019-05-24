@@ -6,13 +6,16 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAPerson.h"
+
 
 @implementation TLAPerson
 
--(instancetype)initWithName: (NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences {
+- (instancetype)initWithName:(NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _name = name;
         _age = age;
         _address = address;

@@ -6,14 +6,16 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import "TLAMosDataNetworkServiceProtocol.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAMosDataNetworkService : NSObject <TLAMosDataNetworkServiceInputProtocolMuseums>
 
-@property (nonatomic, weak, nullable) id<TLAMosDataNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
+@property (nonatomic, nullable, weak) id<TLAMosDataNetworkServiceOutputProtocol> output; /**< Делегат внешних событий */
 
 @end
 

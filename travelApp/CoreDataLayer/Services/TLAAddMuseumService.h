@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAService.h"
 #import "Trip+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
--(void)saveWithInfo:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber trip:(Trip *)trip electedDateInPicker:(NSDate *)selectedDateInPicker;
+- (void)saveWithInfo:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber trip:(Trip *)trip electedDateInPicker:(NSDate *)selectedDateInPicker;
 
 @end
 

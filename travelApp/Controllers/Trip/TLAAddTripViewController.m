@@ -6,11 +6,12 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAAddTripViewController.h"
 #import "AppDelegate.h"
 #import "Trip+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
-#import "Constants.h"
+#import "TLAConstants.h"
 #import "TLAAddNewTrip.h"
 
 
@@ -32,7 +33,7 @@
     [self.view bringSubviewToFront:self.addNewTrip];
 }
 
--(void)prepareUI {
+- (void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"New trip";
     
@@ -40,15 +41,16 @@
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
 }
 
+
 #pragma mark - AddNewTripDelegate
 
--(void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name {
+- (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name {
 
     [self.addTripService addNewTripActionWith:startDate endDate:endDate name:name];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)goBackToVC {
+- (void)goBackToVC {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

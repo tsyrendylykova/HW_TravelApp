@@ -130,7 +130,7 @@
 		9571FCC32271E05900602FB4 /* TLADetailPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLADetailPointViewController.h; sourceTree = "<group>"; };
 		9571FCC42271E05900602FB4 /* TLADetailPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLADetailPointViewController.m; sourceTree = "<group>"; };
 		95A20669228D912300583AC4 /* TLACoordinatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLACoordinatorProtocol.h; sourceTree = "<group>"; };
-		95A2066C228D98C300583AC4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		95A2066C228D98C300583AC4 /* TLAConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAConstants.h; sourceTree = "<group>"; };
 		95A2066D228EAE2700583AC4 /* TLAAddNewTrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddNewTrip.h; sourceTree = "<group>"; };
 		95A2066E228EAE2700583AC4 /* TLAAddNewTrip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLAAddNewTrip.m; sourceTree = "<group>"; };
 		95A20670228EB59300583AC4 /* TLAAddNewTripDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLAAddNewTripDelegate.h; sourceTree = "<group>"; };
@@ -390,7 +390,7 @@
 				9571FC92226F16FB00602FB4 /* LaunchScreen.storyboard */,
 				9571FCA9226F29DC00602FB4 /* Assets.xcassets */,
 				9571FC8D226F16F900602FB4 /* travelApp.xcdatamodeld */,
-				95A2066C228D98C300583AC4 /* Constants.h */,
+				95A2066C228D98C300583AC4 /* TLAConstants.h */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";

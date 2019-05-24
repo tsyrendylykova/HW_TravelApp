@@ -6,9 +6,11 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAChooseMuseumViewController.h"
 #import "TLADetailMuseumCollectionViewCell.h"
-#import "Constants.h"
+#import "TLAConstants.h"
+
 
 @interface TLAChooseMuseumViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -43,40 +45,42 @@
     [self.networkService findMosDataMuseums];
 }
 
--(void)prepareCollectionView {
+- (void)prepareCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) / 3 - ChooseMuseumLayout, CGRectGetWidth(self.view.frame) / 3 - ChooseMuseumLayout);
+    layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame) / 3 - TLAChooseMuseumLayout, CGRectGetWidth(self.view.frame) / 3 - TLAChooseMuseumLayout);
     layout.minimumInteritemSpacing = 0;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.labelName.frame) + ChooseMuseumCollectionView, self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(self.labelName.frame) - ChooseMuseumCollectionView) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.labelName.frame) + TLAChooseMuseumCollectionView, self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(self.labelName.frame) - TLAChooseMuseumCollectionView) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    [self.collectionView registerClass:[TLADetailMuseumCollectionViewCell class] forCellWithReuseIdentifier:ChooseMuseumViewControllerCollectionCellIdentifier];
+    [self.collectionView registerClass:[TLADetailMuseumCollectionViewCell class] forCellWithReuseIdentifier:TLAChooseMuseumViewControllerCollectionCellIdentifier];
     
     [self.view addSubview:self.collectionView];
 }
 
--(void)prepareUI {
+- (void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(ChooseMuseumLeftOffset, ChooseMuseumTopOffset, ChooseMuseumWidth, ChooseMuseumHeight)];
+    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(TLAChooseMuseumLeftOffset, TLAChooseMuseumTopOffset, TLAChooseMuseumWidth, TLAChooseMuseumHeight)];
     self.labelName.text = @"Museums near Moscow";
-    self.labelName.font = [UIFont systemFontOfSize:ChooseMuseumFont weight:UIFontWeightSemibold];
+    self.labelName.font = [UIFont systemFontOfSize:TLAChooseMuseumFont weight:UIFontWeightSemibold];
     [self.labelName setTextColor:[UIColor blackColor]];
     [self.view addSubview:self.labelName];
     
 }
 
+
 #pragma mark - Actions
 
--(void)goBackToVC {
+- (void)goBackToVC {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -85,7 +89,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TLADetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ChooseMuseumViewControllerCollectionCellIdentifier forIndexPath:indexPath];
+    TLADetailMuseumCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TLAChooseMuseumViewControllerCollectionCellIdentifier forIndexPath:indexPath];
     NSString *photoNameString = self.dictInfo[[NSString stringWithFormat:@"%ld", (long)indexPath.row + 1]][@"PhotoName"];
     cell.coverImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", photoNameString]];
     
@@ -99,9 +103,10 @@
     [self.navigationController pushViewController:self.addMuseumVC animated:YES];
 }
 
+
 #pragma mark - MosDataNetworkServiceOutputProtocol
 
--(void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
+- (void)loadingIsDoneWithDataRecieved:(NSDictionary *)dataRecieved {
     NSNumber *photoName = @1;
     for (id elem in dataRecieved) {
         NSMutableDictionary *dict = [NSMutableDictionary new];

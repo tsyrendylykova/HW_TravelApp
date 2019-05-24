@@ -6,13 +6,15 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAAddMuseumService.h"
 #import "Museum+CoreDataClass.h"
 #import "Day+CoreDataClass.h"
 
+
 @implementation TLAAddMuseumService
 
--(void)saveWithInfo:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber trip:(Trip *)trip electedDateInPicker:(NSDate *)selectedDateInPicker {
+- (void)saveWithInfo:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber trip:(Trip *)trip electedDateInPicker:(NSDate *)selectedDateInPicker {
     Museum *museum = [NSEntityDescription insertNewObjectForEntityForName:@"Museum" inManagedObjectContext:self.coreDataProvider.persistentContainer.viewContext];
     museum.name = info[@"CommonName"];
     museum.address = info[@"Address"];
@@ -24,7 +26,8 @@
     [dayInTrip addMuseumsObject:museum];
     
     NSError *error;
-    if (![museum.managedObjectContext save:&error]) {
+    if (![museum.managedObjectContext save:&error])
+    {
         NSLog(@"Не удалось сохранить объект");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }

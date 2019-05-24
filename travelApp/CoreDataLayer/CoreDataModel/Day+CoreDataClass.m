@@ -7,7 +7,9 @@
 //
 //
 
+
 #import "Day+CoreDataClass.h"
+
 
 @implementation Day
 

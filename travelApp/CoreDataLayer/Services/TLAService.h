@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import "TLACoreDataProvider.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) TLACoreDataProvider *coreDataProvider;
 
--(instancetype)initWithCoreDataProvider: (TLACoreDataProvider *)coreDataProvider;
+- (instancetype)initWithCoreDataProvider:(TLACoreDataProvider *)coreDataProvider;
 
 @end
 

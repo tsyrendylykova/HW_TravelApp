@@ -7,8 +7,10 @@
 //
 //
 
+
 #import "Trip+CoreDataProperties.h"
 #import "Day+CoreDataProperties.h"
+
 
 @implementation Trip (CoreDataProperties)
 

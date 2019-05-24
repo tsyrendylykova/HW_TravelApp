@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLAMuseumsForDayView.h"
-#import "Constants.h"
+#import "TLAConstants.h"
+
 
 @interface TLAMuseumsForDayView()
 
@@ -22,9 +24,10 @@
 
 @implementation TLAMuseumsForDayView
 
--(instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip {
+- (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         _trip = trip;
         [self prepareDateFormatter];
         [self prepareUI];
@@ -32,28 +35,28 @@
     return self;
 }
 
--(void)prepareUI {
-    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, MuseumLabelFirstTopOffset, [UIScreen mainScreen].bounds.size.width - MuseumLabelWidth, MuseumLabelHeight)];
+- (void)prepareUI {
+    self.labelName = [[UILabel alloc] initWithFrame:CGRectMake(TLAMuseumLabelLeftOffset, TLAMuseumLabelFirstTopOffset, [UIScreen mainScreen].bounds.size.width - TLAMuseumLabelWidth, TLAMuseumLabelHeight)];
     self.labelName.text = self.trip.name;
-    self.labelName.font = [UIFont systemFontOfSize:MuseumLabelNameFontSize weight:UIFontWeightSemibold];
+    self.labelName.font = [UIFont systemFontOfSize:TLAMuseumLabelNameFontSize weight:UIFontWeightSemibold];
     self.labelName.numberOfLines = 0;
     [self.labelName setTextColor:[UIColor blackColor]];
     [self addSubview:self.labelName];
     
-    self.labelDate = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.labelName.frame) + MuseumLabelTopOffset, [UIScreen mainScreen].bounds.size.width - MuseumLabelWidth, MuseumLabelDateHeight)];
+    self.labelDate = [[UILabel alloc] initWithFrame:CGRectMake(TLAMuseumLabelLeftOffset, CGRectGetMaxY(self.labelName.frame) + TLAMuseumLabelTopOffset, [UIScreen mainScreen].bounds.size.width - TLAMuseumLabelWidth, TLAMuseumLabelDateHeight)];
     
     NSString *startDateString = [self.dateFormatterFull stringFromDate:self.trip.startDate];
     NSString *startEndString = [self.dateFormatterFull stringFromDate:self.trip.endDate];
     
     self.labelDate.text = [NSString stringWithFormat:@"%@ - %@", startDateString, startEndString];
-    self.labelDate.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
+    self.labelDate.font = [UIFont systemFontOfSize:TLAMuseumFontSize weight:UIFontWeightSemibold];
     self.labelDate.numberOfLines = 0;
     [self.labelDate setTextColor:[UIColor grayColor]];
     [self addSubview:self.labelDate];
     
-    self.labelChoose = [[UILabel alloc] initWithFrame:CGRectMake(MuseumLabelLeftOffset, CGRectGetMaxY(self.labelDate.frame) + MuseumLabelSecondTopOffset, [UIScreen mainScreen].bounds.size.width - MuseumLabelWidth, MuseumLabelHeight)];
+    self.labelChoose = [[UILabel alloc] initWithFrame:CGRectMake(TLAMuseumLabelLeftOffset, CGRectGetMaxY(self.labelDate.frame) + TLAMuseumLabelSecondTopOffset, [UIScreen mainScreen].bounds.size.width - TLAMuseumLabelWidth, TLAMuseumLabelHeight)];
     self.labelChoose.text = @"Choose";
-    self.labelChoose.font = [UIFont systemFontOfSize:MuseumFontSize weight:UIFontWeightSemibold];
+    self.labelChoose.font = [UIFont systemFontOfSize:TLAMuseumFontSize weight:UIFontWeightSemibold];
     [self.labelChoose setTextColor:[UIColor blackColor]];
     [self addSubview:self.labelChoose];
     
@@ -65,7 +68,7 @@
     [self addSubview:self.labelShow];
 }
 
--(void)prepareDateFormatter {
+- (void)prepareDateFormatter {
     self.dateFormatterFull = [[NSDateFormatter alloc] init];
     [self.dateFormatterFull setDateFormat:@"EEEE, MMM d, yyyy"];
     

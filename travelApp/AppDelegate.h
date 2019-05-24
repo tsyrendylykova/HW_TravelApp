@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

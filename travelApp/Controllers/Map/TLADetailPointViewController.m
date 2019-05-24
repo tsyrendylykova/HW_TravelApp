@@ -6,8 +6,10 @@
 //  Copyright © 2019 Erzhena Tsyrendylykova. All rights reserved.
 //
 
+
 #import "TLADetailPointViewController.h"
-#import "Constants.h"
+#import "TLAConstants.h"
+
 
 @interface TLADetailPointViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -19,9 +21,10 @@
 
 @implementation TLADetailPointViewController
 
--(instancetype)initWithMapPoint: (TLAMapPoint *)mapPoint {
+- (instancetype)initWithMapPoint:(TLAMapPoint *)mapPoint {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _mapPoint = mapPoint;
     }
     return self;
@@ -31,12 +34,12 @@
     [super viewDidLoad];
     
     [self prepareUI];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:DetailPointViewControllerCellIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:TLADetailPointViewControllerCellIdentifier];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
 
--(void)prepareUI {
+- (void)prepareUI {
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(goBackToVC)];
@@ -44,15 +47,15 @@
     self.navigationItem.title = self.mapPoint.name;
     self.title = self.mapPoint.name;
     
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, TopOffset, self.view.frame.size.width, self.view.frame.size.height * DetailViewImageViewPercentHeight)];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, TLATopOffset, self.view.frame.size.width, self.view.frame.size.height * TLADetailViewImageViewPercentHeight)];
     self.imageView.image = self.mapPoint.categoryImage;
-    [self.imageView.layer setCornerRadius:DetailViewImageCornerRadius];
+    [self.imageView.layer setCornerRadius:TLADetailViewImageCornerRadius];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.imageView setClipsToBounds:YES];
-    [self.imageView setBackgroundColor:[UIColor colorWithRed:DetailViewImageRed green:DetailViewImageGreen blue:DetailViewImageBlue alpha:AlphaColor]];
+    [self.imageView setBackgroundColor:[UIColor colorWithRed:TLADetailViewImageRed green:TLADetailViewImageGreen blue:TLADetailViewImageBlue alpha:TLAAlphaColor]];
     [self.view addSubview:self.imageView];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + DetailTableViewTopOffset, self.view.frame.size.width, DetailTableViewHeight)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imageView.frame) + TLADetailTableViewTopOffset, self.view.frame.size.width, TLADetailTableViewHeight)];
     [self.view addSubview:self.tableView];
     
 }
@@ -60,11 +63,13 @@
 
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DetailPointViewControllerCellIdentifier forIndexPath:indexPath];
-    if (indexPath.row == 0) {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TLADetailPointViewControllerCellIdentifier forIndexPath:indexPath];
+    if (indexPath.row == 0)
+    {
         cell.textLabel.text = self.mapPoint.name;
     }
-    else if (indexPath.row == 1) {
+    else if (indexPath.row == 1)
+    {
         cell.textLabel.text = self.mapPoint.address;
     }
     return cell;
@@ -74,9 +79,10 @@
     return 2;
 }
 
+
 #pragma mark - Methods
 
--(void)goBackToVC {
+- (void)goBackToVC {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
