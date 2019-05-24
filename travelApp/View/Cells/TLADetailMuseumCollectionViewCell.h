@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
-@property (nonatomic, strong) UIImageView *coverImageView;
+@property (nonatomic, strong) UIImageView *coverImageView; /**< image музея */
 
 @end
 

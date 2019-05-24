@@ -17,6 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
+/**
+ Добавление путешествия в CoreData
+
+ @param startDate - начало путешествия
+ @param endDate - конец путешествия
+ @param name - название путешествия
+ */
 - (void)addNewTripActionWith:(NSDate *)startDate endDate:(NSDate *)endDate name:(NSString *)name;
 
 @end

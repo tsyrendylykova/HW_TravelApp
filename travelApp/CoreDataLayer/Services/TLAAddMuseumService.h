@@ -18,6 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
+/**
+ Добавление музея в путешествие
+
+ @param info - информация о музее
+ @param rowNumber - порядковый номер музея
+ @param trip - путешествие
+ @param selectedDateInPicker - выбранная дата
+ */
 - (void)saveWithInfo:(NSMutableDictionary *)info rowNumber:(NSInteger)rowNumber trip:(Trip *)trip electedDateInPicker:(NSDate *)selectedDateInPicker;
 
 @end

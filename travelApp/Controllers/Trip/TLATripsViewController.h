@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLATripsViewController : UIViewController
 
-@property (nonatomic, strong) TLATripsService *tripsService;
+@property (nonatomic, strong) TLATripsService *tripsService; /**< Сервис работы с CoreData */
 
 @end
 

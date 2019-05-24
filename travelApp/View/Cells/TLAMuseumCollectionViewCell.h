@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
-@property (nonatomic, strong) UIImageView *coverImageView;
-@property (nonatomic, strong) UILabel *name;
-@property (nonatomic, strong) UILabel *descriptionTrip;
+@property (nonatomic, strong) UIImageView *coverImageView; /**< image музея */
+@property (nonatomic, strong) UILabel *name; /**< Название музея */
+@property (nonatomic, strong) UILabel *descriptionTrip; /**< Описание музея */
 
 @end
 

@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAMapPoint : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *urlImage;
-@property (nonatomic, strong) UIImage *categoryImage;
-@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *name; /**< Имя для поинта */
+@property (nonatomic, copy) NSString *urlImage; /**< url для картинки */
+@property (nonatomic, strong) UIImage *categoryImage; /**< image музея */
+@property (nonatomic, copy) NSString *address; /**< Адрес музея */
 
 - (instancetype)initWithName:(NSString *)name urlImage:(NSString *)urlImage address:(NSString *)address;
 

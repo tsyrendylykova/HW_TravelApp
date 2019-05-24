@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAMuseumsForDayView : UIView
 
-@property (nonatomic, strong) UILabel *labelShow;
+@property (nonatomic, strong) UILabel *labelShow; /**< Label выберите даты */
 
 - (instancetype)initWithFrame:(CGRect)frame trip:(Trip *)trip;
 

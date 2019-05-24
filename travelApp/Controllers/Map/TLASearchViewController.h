@@ -25,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLASearchViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, TLAFoursquareNetworkServiceOutputProtocol>
 
-@property (nonatomic, strong) TLAFoursquareNetworkService *networkService;
-@property (nonatomic, nullable, weak) id<SearchViewDelegate> delegate;
+@property (nonatomic, strong) TLAFoursquareNetworkService *networkService; /**< Сервис для получения данных о музеях */
+@property (nonatomic, nullable, weak) id<SearchViewDelegate> delegate; /**< Делегат внешних событий */
 
 @end
 

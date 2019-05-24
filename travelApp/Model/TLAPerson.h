@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAPerson : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *sirName;
-@property (nonatomic, assign) NSInteger *age;
-@property (nonatomic, copy) NSString *address;
-@property (nonatomic, copy) NSString *preferences;
+@property (nonatomic, copy) NSString *name; /**< Имя пользователя */
+@property (nonatomic, copy) NSString *sirName; /**< Фамилия пользователя */
+@property (nonatomic, assign) NSInteger *age; /**< Возраст пользователя */
+@property (nonatomic, copy) NSString *address; /**< Адрес пользователя */
+@property (nonatomic, copy) NSString *preferences; /**< Предпочтения пользователя */
 
 - (instancetype)initWithName:(NSString *)name age:(NSInteger *)age address:(NSString *)address preferences:(NSString *)preferences;
 

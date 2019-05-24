@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TLAService : NSObject
 
-@property (nonatomic, strong) TLACoreDataProvider *coreDataProvider;
+@property (nonatomic, strong) TLACoreDataProvider *coreDataProvider; /**< Провайдер для работы с CoreData */
 
 - (instancetype)initWithCoreDataProvider:(TLACoreDataProvider *)coreDataProvider;
 
